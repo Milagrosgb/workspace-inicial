@@ -1,3 +1,18 @@
+:root {
+  --Primary: #2A49FF;
+  --Primary-light: #99A8FF;
+  --Black: #16191C;
+  --Dark-gray: #1D2125;
+  --White: #FAFBFF;
+  --Light-gray: #BBBFCC;
+  --Placeholder: #F5F5F5;
+  --Pink-accent: #FB15FF;
+  --Primary-gradien: linear-gradient(90deg, #3969FC 0%, #2A49FF 100%);
+
+
+  
+}
+
 .jumbotron,
 .card-body,
 .container,
@@ -20,6 +35,30 @@ nav a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+#product-list-header {
+  padding: 40px 0px;
+}
+
+#product-list {
+  display: flex;
+  margin: 24px 80px;
+  align-items: center;
+  gap: 40px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  flex: 1 1 calc(33.333% - 80px);
+  box-sizing: border-box;
+  max-width: calc(33.333% - 80px / 3);
+  background-color: red;
+}
+
+.gap-40 {
+  gap: 40px;
 }
 
 @media (min-width: 768px) {
