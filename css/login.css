@@ -1,0 +1,152 @@
+*{
+    font-family: "Mulish";
+    
+ }
+ 
+ /*    MAIN     */
+#main {
+    display: flex;
+    background-color: #16191C;
+    color: #FAFBFF;
+}
+
+/*   IMAGE   */
+.image-container {
+    width: 60%;
+    height: 100vh;
+    background: url("/img/e-commerce-fondo.jpg") no-repeat center;
+}
+
+
+/*   LOGIN CONTAINER */
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+#e-commerce-vector {
+    width: 15em;
+}
+
+/*   TITLE   */
+.title {
+    font-size: 1.7em;
+    margin-top: 1em;
+    font-weight: lighter;
+}
+
+/* RIGHT SIDE CONTAINER   */
+.container {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+
+/*   FORM   */
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0;
+
+  
+}
+
+.inputs-container {
+    width: 100%;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: start;
+    margin: 1.5em 0;
+    border-radius: 6px;
+    
+}
+
+.label{
+    padding: 0 0.5em;
+    font-size:  0.9em;
+}
+
+.input {
+    margin-top: 0.5em;
+    width: 100%;
+    height: 3em;
+    background-color:#1D2125;
+    border: none;
+    border-radius: 6px;
+    padding: 1em;
+    font-size:  0.9em;
+    color:#BBBFCC;
+    text-shadow: 0px 4px 4px #0000001f;
+    outline:none;
+}
+
+
+#password-icon {
+    position: absolute;
+    right: 0.5em;
+    bottom:1em;
+    cursor: pointer;
+}
+
+.button {
+    background: linear-gradient(90deg, #3969FC 0%, #2A49FF 100%);
+    box-shadow: 0 0 20px  #00000010;
+    font-size: 1em;
+    padding: 0 2em;
+    color: #fff;
+}
+
+/*     ALERTA CAMPOR INVALIDOS   */
+
+.alert-validation {
+    color: rgb(192, 49, 49);
+  
+    display: none; 
+
+}
+
+
+/*C   CUANDO LA PANTALLA ES MENOR A 700PX   */
+@media (max-width:700px) {
+
+    .login-container{
+        width: 90%;
+    }
+    
+    #e-commerce-vector {
+        width: 10em;
+    }
+}
+
+/*    CUANDO LA PANTALLA ES MENOR A 440PX    */
+
+@media (max-width:440px) {
+
+    .image-container{
+        width: 0;
+    }
+    .login-container{
+        width: 100%;
+    }
+
+    #e-commerce-vector {
+        width: 7em;
+    }
+    
+    .title {
+        font-size:1.3em;
+    }
+
+    .input::placeholder{
+        opacity: 0;
+    }
+  
+    
+}
