@@ -89,6 +89,7 @@ nav a {
 .card-text-hight {
   display: -webkit-box; /* Enable flexbox layout for WebKit browsers */
   -webkit-line-clamp: 4; /* Limit to 3 lines */
+  line-clamp: 4;
   -webkit-box-orient: vertical; /* Set box orientation to vertical */
   overflow: hidden; /* Hide any overflowing text */
   text-overflow: ellipsis; /* Add ellipsis to the end of the visible text */
