@@ -15,10 +15,10 @@
 /*    FONT STYLES     */
 .h2 {
   font-family: Gruppo;
-font-size: 48px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .body-light {
@@ -43,6 +43,15 @@ line-height: normal;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+.label {
+  font-family: Mulish;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.5px;
 }
 
 /* FORMATOS DEL WORKSPACE INICIAL */
@@ -113,10 +122,9 @@ nav a {
   border-radius: 0px 0px 40px 40px;
 }
 
-
 .product-card:hover {
   box-shadow: 4px 4px 4px 0px rgba(22, 25, 28, 0.25);
-  background: #FEE0FF;
+  background: #fee0ff;
 }
 
 .card-image {
@@ -157,16 +165,13 @@ nav a {
 
 @media (max-width: 1400px) {
   .card-text-hight {
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  line-height: 120%;
-  max-height: 3.6em;
-  min-height: 3.6em;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    line-height: 120%;
+    max-height: 3.6em;
+    min-height: 3.6em;
   }
 }
-
-
-
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
