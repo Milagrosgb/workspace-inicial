@@ -21,7 +21,7 @@ function inputValidation(){
 //al apretar ingresar te lleva a la pagina principal(si es valido)
 signBtn.addEventListener("click", function(){
     if(inputValidation()){
-        window.location.href= "../index.html"
+        window.location.href= "index.html"
     } else {
         showError();
     }
