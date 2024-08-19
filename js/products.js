@@ -12,15 +12,15 @@ console.log(listEl)
           productElement.innerHTML = `
                 <img src='${post.image}' class="card-img-top card-image" alt="'${post.image}'" />
                   <div class="card-content">
-                    <div class="title-description">
+                    <div class="title-description subtitle-2">
                       <h5 class="card-title">${post.name}</h5>
-                      <p class="card-text card-text-hight">
+                      <p class="card-text card-text-hight body-light">
                       ${post.description}
                       </p>
                     </div>
                     <div class="price-qty">
-                      <p>$${post.cost}</p>
-                      <p>${post.soldCount} art.</p>
+                      <p class="subtitle-1">$${post.cost}</p>
+                      <p class="body-light">${post.soldCount} art.</p>
                   </div>
               </div>
             `;
