@@ -218,7 +218,10 @@ nav a {
   font-size: 38px;
 }
 
+/* Formato Footer y navbar*/
+
 footer {
+  background-color: #bbbfcc;
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
@@ -226,6 +229,12 @@ footer {
 footer p {
   margin-bottom: 0.25rem;
 }
+
+.navbar {
+  background-color: #3969fc;
+}
+
+/* End formato Footer y navbar */
 
 .site-header a {
   color: white;
