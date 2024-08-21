@@ -1,15 +1,14 @@
-
-.input-group {
+.input-box {
     margin-bottom: 20px;
 }
 
-label {
+.input-box label {
     color: #ccc;
     margin-bottom: 5px;
     display: block;
 }
 
-input {
+.input {
     width: 100%;
     padding: 10px;
     border-radius: 4px;
@@ -18,20 +17,20 @@ input {
     color: #fff;
 }
 
-input::placeholder {
+.input::placeholder {
     color: #777;
 }
 
-input:focus {
+.input:focus {
     border-color: #9b7efc;
     outline: none;
 }
 
-input:valid {
+.input:valid {
     border-color: #00cc00;
 }
 
-.input-group.error input {
+.input-box.error .input {
     border-color: #cc0000;
 }
 
@@ -42,7 +41,7 @@ input:valid {
     display: none;
 }
 
-.input-group.error .error-message {
+.input-box.error .error-message {
     display: block;
 }
 
