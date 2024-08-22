@@ -5,7 +5,7 @@
 .input-box label {
     color: #ccc;
     margin-bottom: 5px;
-    
+    display: block;
 }
 
 .input {
@@ -13,7 +13,7 @@
     padding: 10px;
     border-radius: 4px;
     border: 2px solid #444;
-    background-color: #1d2125;
+    background-color: #1c1a1a;
     color: #fff;
 }
 
@@ -22,7 +22,8 @@
 }
 
 .input:focus {
-    border-color: #2a49ff;
+    border-color: #230487;
+    outline: none;
 }
 
 .input:valid {
@@ -45,6 +46,6 @@
 }
 
 
-
-
-
+.button:hover {
+    background: linear-gradient(90deg, #0335CE 0%, #001CC2 100%);
+}
