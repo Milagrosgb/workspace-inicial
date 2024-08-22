@@ -27,7 +27,7 @@
 }
 
 .input:valid {
-    border-color: #091456;
+    border-color: #0496b7;
 }
 
 .input-box.error .input {
@@ -44,7 +44,6 @@
 .input-box.error .error-message {
     display: block;
 }
-
 
 .button:hover {
     background: linear-gradient(90deg, #0335CE 0%, #001CC2 100%);
