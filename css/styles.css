@@ -15,10 +15,11 @@
 /*    FONT STYLES     */
 .h2 {
   font-family: Gruppo;
-  font-size: 48px;
+  font-size: 48px !important;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-block-end: 0px;
 }
 
 .body-light {
@@ -54,6 +55,14 @@
   letter-spacing: 0.5px;
 }
 
+.button-font {
+  font-family: Mulish;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
 /* FORMATOS DEL WORKSPACE INICIAL */
 .jumbotron,
 .card-body,
@@ -79,13 +88,125 @@ nav a {
   user-select: none;
 }
 
+/*    HERO - INDEX     */
+
+#hero {
+  height: calc(95vh);
+  background-image: url('../img/Hero-image.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+}
+
+#hero-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--Light-gray);
+  height: auto;
+  background: radial-gradient(ellipse closest-side, #99a8ff35, #99a8ff00);
+  overflow: visible;
+  padding: 48px 24px;
+}
+
+#hero-content {
+  position: absolute;
+  right: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+}
+
+#hero-full-logo {
+  width: 419.796px;
+  height: 37.959px;
+  flex-shrink: 0;
+}
+
+/*    BUTTONS    */
+.primary-button {
+  display: flex;
+  padding: 16px 80px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  background: var(--Gradient-primary-button, #3969fc);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  border: none;
+  color: var(--White);
+  text-decoration: none;
+}
+
+.primary-button:hover {
+  background: var(--Pink-accent);
+  color: var(--White);
+}
+
+.outline-button {
+  display: flex;
+  /* width: fit-content; */
+  /* margin: auto; */
+  padding: 16px 80px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  background: var(--White);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  outline: 2px solid var(--Primary);
+  outline-offset: -2px;
+  color: var(--Primary);
+  text-decoration: none;
+}
+
+.outline-button:hover {
+  background-color: var(--Primary);
+  border: none;
+  outline: none;
+  color: var(--White);
+}
+/*    CATEGORIES SECTION -INDEX     */
+
+.categories {
+  margin: 48px 0;
+}
+
+.h2-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.title-decoration {
+  border-bottom: 12px solid rgba(251, 21, 255, 0.5);
+  margin-block-start: 8px;
+}
+
+#index-h2 {
+  font-size: 48px;
+}
+
+.see-more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+}
+
 /*    PRODUCT LIST     */
 
 #product-list-header {
   padding: 40px 0px;
 }
 
-#product-list, .product-list {
+#product-list,
+.product-list {
   display: flex;
   margin: 24px 80px;
   align-items: center;
@@ -97,11 +218,12 @@ nav a {
 
 /*    PRODUCT CARD     */
 
-.product-card, .more-btn-box {
+.product-card,
+.more-btn-box {
   flex: 1 1 calc(33.333% - 80px);
   box-sizing: border-box;
   max-width: calc(33.333% - 80px / 3);
-  border-radius: 40px;
+  border-radius: 16px;
   box-shadow: 1px 2px 4px 0px rgba(22, 25, 28, 0.25);
   background: var(--White);
 }
@@ -118,11 +240,12 @@ nav a {
   padding: 24px 32px 32px 32px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
-  border-radius: 0px 0px 40px 40px;
+  gap: 16px;
+  border-radius: 0px 0px 16px 16px;
 }
 
-.product-card:hover, .more-btn-box:hover {
+.product-card:hover,
+.more-btn-box:hover {
   box-shadow: 4px 4px 4px 0px rgba(22, 25, 28, 0.25);
   background: #fee0ff;
 }
@@ -131,7 +254,7 @@ nav a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 40px 40px 0px 0px;
+  border-radius: 16px 16px 0px 0px;
 }
 
 .price-qty {
@@ -139,6 +262,10 @@ nav a {
   justify-content: space-between;
   align-items: flex-end;
   align-self: stretch;
+}
+
+.price-qty p {
+  margin-block-end: 0;
 }
 
 .card-text-hight {
@@ -153,18 +280,18 @@ nav a {
   min-height: 2.4em;
 }
 
-.more-btn-box{
+.more-btn-box {
   text-align: center;
   margin: 2em auto;
   padding: 1em;
 }
- 
-.btn-link{
+
+.btn-link {
   text-decoration: none;
   color: var(--Black);
 }
- 
-.btn-link:hover{
+
+.btn-link:hover {
   color: var(--Black);
 }
 
@@ -195,7 +322,7 @@ nav a {
 }
 
 .jumbotron {
-  height: 50vh; 
+  height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
   background-color: #53c0fb;
@@ -365,19 +492,17 @@ a.custom-card:hover {
   color: orange;
 }
 
-
-
 /* MISMO BOTON QUE EN EL LOGIN */
 .button {
-  background: linear-gradient(90deg, #3969FC 0%, #2A49FF 100%);
-  box-shadow: 0 0 20px  #00000010;
+  background: linear-gradient(90deg, #3969fc 0%, #2a49ff 100%);
+  box-shadow: 0 0 20px #00000010;
   font-size: 1em;
   padding: 0 2em;
   color: #fff;
   border: none;
-  outline:none;
+  outline: none;
   width: 100%;
   border-radius: 6px;
   padding: 1em;
-  font-weight: 600;  
+  font-weight: 600;
 }
