@@ -13,21 +13,21 @@
     padding: 10px;
     border-radius: 4px;
     border: 2px solid #444;
-    background-color: #333;
+    background-color: #1c1a1a;
     color: #fff;
 }
 
 .input::placeholder {
-    color: #777;
+    color: #999; 
 }
 
 .input:focus {
-    border-color: #9b7efc;
+    border-color: #230487;
     outline: none;
 }
 
 .input:valid {
-    border-color: #00cc00;
+    border-color: #0b0781;
 }
 
 .input-box.error .input {
@@ -43,5 +43,20 @@
 
 .input-box.error .error-message {
     display: block;
+}
+
+.button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #007bff; 
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.button:hover {
+    background-color: #2218a7;
 }
 
