@@ -177,10 +177,13 @@ nav a {
 }
 
 .h2-container {
+
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 40px;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .title-decoration {
@@ -209,6 +212,7 @@ nav a {
   align-items: center;
   justify-content: center;
   display: flex;
+  flex-direction: column;
 }
 .text-center hr {
   border: 5px solid #E685F2;
