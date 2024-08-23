@@ -67,3 +67,4 @@ function loginUser(username, token) {
     console.log('Log in correcto y sesión guardada.');
 }
 
+//prueba
