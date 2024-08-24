@@ -585,3 +585,9 @@ a.custom-card:hover {
 
   }
 }
+
+.container
+{
+  display: flex;
+  justify-content: space-between;
+}
