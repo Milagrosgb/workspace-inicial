@@ -366,34 +366,30 @@ nav a {
 @media (max-width: 768px) {
 
   /*  CARDS*/
- #product-list {
-  flex-direction: column;
-  margin: 1em;
- }
+  #product-list {
+    flex-direction: column;
+    margin: 1em;
+   }
+  
+   .product-card{
+    
+    max-width: 100%;
+   }
+    
+   /* FOOTER  */
+   .container-footer{
+    flex-direction: column;
+  }
 
- .product-card{
-  display: flex;
-  max-width: 100%;
-  height: 100%;
-  flex-direction: column;
- }
- 
- /* FOOTER  */
- .container-footer{
-  flex-direction: column;
-}
-
- .footer-jap-logo{
-  margin: 40px auto;
-  width: 70%;
-  align-items: center;
- }
-
- /* GO UP BUTTON */
+  .footer-jap-logo{
+    margin-top : 40px;
+  }
+  
+   /*  GO UP BUTTON  */
  .go-top-button{
- margin-left: 100%;
- }
- 
+  position: relative;
+ } 
+
 }
 
 .jumbotron p:last-child {
