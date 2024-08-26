@@ -239,7 +239,7 @@ nav a {
 .more-btn-box {
   flex: 1 1 calc(33.333% - 80px);
   box-sizing: border-box;
-  /*max-width: calc(33.333% - 80px / 3);*/
+  max-width: calc(33.333% - 80px / 3);
   border-radius: 16px;
   box-shadow: 1px 2px 4px 0px rgba(22, 25, 28, 0.25);
   background: var(--White);
@@ -373,17 +373,27 @@ nav a {
 
  .product-card{
   display: flex;
-  width: 100%;
+  max-width: 100%;
   height: 100%;
   flex-direction: column;
  }
  
  /* FOOTER  */
+ .container-footer{
+  flex-direction: column;
+}
+
  .footer-jap-logo{
-  width: 50%;
+  margin: 40px auto;
+  width: 70%;
+  align-items: center;
  }
 
-
+ /* GO UP BUTTON */
+ .go-top-button{
+ margin-left: 100%;
+ }
+ 
 }
 
 .jumbotron p:last-child {
