@@ -15,7 +15,7 @@
 /*    FONT STYLES     */
 .h2 {
   font-family: Gruppo;
-  font-size: 48px !important;
+  font-size: 3em;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -355,7 +355,41 @@ nav a {
   .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
+
   }
+
+
+}
+
+/*  RESOPNSIVE PRODUCTS.HTML FOR SMARTPHONES   */
+
+@media (max-width: 768px) {
+
+  /*  CARDS*/
+  #product-list {
+    flex-direction: column;
+    margin: 1em;
+   }
+  
+   .product-card{
+    
+    max-width: 100%;
+   }
+    
+   /* FOOTER  */
+   .container-footer{
+    flex-direction: column;
+  }
+
+  .footer-jap-logo{
+    margin-top : 40px;
+  }
+  
+   /*  GO UP BUTTON  */
+ .go-top-button{
+  position: relative;
+ } 
+
 }
 
 .jumbotron p:last-child {
