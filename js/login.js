@@ -44,13 +44,19 @@ signBtn.addEventListener("click", function () {
 // oobtengo el input contraseña y usuario
 let password = document.getElementById("password-input");
 let user = document.getElementById("user-input");
+const eyeOpen = document.getElementById('password-icon-show');
+const eyeClosed = document.getElementById('password-icon-hide')
 
 // evento que me muestra u oculta contraseña
-document.getElementById("password-icon").addEventListener("click", function () {
+document.getElementById("show-hide-button").addEventListener("click", function () {
     if (password.type == "password") {
         password.type = "text";
+        eyeOpen.style.display = 'none';
+        eyeClosed.style.display = 'block'
     } else {
         password.type = "password";
+        eyeOpen.style.display = 'block';
+        eyeClosed.style.display = 'none';
     }
 });
 
