@@ -154,5 +154,35 @@
         opacity: 0;
     }
   
-    
 }
+
+  /* responsive para tablet */  
+@media (max-width: 1024px) {  
+    body {  
+        background: url('/img/login-image-tablet.webp') no-repeat center center fixed; /* Fondo específico para tabletas */  
+        background-size: cover;  
+    }  
+
+/* Contenedor del login */  
+.login-container {  
+    max-width: 400px; /* Ancho del contenedor */  
+    margin: auto;  
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */  
+    border-radius: 15px;  
+    padding: 40px; /* Espacio interno */  
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra */  
+    position: absolute; /* Para centrar verticalmente */  
+    top: 50%; /* Centrar verticalmente */  
+    left: 50%; /* Centrar horizontalmente */  
+    transform: translate(-50%, -50%); /* Ajustar el centrado */  
+}  
+
+    .login-container {  
+        max-width: 90%; /* Ancho del contenedor en tabletas */  
+        padding: 20px; /* Espacio interno reducido */  
+    }  
+
+    .login-container h1 {  
+        font-size: 20px; /* Tamaño de fuente ajustado */  
+    }  
+}    
