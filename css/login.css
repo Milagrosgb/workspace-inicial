@@ -157,32 +157,43 @@
 }
 
   /* responsive para tablet */  
-@media (max-width: 1024px) {  
-    body {  
-        background: url('/img/login-image-tablet.webp') no-repeat center center fixed; /* Fondo específico para tabletas */  
-        background-size: cover;  
-    }  
+@media (max-width: 1024px) {
+    #main {
+        min-height: 100vh;
+        background: linear-gradient(rgba(5, 7, 12, 0.75), rgba(5, 7, 12, 0.75)),
+        url(/img/login-image-tablet.webp) no-repeat center center fixed; 
+        background-size: cover
+}
+    
 
-/* Contenedor del login */  
-.login-container {  
-    max-width: 400px; /* Ancho del contenedor */  
-    margin: auto;  
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */  
-    border-radius: 15px;  
-    padding: 40px; /* Espacio interno */  
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra */  
-    position: absolute; /* Para centrar verticalmente */  
-    top: 50%; /* Centrar verticalmente */  
-    left: 50%; /* Centrar horizontalmente */  
-    transform: translate(-50%, -50%); /* Ajustar el centrado */  
-}  
+    .image-container{
+        display: none;
+    }
 
-    .login-container {  
-        max-width: 90%; /* Ancho del contenedor en tabletas */  
-        padding: 20px; /* Espacio interno reducido */  
-    }  
+    .login-container { 
+            display: flex;
+            width: 440px; 
+            padding: 48px 24px;
+            flex-direction: column;
+            align-items: center; 
+            margin: auto;  
+            background-color: rgba(7, 8, 9, 0.60); 
+           /* backdrop-filter: blur(5px);*/ 
+            border-radius: 24px;  
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+            position: absolute;  
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+        } 
+}
 
-    .login-container h1 {  
-        font-size: 20px; /* Tamaño de fuente ajustado */  
-    }  
-}    
+   
+
+       .login-container {  
+        max-width: 90%; 
+        padding: 20px; 
+       }
+
+
+    
