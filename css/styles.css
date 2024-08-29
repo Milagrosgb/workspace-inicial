@@ -238,7 +238,7 @@ nav a {
   gap: 40px;
   align-self: stretch;
   flex-wrap: wrap;
-  align-items: flex-start;
+  /* align-items: flex-start; */
 }
 
 /*    PRODUCT CARD     */
@@ -390,6 +390,10 @@ nav .container-lg {
 
   }
 
+  .h2 {
+    font-size: 28px;
+  }
+
   #hero-header{
     padding: 0 0 24px 0;
   }
@@ -400,6 +404,7 @@ nav .container-lg {
 
   .subtitle-2 {
     font-size: 18px;
+    margin-bottom: 0;
   }
 
   .primary-button {
@@ -411,7 +416,59 @@ nav .container-lg {
 
 .product-list{
   margin: 24px 40px;
+  gap: 24px;
+  /* width: auto; */
 }
+
+.product-card {
+  flex: 1 1 calc(33.333% - 48px);
+  box-sizing: border-box;
+  max-width: calc(33.333% - 48px / 3);
+}
+
+.h2-container {
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.categories {
+  margin-top: 0;
+}
+
+.body-light {
+  font-size: 14px;
+}
+
+.title-description {
+  gap: 8px;
+  padding: 16px 24px;
+}
+
+.outline-button {
+  padding: 16px 40px;
+}
+.button-font {
+  font-family: Mulish;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+nav .container-lg {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.text-muted {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.container-footer {
+  margin: 0;
+}
+
 }
 
 /*  RESOPNSIVE PRODUCTS.HTML FOR SMARTPHONES   */
