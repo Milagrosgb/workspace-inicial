@@ -115,10 +115,7 @@
 /* Responsive para tablet */
 @media (min-width: 576px) and (max-width: 992px) {
   #main {
-    /* min-height: 100vh; */
-    /* background: linear-gradient(rgba(5, 7, 12, 0.75), rgba(5, 7, 12, 0.75)),
-        url(./img/login-image-tablet.webp) no-repeat center center fixed;
-      background-size: cover; */
+    min-height: 100vh;
   }
 
   #logo-eco {
@@ -126,10 +123,6 @@
   }
 
   .image-container {
-    /* display: none; */
-    /* background: linear-gradient(rgba(5, 7, 12, 0.75), rgba(5, 7, 12, 0.75)),
-        url(./img/login-image-tablet.webp) no-repeat center center fixed; */
-
     background: linear-gradient(rgba(5, 7, 12, 0.75), rgba(5, 7, 12, 0.75)),
       url('../img/login-image-tablet.webp') no-repeat center center fixed;
     background-size: cover;
@@ -158,18 +151,8 @@
   }
 }
 
-/*   CUANDO LA PANTALLA ES MENOR A 700PX   */
-/* @media (max-width: 700px) {
-  .login-container {
-    width: 90%;
-  }
 
-  #e-commerce-vector {
-    width: 10em;
-  }
-} */
-
-/*    CUANDO LA PANTALLA ES MENOR A 440PX    */
+/*    CUANDO LA PANTALLA ES MENOR A 576PX    */
 
 @media (max-width: 575px) {
   #main {
@@ -187,6 +170,8 @@
   .login-container {
     width: 100%;
     padding: 24px;
+    background: radial-gradient(50% 50% at 50% 50%, #16191C 0%, #101214 100%);
+    box-shadow: inset 0px 0px 30px 2px rgba(42, 73, 255, 0.18);
   }
 
   #logo-eco {
@@ -201,9 +186,6 @@
     font-size: 1.3em;
   }
 
-  /* .input::placeholder {
-    opacity: 0;
-  } */
 }
 
 /* Media query para pantallas de hasta 320px de ancho */

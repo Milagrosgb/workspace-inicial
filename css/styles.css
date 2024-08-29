@@ -372,11 +372,13 @@ nav .container-lg {
   font-weight: bold;
 }
 
-@media (min-width: 768px) and (max-width:1366px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
+.jumbotron {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+  
 
    /*  INDEX PARA TABLET */
  
@@ -414,7 +416,7 @@ nav .container-lg {
 
 /*  RESOPNSIVE PRODUCTS.HTML FOR SMARTPHONES   */
 
-@media (max-width: 767px) {
+@media (max-width: 575px) {
   /*  CARDS*/
   #product-list,
   .product-list {
@@ -498,6 +500,7 @@ nav .container-lg {
   #hero {
     height: calc(100svh - 56px);
     background-image: url('../img/hero-image-mobile.webp');
+    background-position: top center;
     position: relative;
   }
 
