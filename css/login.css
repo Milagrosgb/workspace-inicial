@@ -178,9 +178,8 @@
     .image-container {
         display: none; 
     }
-    
-    
-    .login-container { 
+      
+      .login-container { 
         display: flex;
         width: 440px; 
         padding: 48px 24px;
@@ -197,5 +196,33 @@
         transform: translate(-50%, -50%); 
     }
     }
+    
 
+
+
+/* Media query para pantallas de hasta 320px de ancho */
+@media (max-width: 320px) {
+    .login-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .image-container {
+        width: 100%;
+        display: block;
+    }
+
+    #e-commerce-vector {
+        width: 6em;
+        height: auto;
+    }
+    
+    .title {
+        font-size: 1.2em;
+    }
+
+    .input::placeholder {
+        opacity: 0.6;
+    }
+}
 
