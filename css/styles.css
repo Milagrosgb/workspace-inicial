@@ -372,11 +372,44 @@ nav .container-lg {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width:1366px) {
   .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
+
+   /*  INDEX PARA TABLET */
+ 
+   #hero {
+    background: url('../img/hero-image-tablet.webp') center no-repeat;
+    background-size: cover;
+    height: 400px;
+    display: flex;
+
+  }
+
+  #hero-header{
+    padding: 0 0 24px 0;
+  }
+
+  #hero-full-logo {
+    width: 220px;
+  }
+
+  .subtitle-2 {
+    font-size: 18px;
+  }
+
+  .primary-button {
+  height: 40px;
+  padding: 16px 40px;
+  gap: 16px;
+
+  }
+
+.product-list{
+  margin: 24px 40px;
+}
 }
 
 /*  RESOPNSIVE PRODUCTS.HTML FOR SMARTPHONES   */
@@ -499,6 +532,9 @@ nav .container-lg {
     padding-left: 24px;
     padding-right: 24px;
   }
+
+ 
+
 }
 
 .jumbotron p:last-child {
