@@ -333,32 +333,6 @@ nav .container-lg {
   margin: 0 80px;
 }
 
-@media (max-width: 1200px) {
-  .card-text-hight {
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-    line-height: 120%;
-    max-height: 4.8em;
-    min-height: 4.8em;
-  }
-}
-
-@media (max-width: 1400px) {
-  .card-text-hight {
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    line-height: 120%;
-    max-height: 3.6em;
-    min-height: 3.6em;
-  }
-}
-
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-
 .jumbotron {
   height: 50vh;
   padding: 5em inherit;
@@ -377,225 +351,7 @@ nav .container-lg {
   padding-bottom: 6rem;
 }
 
-@media (min-width: 576px) and (max-width: 992px) {
-  
 
-   /*  INDEX PARA TABLET */
- 
-   #hero {
-    background: url('../img/hero-image-tablet.webp') center no-repeat;
-    background-size: cover;
-    height: 400px;
-    display: flex;
-
-  }
-
-  .h2 {
-    font-size: 28px;
-  }
-
-  #hero-header{
-    padding: 0 0 24px 0;
-  }
-
-  #hero-full-logo {
-    width: 220px;
-  }
-
-  .subtitle-2 {
-    font-size: 18px;
-    margin-bottom: 0;
-  }
-
-  .primary-button {
-  height: 40px;
-  padding: 16px 40px;
-  gap: 16px;
-
-  }
-
-.product-list{
-  margin: 24px 40px;
-  gap: 24px;
-  /* width: auto; */
-}
-
-.product-card {
-  flex: 1 1 calc(33.333% - 48px);
-  box-sizing: border-box;
-  max-width: calc(33.333% - 48px / 3);
-}
-
-.h2-container {
-  margin-top: 2rem;
-  padding-bottom: 1rem;
-}
-
-.categories {
-  margin-top: 0;
-}
-
-.body-light {
-  font-size: 14px;
-}
-
-.title-description {
-  gap: 8px;
-  padding: 16px 24px;
-}
-
-.outline-button {
-  padding: 16px 40px;
-}
-.button-font {
-  font-family: Mulish;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
-nav .container-lg {
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.text-muted {
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.container-footer {
-  margin: 0;
-}
-
-}
-
-/*  RESOPNSIVE PRODUCTS.HTML FOR SMARTPHONES   */
-
-@media (max-width: 575px) {
-  /*  CARDS*/
-  #product-list,
-  .product-list {
-    flex-direction: column;
-    margin: 1.5rem;
-    gap: 24px;
-  }
-
-  .product-card {
-    max-width: 100%;
-  }
-
-  /* FOOTER  */
-  .container-footer {
-    flex-direction: column;
-    margin: 0;
-  }
-
-  .text-muted {
-    padding: 24px;
-  }
-
-  .footer-jap-logo {
-    margin-top: 40px;
-    width: 50%;
-    max-width: 160px;
-    margin: 40px auto 0 auto;
-  }
-
-  /*  GO UP BUTTON  */
-  .go-top-button {
-    position: relative;
-  }
-
-  /* FONTS MOBILE */
-
-  /* Subtitle-2 para mobile */
-  .subtitle-2 {
-    font-family: Mulish;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
-
-  /* body-large para mobile */
-
-  .body-large {
-    font-size: 1rem;
-  }
-
-  /* h2 para mobile */
-  .h2 {
-    font-family: Gruppo;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-
-  /* Primary button para mobile */
-  .primary-button {
-    padding: 16px 40px;
-  }
-
-  .outline-button {
-    padding: 16px 40px;
-  }
-
-  /* Button font para mobile */
-  .button-font {
-    font-family: Mulish;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-
-  /* Index para smartphone */
-
-  #hero {
-    height: calc(100svh - 56px);
-    background-image: url('../img/hero-image-mobile.webp');
-    background-position: top center;
-    position: relative;
-  }
-
-  #hero-full-logo {
-    width: 68.75%;
-    height: auto;
-    flex-shrink: 0;
-  }
-
-  #hero-header {
-    padding: 0;
-  }
-
-  #hero-content {
-    position: absolute;
-    bottom: 14%;
-    height: fit-content;
-    top: auto;
-    transform: translateY(0);
-    width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    gap: 16px;
-  }
-
-  .h2-container {
-    padding-bottom: 16px;
-    margin-top: 32px;
-  }
-
-  nav .container-lg {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
- 
-
-}
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -766,7 +522,7 @@ a.custom-card:hover {
 /* ESTILO PARA BOTON GO-TOP */
 .go-top-container {
   position: fixed;
-  bottom: 4rem;
+  bottom: 8rem;
   right: 4rem;
   width: 6.6rem;
   height: 6.6rem;
@@ -821,4 +577,251 @@ a.custom-card:hover {
     width: 4.6rem;
     height: 4.6rem;
   }
+}
+
+@media (max-width: 1400px) {
+  .card-text-hight {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    line-height: 120%;
+    max-height: 3.6em;
+    min-height: 3.6em;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card-text-hight {
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    line-height: 120%;
+    max-height: 4.8em;
+    min-height: 4.8em;
+  }
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+  
+
+  /*  INDEX PARA TABLET */
+
+  #hero {
+   background: url('../img/hero-image-tablet.webp') center no-repeat;
+   background-size: cover;
+   height: 400px;
+   display: flex;
+
+ }
+
+ .h2 {
+   font-size: 28px;
+ }
+
+ #hero-header{
+   padding: 0 0 24px 0;
+ }
+
+ #hero-full-logo {
+   width: 220px;
+ }
+
+ .subtitle-2 {
+   font-size: 18px;
+   margin-bottom: 0;
+ }
+
+ .primary-button {
+ height: 40px;
+ padding: 16px 40px;
+ gap: 16px;
+
+ }
+
+#product-list,
+.product-list {
+ display: grid;
+ grid-template-columns:
+ repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+ margin: 24px 40px;
+ gap: 24px;
+}
+
+.product-card {
+ max-width: 100%;
+}
+
+.h2-container {
+ margin-top: 2rem;
+ padding-bottom: 1rem;
+}
+
+.categories {
+ margin-top: 0;
+}
+
+.body-light {
+ font-size: 14px;
+}
+
+.title-description {
+ gap: 8px;
+ padding: 16px 24px;
+}
+
+.outline-button {
+ padding: 16px 40px;
+}
+.button-font {
+ font-family: Mulish;
+ font-size: 14px;
+ font-style: normal;
+ font-weight: 700;
+ line-height: normal;
+}
+
+nav .container-lg {
+ padding-left: 40px;
+ padding-right: 40px;
+}
+
+.text-muted {
+ padding-left: 40px;
+ padding-right: 40px;
+}
+
+.container-footer {
+ margin: 0;
+}
+
+}
+
+/*  RESOPNSIVE PRODUCTS.HTML FOR SMARTPHONES   */
+
+@media (max-width: 575px) {
+ /*  CARDS*/
+ #product-list,
+ .product-list {
+   flex-direction: column;
+   margin: 1.5rem;
+   gap: 24px;
+ }
+
+ .product-card {
+   max-width: 100%;
+ }
+
+ /* FOOTER  */
+ .container-footer {
+   flex-direction: column;
+   margin: 0;
+ }
+
+ .text-muted {
+   padding: 24px;
+ }
+
+ .footer-jap-logo {
+   margin-top: 40px;
+   width: 50%;
+   max-width: 160px;
+   margin: 40px auto 0 auto;
+ }
+
+ /*  GO UP BUTTON  */
+ .go-top-button {
+   position: relative;
+ }
+
+ /* FONTS MOBILE */
+
+ /* Subtitle-2 para mobile */
+ .subtitle-2 {
+   font-family: Mulish;
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 500;
+   line-height: normal;
+ }
+
+ /* body-large para mobile */
+
+ .body-large {
+   font-size: 1rem;
+ }
+
+ /* h2 para mobile */
+ .h2 {
+   font-family: Gruppo;
+   font-size: 28px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+ }
+
+ /* Primary button para mobile */
+ .primary-button {
+   padding: 16px 40px;
+ }
+
+ .outline-button {
+   padding: 16px 40px;
+ }
+
+ /* Button font para mobile */
+ .button-font {
+   font-family: Mulish;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+ }
+
+ /* Index para smartphone */
+
+ #hero {
+   height: calc(100svh - 56px);
+   background-image: url('../img/hero-image-mobile.webp');
+   background-position: top center;
+   position: relative;
+ }
+
+ #hero-full-logo {
+   width: 68.75%;
+   height: auto;
+   flex-shrink: 0;
+ }
+
+ #hero-header {
+   padding: 0;
+ }
+
+ #hero-content {
+   position: absolute;
+   bottom: 14%;
+   height: fit-content;
+   top: auto;
+   transform: translateY(0);
+   width: 100%;
+   left: 50%;
+   transform: translateX(-50%);
+   gap: 16px;
+ }
+
+ .h2-container {
+   padding-bottom: 16px;
+   margin-top: 32px;
+ }
+
+ nav .container-lg {
+   padding-left: 24px;
+   padding-right: 24px;
+ }
+
+
+
 }

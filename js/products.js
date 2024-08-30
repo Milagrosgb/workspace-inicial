@@ -10,7 +10,9 @@ console.log(listEl)
           const productElement = document.createElement('div');
           productElement.className = 'product-card';
           productElement.innerHTML = `
-                <img src='${post.image}' class="card-img-top card-image" alt="'${post.image}'" />
+                <div class='card-image'>
+                  <img src='${post.image}' class="card-img-top card-image" alt="'${post.image}'" />
+                </div>
                   <div class="card-content">
                     <div class="title-description subtitle-2">
                       <h5 class="card-title">${post.name}</h5>
