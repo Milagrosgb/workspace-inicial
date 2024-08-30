@@ -577,3 +577,19 @@ a.custom-card:hover {
 
   }
 }
+
+@media (max-width: 768px) {
+  #product-list,
+  .product-list {
+    display: flex;
+    margin:0px;
+    align-items: center;
+    gap: 40px;
+    align-self: stretch;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .product-card {
+    height: 360px;
+  }
+}
