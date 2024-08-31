@@ -139,7 +139,7 @@ nav a {
 }
 
 /*    BUTTONS    */
-.primary-button {
+.button {
   display: flex;
   padding: 16px 80px;
   justify-content: center;
