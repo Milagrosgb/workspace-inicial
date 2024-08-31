@@ -579,7 +579,7 @@ a.custom-card:hover {
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1366px) {
   .card-text-hight {
     -webkit-line-clamp: 3;
     line-clamp: 3;
