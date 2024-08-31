@@ -670,7 +670,10 @@ a.custom-card:hover {
 
 .title-description {
  gap: 8px;
- padding: 16px 24px;
+}
+
+.subtitle-1 {
+  font-size: 22px;
 }
 
 .outline-button {
