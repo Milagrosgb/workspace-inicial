@@ -127,6 +127,10 @@
   display: none;
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 15772a062388f3b2ef2b8479ab56e0255c3fe48a
 /* Responsive para tablet */
 @media (min-width: 576px) and (max-width: 992px) {
   #main {
@@ -155,7 +159,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-
+  
   .backdrop-filter-container {
     width: 100%;
     display: flex;
@@ -202,6 +206,24 @@
   #form {
     margin: 24px 0;
   }
+   #signBtn.input.button{  
+    background-color: #3969FC;
+    color: white; 
+    border: 1px solid #3969FC;
+    border-radius: 30px;
+    padding: 10px 20px 10px 20px; 
+    gap: 16px;
+    font-size: 14px;  
+    cursor: pointer;   
+    transition: background-color 0.3s, transform 0.3s; 
+  }  
+
+  #signBtn.input.button:hover {  
+    background-color: transparent;
+    background: linear-gradient(rgba(5, 7, 12, 0.75), rgba(5, 7, 12, 0.75));   
+    color: #3969FC; 
+    transform: scale(1.05); 
+}
 }
 
 /*    CUANDO LA PANTALLA ES MENOR A 576PX    */
