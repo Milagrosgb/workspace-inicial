@@ -325,6 +325,7 @@ nav .container-lg {
   padding-left: 80px;
   padding-right: 80px;
   margin: 0;
+  max-width: 100%;
 }
 
 .container-footer {
@@ -579,7 +580,7 @@ a.custom-card:hover {
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1366px) {
   .card-text-hight {
     -webkit-line-clamp: 3;
     line-clamp: 3;
@@ -589,7 +590,7 @@ a.custom-card:hover {
   }
 }
 
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
   .card-text-hight {
     -webkit-line-clamp: 4;
     line-clamp: 4;
@@ -597,7 +598,7 @@ a.custom-card:hover {
     max-height: 4.8em;
     min-height: 4.8em;
   }
-}
+} */
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
@@ -670,10 +671,19 @@ a.custom-card:hover {
 
 .title-description {
  gap: 8px;
+ /* padding: 16px 24px; */
 }
 
-.subtitle-1 {
-  font-size: 22px;
+.card-text-hight {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 120%;
+  max-height: 240%;
+  min-height: 240%;
 }
 
 .outline-button {
@@ -718,6 +728,31 @@ nav .container-lg {
    max-width: 100%;
  }
 
+ .card-content {
+  gap: 16px;
+  padding: 24px 16px;
+ }
+
+ .card-title {
+  margin-bottom: 0;
+}
+
+.title-description {
+  gap: 8px;
+ }
+
+ .card-text-hight {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 120%;
+  max-height: 240%;
+  min-height: 240%;
+}
+
  /* FOOTER  */
  .container-footer {
    flex-direction: column;
@@ -756,6 +791,12 @@ nav .container-lg {
  .body-large {
    font-size: 1rem;
  }
+
+ .body-light {
+  font-size: 14px;
+}
+
+
 
  /* h2 para mobile */
  .h2 {
