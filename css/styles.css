@@ -828,3 +828,19 @@ nav .container-lg {
 
 
 }
+
+
+/*estilos nombre de usuario en navbar*/
+
+.navbar-user {
+  color: rgba(255, 255, 255, .55);
+  font: 16px 
+  font-family var(--bs-font-sans-serif);
+  transition: color  .15s ease-in-out;
+}
+
+.navbar-user:hover {
+  color: #cbdcff;
+}
+
+/*fin estilos nombre de usuario en navbar*/
