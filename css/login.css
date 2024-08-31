@@ -23,7 +23,22 @@
 .login-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+.login-content {
   width: 40%;
+  position: relative;
+}
+
+.backdrop-filter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  height: 100%;
+  margin: auto;
 }
 
 #e-commerce-vector {
@@ -38,8 +53,8 @@
 
 /* RIGHT SIDE CONTAINER   */
 .container {
-  width: 75%;
-  margin: auto;
+  width: 100%;
+  /* margin: auto; */
   text-align: center;
 }
 
@@ -112,6 +127,8 @@
   display: none;
 }
 
+
+
 /* Responsive para tablet */
 @media (min-width: 576px) and (max-width: 992px) {
   #main {
@@ -129,21 +146,49 @@
     width: 100%;
   }
 
-  .login-container {
+  .login-content {
     display: flex;
-    width: 440px;
+    width: 60%;
     padding: 48px 24px;
     flex-direction: column;
     align-items: center;
     margin: auto;
-    /*backdrop-filter: blur(5px);*/
-    background-color: rgba(7, 8, 9, 0.6);
-    border-radius: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .backdrop-filter-container {
+    width: 100%;
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .backdrop-filter-container::before {
+    /* position: absolute; */
+    background-color: #b84f4f;
+    backdrop-filter: blur(200px);
+    z-index: 1;
+  }
+
+  
+
+  .login-container {
+    display: flex;
+    width: 100%;
+    padding: 48px 24px;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    z-index: 2;
+
+    background-color: rgba(7, 8, 9, 0.6);
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   }
 
   .container {
@@ -155,7 +200,6 @@
     margin: 24px 0;
   }
 }
-
 
 /*    CUANDO LA PANTALLA ES MENOR A 576PX    */
 
@@ -172,11 +216,21 @@
   .image-container {
     width: 0;
   }
+
+  .login-content {
+    width: 100%;
+  }
+
+  .backdrop-filter-container {
+    width: 100%;
+  }
+
   .login-container {
     width: 100%;
     padding: 24px;
-    background: radial-gradient(50% 50% at 50% 50%, #16191C 0%, #101214 100%);
+    background: radial-gradient(50% 50% at 50% 50%, #16191c 0%, #101214 100%);
     box-shadow: inset 0px 0px 30px 2px rgba(42, 73, 255, 0.18);
+    height: 100%;
   }
 
   #logo-eco {
@@ -190,7 +244,6 @@
   .title {
     font-size: 1.3em;
   }
-
 }
 
 /* Media query para pantallas de hasta 320px de ancho */
