@@ -325,6 +325,7 @@ nav .container-lg {
   padding-left: 80px;
   padding-right: 80px;
   margin: 0;
+  max-width: 100%;
 }
 
 .container-footer {
