@@ -13,6 +13,10 @@ function checkLoginStatus() {
         window.location.href= "login.html"
         console.log('El usuario no tiene una sesión iniciada. Redirigir al log-in');
     }
+    
+        // Desafíate entrega 2, mostrar usuario el parte derecha del navbar
+        document.getElementById('user-name').textContent = userSession.username;
+
 }
 
 checkLoginStatus();
