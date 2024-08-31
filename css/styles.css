@@ -727,6 +727,31 @@ nav .container-lg {
    max-width: 100%;
  }
 
+ .card-content {
+  gap: 16px;
+  padding: 24px 16px;
+ }
+
+ .card-title {
+  margin-bottom: 0;
+}
+
+.title-description {
+  gap: 8px;
+ }
+
+ .card-text-hight {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 120%;
+  max-height: 240%;
+  min-height: 240%;
+}
+
  /* FOOTER  */
  .container-footer {
    flex-direction: column;
@@ -765,6 +790,12 @@ nav .container-lg {
  .body-large {
    font-size: 1rem;
  }
+
+ .body-light {
+  font-size: 14px;
+}
+
+
 
  /* h2 para mobile */
  .h2 {
