@@ -152,6 +152,14 @@ nav a {
   text-decoration: none;
 }
 
+.primary-button {
+  padding: 16px 80px;
+  background-color: var(--Primary);
+  text-decoration: none;
+  color: var(--White);
+  border-radius: 40px;
+}
+
 .primary-button:hover {
   background: var(--Pink-accent);
   color: var(--White);
