@@ -127,10 +127,6 @@
   display: none;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 15772a062388f3b2ef2b8479ab56e0255c3fe48a
 /* Responsive para tablet */
 @media (min-width: 576px) and (max-width: 992px) {
   #main {
