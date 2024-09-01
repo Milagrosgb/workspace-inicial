@@ -645,8 +645,8 @@ a.custom-card:hover {
  }
 
  .primary-button {
- height: 40px;
- padding: 16px 40px;
+ /* height: 40px; */
+ padding: 14px 40px;
  gap: 16px;
 
  }
@@ -695,7 +695,7 @@ a.custom-card:hover {
 }
 
 .outline-button {
- padding: 16px 40px;
+ padding: 14px 40px;
 }
 .button-font {
  font-family: Mulish;
@@ -817,11 +817,11 @@ nav .container-lg {
 
  /* Primary button para mobile */
  .primary-button {
-   padding: 16px 40px;
+   padding: 14px 40px;
  }
 
  .outline-button {
-   padding: 16px 40px;
+   padding: 14px 40px;
  }
 
  /* Button font para mobile */
