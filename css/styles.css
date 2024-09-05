@@ -12,6 +12,14 @@
   --Primary-gradient: linear-gradient(90deg, #3969fc 0%, #2a49ff 100%);
 }
 
+html, body {
+  margin: 0;
+    padding: 0;
+  height: 100%;
+  position: relative;
+  /* min-height: 100svh; */
+}
+
 /*    FONT STYLES     */
 .h2 {
   font-family: Gruppo;
@@ -388,6 +396,9 @@ footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
   margin-top: 2em;
+    /* width: 100%; */
+  
+  
 }
 
 footer p {
@@ -470,6 +481,7 @@ footer p {
 .lds-ring div:nth-child(3) {
   animation-delay: -0.15s;
 }
+
 
 @keyframes lds-ring {
   0% {
@@ -573,6 +585,16 @@ a.custom-card:hover {
 .show-button i {
   transform: translate(-50%, -50%) scale(1);
 }
+
+#noResultsMessage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* height: 100%; */
+  flex-grow: 1;
+}
+
 @keyframes popup {
   0% {
     width: 0rem;
@@ -715,8 +737,10 @@ nav .container-lg {
  padding-right: 40px;
 }
 
+
 .container-footer {
  margin: 0;
+ 
 }
 
 }

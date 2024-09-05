@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
   const listEl = document.querySelector('#product-list');
-console.log(listEl)
   fetch('https://japceibal.github.io/emercado-api/cats_products/101.json')
     .then((res) => res.json())
     .then((data) => {
@@ -37,50 +36,34 @@ console.log(listEl)
     });
 });
 
-const searchInput = document.getElementById("product-search");
+const searchInput = document.getElementById('product-search');
 const output = document.getElementById('output');
-const productCards = document.getElementsByClassName("product-card");
-// const productTitles = document.getElementsByClassName("card-title")
-// const productDescriptions =  document.getElementsByClassName("card-text")
-
+const productCards = document.getElementsByClassName('product-card');
+const noResultMessage = document.getElementById("noResultsMessage");
 
 searchInput.addEventListener('input', () => {
   let searchValue = searchInput.value;
-  output.textContent = `You typed: ${searchValue}`;
-  
   let regex = new RegExp(searchValue, 'i');
-  console.log(regex);
+  let counter = 0;
 
   for (let card of productCards) {
-    const cardTitle = card.querySelector(".card-title");
-    const cardDescription = card.querySelector(".card-text")
+    const cardTitle = card.querySelector('.card-title');
+    const cardDescription = card.querySelector('.card-text');
     if (regex.test(cardTitle.textContent)) {
-      card.style.display = ''; // Show matching items
-  } else if (regex.test(cardDescription.textContent)) {
-    card.style.display = ''; // Show matching items
-
-  } else {
-      card.style.display = 'none'; // Hide non-matching items
-      // const noResults = document.createElement('div');
-      // document.getElementById("product-list").appendChild(noResults);
-      // // output.appendChild(noResults);
-      // // console.log(listEl);
-      // // listEl.appendChild(noResults);
-      // noResults.innerHTML = "<p> No se encontraron resultados para tu búsqueda.</p>";
-  // }
-}
+      card.style.display = ''; 
+      counter++;
+    } else if (regex.test(cardDescription.textContent)) {
+      card.style.display = ''; 
+      counter++;
+    } else {
+      card.style.display = 'none'; 
+    }
   }
-  // for (let title of productTitles) {
-  //   if (regex.test(title.textContent)) {
-  //       title.style.display = ''; // Show matching items
-  //   } else {
-  //       title.style.display = 'none'; // Hide non-matching items
-  //   }
-
-
-  // for (let a of products) {
-  //   console.log(a.textContent);
-  // }
-
+  if (counter === 0) {
+    // const noResults = document.createElement('div');
+    // document.getElementById('product-list').appendChild(noResults);
+    // noResults.innerHTML =
+    //   '<div id= "no-result"> <p> No se encontraron resultados para tu búsqueda.</p> </div>';
+    noResultMessage.style.display = "";
+  }
 });
-
