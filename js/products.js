@@ -36,3 +36,51 @@ console.log(listEl)
       console.error('Error:', error);
     });
 });
+
+const searchInput = document.getElementById("product-search");
+const output = document.getElementById('output');
+const productCards = document.getElementsByClassName("product-card");
+// const productTitles = document.getElementsByClassName("card-title")
+// const productDescriptions =  document.getElementsByClassName("card-text")
+
+
+searchInput.addEventListener('input', () => {
+  let searchValue = searchInput.value;
+  output.textContent = `You typed: ${searchValue}`;
+  
+  let regex = new RegExp(searchValue, 'i');
+  console.log(regex);
+
+  for (let card of productCards) {
+    const cardTitle = card.querySelector(".card-title");
+    const cardDescription = card.querySelector(".card-text")
+    if (regex.test(cardTitle.textContent)) {
+      card.style.display = ''; // Show matching items
+  } else if (regex.test(cardDescription.textContent)) {
+    card.style.display = ''; // Show matching items
+
+  } else {
+      card.style.display = 'none'; // Hide non-matching items
+      // const noResults = document.createElement('div');
+      // document.getElementById("product-list").appendChild(noResults);
+      // // output.appendChild(noResults);
+      // // console.log(listEl);
+      // // listEl.appendChild(noResults);
+      // noResults.innerHTML = "<p> No se encontraron resultados para tu búsqueda.</p>";
+  // }
+}
+  }
+  // for (let title of productTitles) {
+  //   if (regex.test(title.textContent)) {
+  //       title.style.display = ''; // Show matching items
+  //   } else {
+  //       title.style.display = 'none'; // Hide non-matching items
+  //   }
+
+
+  // for (let a of products) {
+  //   console.log(a.textContent);
+  // }
+
+});
+
