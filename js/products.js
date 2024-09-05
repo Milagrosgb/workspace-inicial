@@ -36,3 +36,23 @@ console.log(listEl)
       console.error('Error:', error);
     });
 });
+
+document.getElementById('filter-button').addEventListener('click', function(event) {
+  event.preventDefault();
+  
+  const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
+  const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
+
+  const filteredProducts = products.filter(product => {
+    return product.price >= minPrice && product.price <= maxPrice;
+  });
+
+  displayProducts(filteredProducts);
+});
+
+document.getElementById('clear-button').addEventListener('click', function() {
+  document.getElementById('min-price').value = '';
+  document.getElementById('max-price').value = '';
+  
+  displayProducts(products); // Mostrar todos los productos nuevamente
+});
