@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
   const listEl = document.querySelector('#product-list');
-console.log(listEl)
   fetch('https://japceibal.github.io/emercado-api/cats_products/101.json')
     .then((res) => res.json())
     .then((data) => {
@@ -36,6 +35,40 @@ console.log(listEl)
       console.error('Error:', error);
     });
 });
+
+
+
+const searchInput = document.getElementById('product-search');
+const output = document.getElementById('output');
+const productCards = document.getElementsByClassName('product-card');
+const noResultMessage = document.getElementById("noResultsMessage");
+
+searchInput.addEventListener('input', () => {
+  let searchValue = searchInput.value;
+  let regex = new RegExp(searchValue, 'i');
+  let counter = 0;
+
+  for (let card of productCards) {
+    const cardTitle = card.querySelector('.card-title');
+    const cardDescription = card.querySelector('.card-text');
+    if (regex.test(cardTitle.textContent)) {
+      card.style.display = ''; 
+      counter++;
+    } else if (regex.test(cardDescription.textContent)) {
+      card.style.display = ''; 
+      counter++;
+    } else {
+      card.style.display = 'none'; 
+    }
+  }
+  if (counter === 0) {
+    noResultMessage.style.display = "";
+  } else if (searchValue.length == 0) {
+    noResultMessage.style.display = "none";
+  }
+  counter = 0;
+});
+
 
 document.getElementById('filter-button').addEventListener('click', function(event) {
   event.preventDefault();
