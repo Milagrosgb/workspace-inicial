@@ -787,6 +787,14 @@ a.custom-card:hover {
   .container-footer {
     margin: 0;
   }
+
+  #search-input {
+    padding: 16px 40px;
+  }
+
+  #search-input svg {
+    left: 56px;
+  }
 }
 
 /*  RESOPNSIVE PRODUCTS.HTML FOR SMARTPHONES   */
@@ -938,6 +946,18 @@ a.custom-card:hover {
   nav .container-lg {
     padding-left: 24px;
     padding-right: 24px;
+  }
+
+  #search-input {
+    padding: 8px 24px;
+  }
+
+  #search-input svg {
+    left: 40px;
+  }
+
+  #search-input button {
+    display: none;
   }
 }
 
