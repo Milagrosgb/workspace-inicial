@@ -60,10 +60,9 @@ searchInput.addEventListener('input', () => {
     }
   }
   if (counter === 0) {
-    // const noResults = document.createElement('div');
-    // document.getElementById('product-list').appendChild(noResults);
-    // noResults.innerHTML =
-    //   '<div id= "no-result"> <p> No se encontraron resultados para tu búsqueda.</p> </div>';
     noResultMessage.style.display = "";
+  } else if (searchValue.length == 0) {
+    noResultMessage.style.display = "none";
   }
+  counter = 0;
 });
