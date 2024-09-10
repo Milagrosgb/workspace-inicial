@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
                   </div>
               </div>
             `;
+            productElement.addEventListener('click', () => {
+              localStorage.setItem('productID', post.id); // Guardar el ID del producto en localStorage
+              window.location.href = 'product-info.html'; // Redirigir a la página de detalles
+          });
           listEl.appendChild(productElement);
         });
       } else {
