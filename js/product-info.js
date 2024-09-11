@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //     return;
     // }
 
-    let productInfo = PRODUCT_INFO_URL + localStorage.getItem("productID") + EXT_TYPE
+    let productInfo = PRODUCT_INFO_URL + localStorage.getItem("productID") + EXT_TYPE;
 
     fetch(productInfo)
         .then(response => {
@@ -14,43 +14,12 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             return response.json();
         })
-        .then(data => {
-            console.log(data); // Verificar la estructura del objeto
-
-            // Verificar si `data` es el objeto del producto
-            if (data && typeof data === 'object') {
-                const productContainer = document.getElementById('product-container');
-                productContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar el producto
-
-                // Crear elementos para mostrar la información del producto
-                const productDetails = document.createElement('div');
-                productDetails.classList.add('product-details');
-
-                const img = document.createElement('img');
-                img.src = data.images[0]; // Usar la primera imagen
-                img.alt = data.name || "Product image";
-
-                const description = document.createElement('p');
-                description.textContent = data.description || "No description available";
-
-                const cost = document.createElement('p');
-                cost.textContent = `Precio: $${data.cost.toFixed(2)}`;
-
-                const category = document.createElement('p');
-                category.textContent = `Categoría: ${data.category}`;
-
-                const soldCount = document.createElement('p');
-                soldCount.textContent = `Vendidos: ${data.soldCount}`;
-
-                // Agregar los elementos al contenedor
-                productDetails.appendChild(img);
-                productDetails.appendChild(description);
-                productDetails.appendChild(cost);
-                productDetails.appendChild(category);
-                productDetails.appendChild(soldCount);
-
-                // Agregar el contenedor del producto al contenedor principal
-                productContainer.appendChild(productDetails);
+        .then(product => {
+            console.log(product); // Verificar la estructura del objeto
+            
+            // Verificar si `product` es el objeto del producto
+            if (product && typeof product === 'object') {
+                showProductDetails(product);
             } else {
                 console.error("The data is not in the expected format.");
             }
@@ -60,54 +29,47 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 });
 
-
-
-// function showProductInfo(product) {
-//     // Obtener el contenedor para los detalles del producto
-//     const productDetailsDiv = document.querySelector('.product-details');
+function showProductDetails(product) {
+    const container = document.getElementById('product-container');
     
-//     // Limpiar el contenido del div antes de agregar nueva información
-//     productDetailsDiv.innerHTML = '';
+    // Limpia el contenido actual del contenedor
+    container.innerHTML = '';
 
-//     // Crear elementos para mostrar la información del producto
-//     const nameElement = document.createElement('h2');
-//     nameElement.textContent = product.name;
+    // Verifica si product.images es una URL válida
+    console.log("Image URL:", product.images); // Verifica la URL de la imagen
 
-//     const descriptionElement = document.createElement('p');
-//     descriptionElement.textContent = `Descripción: ${product.description}`;
+    // Crea el HTML dinámico con la estructura proporcionada
+    const html = `
+    <div class="product-details-container">
+        <div class=" product-image-container">
+            <img src="${product.images[0]}" alt="${product.name}" />
+        </div>
+        <div class=" product-detail-card">
+            <h4 class="product-name">${product.name}</h4>
+            <div class="product-description">
+                <div class="description-title">Descripción</div>
+                <div class="description-text">${product.description}</div>
+            </div>
+            <div class="product-category">
+                <div class="category-title">Categoría</div>
+                <div class="category-text">${product.category}</div>
+             <div class="product-quantity">
+                <div><span>Cant.</span> <span>${product.soldCount}</span> <span>artículos</span></div>
+            </div>
+            </div>
 
-//     const costElement = document.createElement('p');
-//     costElement.textContent = `Precio: $${product.cost.toFixed(2)}`;
-
-//     const categoryElement = document.createElement('p');
-//     categoryElement.textContent = `Categoría: ${product.category}`;
-
-//     const soldCountElement = document.createElement('p');
-//     soldCountElement.textContent = `Vendidos: ${product.soldCount}`;
-
-//     const imageElement = document.createElement('img');
-//     imageElement.src = product.image;
-//     imageElement.alt = product.name;
-//     imageElement.style.maxWidth = '200px'; // Ajustar el tamaño de la imagen si es necesario
-
-//     // Añadir los elementos creados al contenedor
-//     productDetailsDiv.appendChild(nameElement);
-//     productDetailsDiv.appendChild(descriptionElement);
-//     productDetailsDiv.appendChild(costElement);
-//     productDetailsDiv.appendChild(categoryElement);
-//     productDetailsDiv.appendChild(soldCountElement);
-//     productDetailsDiv.appendChild(imageElement);
-// }
+            <div class="product-cost">
+                <h4 class="cost-text">$${product.cost}</h4>
+            </div>
+            <div class="buttons-container">
+                <button class="button-text buy-button">Comprar</button>
+                <button class="button-text add-to-cart-button">Añadir al carrito</button>
+            </div>
+        </div>
+    </div>
+`;
+    // Añade el HTML al contenedor
+    container.innerHTML = html;
+}
 
 
-// document.addEventListener("DOMContentLoaded", function(e){
-//     getJSONData(localStorage.PRODUCT_ID).then(function(resultObj){
-//         if (resultObj.status === "ok"){
-//             // Asegurarse de que 'product' se obtenga correctamente del resultado
-//             const product = resultObj.data; // Ajustar según la estructura real de 'resultObj'
-//             showProductInfo(product);
-//         }
-//     }).catch(function(error) {
-//         console.error('Error al obtener los datos del producto:', error);
-//     });
-// });
