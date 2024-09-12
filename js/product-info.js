@@ -1,32 +1,13 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // const productID = localStorage.getItem("productID");
-    // if (!productID) {
-    //     console.error("No productID found in localStorage.");
-    //     return;
-    // }
-
-    let productInfo = PRODUCT_INFO_URL + localStorage.getItem("productID") + EXT_TYPE;
-
-    fetch(productInfo)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok.');
-            }
-            return response.json();
-        })
-        .then(product => {
-            console.log(product); // Verificar la estructura del objeto
-            
-            // Verificar si `product` es el objeto del producto
-            if (product && typeof product === 'object') {
-                showProductDetails(product);
-            } else {
-                console.error("The data is not in the expected format.");
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching product data:', error);
-        });
+document.addEventListener("DOMContentLoaded", (e) => {
+    const productID = localStorage.getItem("productID");
+    const url = PRODUCT_INFO_URL + productID + EXT_TYPE;
+    getJSONData(url)
+    .then(object=>{
+        if(object.status === 'ok'){
+            let product = object.data;
+            showProductDetails(product)
+        };
+    });
 });
 
 function showProductDetails(product) {
@@ -37,6 +18,7 @@ function showProductDetails(product) {
 
     // Verifica si product.images es una URL válida
     console.log("Image URL:", product.images); // Verifica la URL de la imagen
+    console.log(product); // Verifica la estructura del producto
 
     // Crea el HTML dinámico con la estructura proporcionada
     const html = `
