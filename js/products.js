@@ -38,35 +38,3 @@ console.log(listEl)
 });
 
 
-
-
-
-// Criterios de ordenación
-const ORDER_ASC_BY_PRICE = "PriceAsc";
-const ORDER_DESC_BY_PRICE = "PriceDesc";
-const ORDER_DESC_BY_SOLD_COUNT = "SoldCountDesc";
-
-// Variables para el rango de filtros
-let minCount = undefined;
-let maxCount = undefined;
-
-// Función para ordenar productos
-function sortProducts(criteria, array) {
-    if (criteria === ORDER_ASC_BY_PRICE) {
-        return array.sort((a, b) => a.cost - b.cost);
-    } else if (criteria === ORDER_DESC_BY_PRICE) {
-        return array.sort((a, b) => b.cost - a.cost);
-    } else if (criteria === ORDER_DESC_BY_SOLD_COUNT) {
-        return array.sort((a, b) => b.soldCount - a.soldCount);
-    }
-    return array;
-}
-
-// filtro por cantidad
-function filterProducts(array) {
-    return array.filter(product => 
-        (minCount === undefined || product.soldCount >= minCount) &&
-        (maxCount === undefined || product.soldCount <= maxCount)
-    );
-}
-
