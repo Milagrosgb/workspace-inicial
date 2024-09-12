@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
   const listEl = document.querySelector('#product-list');
-  fetch('https://japceibal.github.io/emercado-api/cats_products/101.json')
+  const catID = localStorage.getItem("catID");
+
+  fetch(`${PRODUCTS_URL}${catID}${EXT_TYPE}`)
     .then((res) => res.json())
     .then((data) => {
       // Asegúrate de que data.products sea un array
       if (Array.isArray(data.products)) {
+        const pageTitle = document.querySelector(".h2");
+        pageTitle.innerHTML = data.catName.toUpperCase();
         data.products.forEach((post) => {
           const productElement = document.createElement('div');
           productElement.className = 'product-card';
