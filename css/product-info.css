@@ -1,3 +1,7 @@
+* {
+    font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .body {
    /* layout */
     display: flex;
@@ -55,7 +59,7 @@
 
     /* typography */
     color: var(--Black, #16191C);
-    font-family: Mulish;
+    font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 34px;
     font-style: normal;
     font-weight: 300;
@@ -82,7 +86,7 @@
 
     /* typography */
     color: var(--Black, #16191C);
-    font-family: Mulish;
+    font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 26px;
     font-style: normal;
     font-weight: 400;
@@ -95,7 +99,7 @@
 
     /* typography */
     color: var(--Dark-gray, #1D2125);
-    font-family: Mulish;
+    font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
@@ -117,7 +121,7 @@
 .category-title {
     /* typography */
     color: var(--Black, #16191C);
-    font-family: Mulish;
+    font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 26px;
     font-style: normal;
     font-weight: 400;
@@ -127,7 +131,7 @@
 .category-text {
     /* typography */
     color: var(--Black, #16191C);
-    font-family: "Mulish";
+    font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 22px;
     font-style: normal;
     font-weight: 500;
@@ -147,7 +151,7 @@
 .cost-text {
     /* typography */
     color: var(--Black, #16191C);
-    font-family: Mulish;
+    font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 34px;
     font-style: normal;
     font-weight: 300;
@@ -197,8 +201,8 @@
 .button-text {
     /* typography */
     color: var(--White, #FAFBFF);
-    font-family: Mulish;
     font-size: 24px;
+    font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
