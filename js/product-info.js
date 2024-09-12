@@ -37,7 +37,7 @@ function showProductDetails(product) {
         </div>
         <div class="product-description">
             <div class="description-title">Descripción</div>
-            <div class="description-text">${product.description}</div>
+            <div class="description-text"><p class ="body-light">${product.description}</p></div>
         </div>
         <div class="product-category">
             <div class="category-title">Categoría</div>
