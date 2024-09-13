@@ -893,3 +893,26 @@ nav .container-lg {
 }
 
 /*fin estilos nombre de usuario en navbar*/
+
+/*estilos filtros de precios*/
+.filter-section {
+  border: 1px solid #ddd;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  margin: 10px 0;
+}
+
+.filter-section input {
+  width: 80px;
+  margin: 0 5px;
+  padding: 5px;
+}
+
+.filter-section button {
+  margin-left: 5px;
+  padding: 5px 10px;
+}
+/*fin estilos filtros de precios*/
