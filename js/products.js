@@ -91,12 +91,15 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+
 const searchInput = document.getElementById('product-search');
-const output = document.getElementById('output');
+// const output = document.getElementById('output');
 const productCards = document.getElementsByClassName('product-card');
 const noResultMessage = document.getElementById("noResultsMessage");
+const searchButton = document.getElementById("search-button");
 
-searchInput.addEventListener('input', () => {
+function filterResults() {
   let searchValue = searchInput.value;
   let regex = new RegExp(searchValue, 'i');
   let counter = 0;
@@ -120,4 +123,8 @@ searchInput.addEventListener('input', () => {
     noResultMessage.style.display = "none";
   }
   counter = 0;
-});
+}
+
+searchInput.addEventListener("input", filterResults)
+
+searchButton.addEventListener("click", filterResults);
