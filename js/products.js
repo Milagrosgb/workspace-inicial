@@ -171,20 +171,21 @@ function showProductsList(productsArray) {
      showProductsList(sortedProducts);
 }
 
-document.addEventListener('DOMContentLoaded', ()=>{
-    fetch('https://japceibal.github.io/emercado-api/cats_products/101.json')
-       .then(response => response.json())
-                .then(data => {
+// document.addEventListener('DOMContentLoaded', ()=>{
+//     fetch(`${PRODUCTS_URL}${catID}${EXT_TYPE}`)
+//        .then(response => response.json())
+//                 .then(data => {
 
-              if (Array.isArray(data.products)) {
-                currentProductsArray = data.products;
-                showProductsList(currentProductsArray);
-              }
-            });
-        });
+//               if (Array.isArray(data.products)) {
+//                 currentProductsArray = data.products;
+//                 showProductsList(currentProductsArray);
+//               }
+//             });
+//         });
 
      document.addEventListener('DOMContentLoaded', () => {
-       fetch('https://japceibal.github.io/emercado-api/cats_products/101.json')
+      const catID = localStorage.getItem("catID");
+       fetch(`${PRODUCTS_URL}${catID}${EXT_TYPE}`)
            .then(response => response.json())
            .then(data => {
               if (Array.isArray(data.products)) {
