@@ -32,6 +32,7 @@ const createProducts = (data) => {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', function () {
 
   let productElements = [];
@@ -194,10 +195,10 @@ function showProductsList(productsArray) {
 
         
   document.getElementById("sortAsc").addEventListener("click", ()=>{ 
-            sortAndShowProducts(ORDER_ASC_BY_PRICE);
+            sortAndShowProducts(ORDER_DESC_BY_PRICE);
                 });
             document.getElementById("sortDesc").addEventListener("click", ()=> {
-                  sortAndShowProducts(ORDER_DESC_BY_PRICE);
+                  sortAndShowProducts(ORDER_ASC_BY_PRICE);
                 });
 
 
