@@ -224,7 +224,7 @@ document.getElementById('clear-button').addEventListener('click', function() {
   displayProducts(products); // Mostrar todos los productos nuevamente
 })
 
-}
+
 
 searchInput.addEventListener("input", filterResults)
 
