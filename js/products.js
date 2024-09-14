@@ -1,104 +1,103 @@
-const createProducts = (data) => {
+const listEl = document.querySelector('#product-list');
+const pageTitle = document.querySelector('.h2');
+let currentProductsArray = [];
+let minCount = undefined;
+let maxCount = undefined;
+const ORDER_BY_COST = 'cost';
+const ORDER_ASC_BY_PRICE = 'PRICE_ASC';
+const ORDER_DESC_BY_PRICE = 'PRICE_DESC';
+const ORDER_DESC_BY_RELEVANCE = 'RELEVANCE_DESC';
 
-  const listEl = document.querySelector('#product-list');
-  const pageTitle = document.querySelector(".h2");
-  pageTitle.innerHTML = data.catName.toUpperCase();
-  data.products.forEach((post) => {
-    const productElement = document.createElement('div');
-    productElement.className = 'product-card';
-    productElement.innerHTML = `
-                <div class='card-image'>
-                  <img src='${post.image}' class="card-img-top card-image" alt="'${post.image}'" />
-                </div>
-                  <div class="card-content">
-                    <div class="title-description subtitle-2">
-                      <h5 class="card-title">${post.name}</h5>
-                      <p class="card-text card-text-hight body-light">
-                      ${post.description}
-                      </p>
-                    </div>
-                    <div class="price-qty">
-                      <p class="subtitle-1">$${post.cost}</p>
-                      <p class="body-light">${post.soldCount} art.</p>
-                  </div>
-              </div>
-            `;
-    productElement.addEventListener('click', () => {
-      localStorage.setItem('productID', post.id); // Guardar el ID del producto en localStorage
-      window.location.href = 'product-info.html'; // Redirigir a la página de detalles
-    });
-    listEl.appendChild(productElement);
-  });
+function setCatID(id) {
+  localStorage.setItem('productID', id);
+  window.location.href = 'product-info.html';
 }
 
+const showProductsList = () => {
+  let HTMLtoAppend = '';
 
+  for (let i = 0; i < currentProductsArray.length; i++) {
+    let post = currentProductsArray[i];
+
+    if (
+      (minCount == undefined ||
+        (minCount != undefined && parseInt(post.cost) >= minCount)) &&
+      (maxCount == undefined ||
+        (maxCount != undefined && parseInt(post.cost) <= maxCount))
+    ) {
+      HTMLtoAppend += `
+      <div class="product-card" onclick="setCatID(${post.id})">
+                  <div class='card-image'>
+                    <img src='${post.image}' class="card-img-top card-image" alt="'${post.image}'" />
+                  </div>
+                    <div class="card-content">
+                      <div class="title-description subtitle-2">
+                        <h5 class="card-title">${post.name}</h5>
+                        <p class="card-text card-text-hight body-light">
+                        ${post.description}
+                        </p>
+                      </div>
+                      <div class="price-qty">
+                        <p class="subtitle-1">$${post.cost}</p>
+                        <p class="body-light">${post.soldCount} art.</p>
+                    </div>
+                </div>
+                </div>
+              `;
+    }
+  }
+  listEl.innerHTML = HTMLtoAppend;
+};
 
 document.addEventListener('DOMContentLoaded', function () {
-
-  let productElements = [];
-  const getProductsFromDOM = () => {
-    const products = document.querySelectorAll('#product-list .product-card');
-    return Array.from(products).map(element => ({
-      html: element.outerHTML,
-      price: parseFloat(((element.querySelector('.price-qty .subtitle-1')).textContent).replace('$', '').replace(/,/g, ''))
-    }));
-  }
-
-  const catID = localStorage.getItem("catID");
+  const catID = localStorage.getItem('catID');
   getJSONData(`${PRODUCTS_URL}${catID}${EXT_TYPE}`).then(function (resultObj) {
-    if (resultObj.status === "ok") {
-      currentCategoriesArray = resultObj.data
-      createProducts(currentCategoriesArray);
-      productElements = getProductsFromDOM();
+    if (resultObj.status === 'ok') {
+      currentProductsArray = resultObj.data.products;
+
+      showProductsList(currentProductsArray);
+      pageTitle.innerHTML = resultObj.data.catName.toUpperCase();
     }
   });
 
-  const displayProducts = (productsToDisplay) => {
-    const productList = document.querySelector('#product-list');
-    productList.innerHTML = ''; // Limpiar contenido previo
-    productsToDisplay.forEach(product => {
-      let tempContainer = document.createElement('div');
-      // Insertar la cadena HTML en el contenedor
-      tempContainer.innerHTML = product.html;
-      productList.appendChild(tempContainer.firstChild);
-    });
-  }
-
-  document.getElementById('rangeFilterCount').addEventListener('click', function (event) {
-    event.preventDefault();
-
-    let minPrice = 0;
-    let maxPrice = Infinity;
-    if (document.getElementById('rangeFilterCountMin').value != "" && document.getElementById('rangeFilterCountMax').value != "") {
-      minPrice = Math.max(parseFloat(document.getElementById('rangeFilterCountMin').value), 0);
-      maxPrice = Math.min(parseFloat(document.getElementById('rangeFilterCountMax').value), Infinity);
-    } else if (document.getElementById('rangeFilterCountMin').value != "") {
-      minPrice = Math.max(parseFloat(document.getElementById('rangeFilterCountMin').value), 0);
-    } else if (document.getElementById('rangeFilterCountMax').value != "") {
-      maxPrice = Math.min(parseFloat(document.getElementById('rangeFilterCountMax').value), Infinity);
-    }
-    let products = productElements;
-    let filteredProducts = products.filter(product => {
-      return product.price >= minPrice && product.price <= maxPrice;
-    });
-    displayProducts(filteredProducts);
+  document.getElementById('sortAsc').addEventListener('click', () => {
+    sortAndShowProducts(ORDER_DESC_BY_PRICE);
+  });
+  document.getElementById('sortDesc').addEventListener('click', () => {
+    sortAndShowProducts(ORDER_ASC_BY_PRICE);
   });
 
-  document.getElementById('clearRangeFilter').addEventListener('click', function () {
-    document.getElementById('rangeFilterCountMin').value = '';
-    document.getElementById('rangeFilterCountMax').value = '';
-    let products = productElements;
-    displayProducts(products); // Mostrar todos los productos nuevamente
+  document.getElementById('sortByRelevance').addEventListener('click', () => {
+    sortAndShowProducts(ORDER_DESC_BY_RELEVANCE);
+  });
+
+  document
+    .getElementById('clearRangeFilter')
+    .addEventListener('click', function () {
+      document.getElementById('rangeFilterCountMin').value = '';
+      document.getElementById('rangeFilterCountMax').value = '';
+      minCount = undefined;
+      maxCount = undefined;
+
+      showProductsList();
+    });
+
+  document.getElementById('sortAsc').addEventListener('click', () => {
+    sortAndShowProducts(ORDER_DESC_BY_PRICE);
+  });
+  document.getElementById('sortDesc').addEventListener('click', () => {
+    sortAndShowProducts(ORDER_ASC_BY_PRICE);
+  });
+
+  document.getElementById('sortByRelevance').addEventListener('click', () => {
+    sortAndShowProducts(ORDER_DESC_BY_RELEVANCE);
   });
 });
 
-
-
 const searchInput = document.getElementById('product-search');
-// const output = document.getElementById('output');
 const productCards = document.getElementsByClassName('product-card');
-const noResultMessage = document.getElementById("noResultsMessage");
-const searchButton = document.getElementById("search-button");
+const noResultMessage = document.getElementById('noResultsMessage');
+const searchButton = document.getElementById('search-button');
 
 function filterResults() {
   let searchValue = searchInput.value;
@@ -119,97 +118,90 @@ function filterResults() {
     }
   }
   if (counter === 0) {
-    noResultMessage.style.display = "";
+    noResultMessage.style.display = '';
   } else if (searchValue.length == 0) {
-    noResultMessage.style.display = "none";
+    noResultMessage.style.display = 'none';
   }
   counter = 0;
 }
 
-searchInput.addEventListener("input", filterResults);
+searchInput.addEventListener('input', filterResults);
 
-searchButton.addEventListener("click", filterResults);
+searchButton.addEventListener('click', filterResults);
 
 // Sort:
 
- const ORDER_ASC_BY_PRICE = "PRICE_ASC";
-  const ORDER_DESC_BY_PRICE = "PRICE_DESC";
-   const ORDER_DESC_BY_RELEVANCE = "RELEVANCE_DESC";
-
-     let currentProductsArray = [];
-
-  function   sortProducts(criteria, array) {
-    return [...array].sort((a, b) => {
-       if (criteria === ORDER_ASC_BY_PRICE) return   a.cost - b.cost;
-         if (criteria === ORDER_DESC_BY_PRICE) return  b.cost - a.cost; 
-        if (criteria === ORDER_DESC_BY_RELEVANCE)return b.soldCount - a.soldCount;
+function sortProducts(criteria, array) {
+  let result = [];
+  if (criteria === ORDER_ASC_BY_PRICE) {
+    result = array.sort((a, b) => {
+      return a.cost - b.cost;
     });
+  } else if (criteria === ORDER_DESC_BY_PRICE) {
+    result = array.sort(function (a, b) {
+      return b.cost - a.cost;
+    });
+  } else if (criteria === ORDER_DESC_BY_RELEVANCE) {
+    result = array.sort(function (a, b) {
+      let aCount = parseInt(a.soldCount);
+      let bCount = parseInt(b.soldCount);
+
+      if (aCount > bCount) {
+        return -1;
+      }
+      if (aCount < bCount) {
+        return 1;
+      }
+      return 0;
+    });
+  } else if (criteria === ORDER_BY_COST) {
+    if (minCount != undefined && maxCount != undefined) {
+      result = array.filter((product) => {
+        return (
+          parseInt(product.cost) <= maxCount &&
+          parseInt(product.cost) >= minCount
+        );
+      });
+    } else if (minCount != undefined) {
+      result = array.filter((product) => {
+        return parseInt(product.cost) >= minCount;
+      });
+    } else if (maxCount != undefined) {
+      result = array.filter((product) => {
+        return parseInt(product.cost) <= maxCount;
+      });
+    }
+  }
+  return result;
 }
 
-function showProductsList(productsArray) {
-       const listEl = document.querySelector('#product-list');
-       listEl.innerHTML = productsArray.map    (product => `
-         <div class='product-card'>
-            <div class='card-image'>
-                <img src='${product.image}' class="card-img-top card-image" alt='Imagen de ${product.name}' />
-            </div>
-                 <div class="card-content">
-                   <div class="title-description subtitle-2">
-                    <h5 class="card-title">${product.name}</h5>
-                    <p class="card-text card-text-hight body-light">${product.description}</p>
-                   </div>
-                   <div class="price-qty">
-                    <p class="subtitle-1">$${product.cost}</p>
-                    <p class="body-light">${product.soldCount} vendidos</p>
-                </div>
-            </div>
-        </div>
-   `).join('');
+function sortAndShowProducts(sortCriteria) {
+  const sortedProducts = sortProducts(sortCriteria, currentProductsArray);
+  showProductsList(sortedProducts);
 }
 
-  function sortAndShowProducts(sortCriteria) {
-   const sortedProducts = sortProducts(sortCriteria, currentProductsArray);
-     showProductsList(sortedProducts);
-}
 
-// document.addEventListener('DOMContentLoaded', ()=>{
-//     fetch(`${PRODUCTS_URL}${catID}${EXT_TYPE}`)
-//        .then(response => response.json())
-//                 .then(data => {
+// Filter:
 
-//               if (Array.isArray(data.products)) {
-//                 currentProductsArray = data.products;
-//                 showProductsList(currentProductsArray);
-//               }
-//             });
-//         });
+document
+  .getElementById('rangeFilterCount')
+  .addEventListener('click', function () {
+    //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+    //de productos por categoría.
+    minCount = document.getElementById('rangeFilterCountMin').value;
+    maxCount = document.getElementById('rangeFilterCountMax').value;
 
-     document.addEventListener('DOMContentLoaded', () => {
-      const catID = localStorage.getItem("catID");
-       fetch(`${PRODUCTS_URL}${catID}${EXT_TYPE}`)
-           .then(response => response.json())
-           .then(data => {
-              if (Array.isArray(data.products)) {
-                currentProductsArray = data.products;
-                showProductsList(currentProductsArray);
+    if (minCount != undefined && minCount != '' && parseInt(minCount) >= 0) {
+      minCount = parseInt(minCount);
+    } else {
+      minCount = undefined;
+    }
 
-        
-  document.getElementById("sortAsc").addEventListener("click", ()=>{ 
-            sortAndShowProducts(ORDER_DESC_BY_PRICE);
-                });
-            document.getElementById("sortDesc").addEventListener("click", ()=> {
-                  sortAndShowProducts(ORDER_ASC_BY_PRICE);
-                });
-
-
-      document.getElementById("sortByRelevance").addEventListener("click", ()=> {
-                  sortAndShowProducts(ORDER_DESC_BY_RELEVANCE);
-                });
-              }
-            })
-        });
-        
-
-
-
-
+    if (maxCount != undefined && maxCount != '' && parseInt(maxCount) >= 0) {
+      maxCount = parseInt(maxCount);
+    } else {
+      maxCount = undefined;
+    }
+    // currentProductsArray = originalArray;
+    sortAndShowProducts(ORDER_BY_COST);
+  });
