@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const searchInput = document.getElementById('product-search');
-const output = document.getElementById('output');
+// const output = document.getElementById('output');
 const productCards = document.getElementsByClassName('product-card');
 const noResultMessage = document.getElementById("noResultsMessage");
 const searchButton = document.getElementById("search-button");
@@ -123,6 +123,8 @@ function filterResults() {
     noResultMessage.style.display = "none";
   }
   counter = 0;
-});
+}
 
+searchInput.addEventListener("input", filterResults)
 
+searchButton.addEventListener("click", filterResults);
