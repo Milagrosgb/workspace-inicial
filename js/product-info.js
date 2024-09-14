@@ -20,15 +20,19 @@ function showProductDetails(product) {
     console.log("Image URL:", product.images); // Verifica la URL de la imagen
     console.log(product); // Verifica la estructura del producto
 
+   
+
+    
     // Crea el HTML dinámico con la estructura proporcionada
     const html = `
 <div class="product-details-container">
     <div class="product-images-container">
-        <img class="big-product-image" src="${product.images[0]}" alt="${product.name}" />
+        <img class="big-product-image" id="bigImg"  src="${product.images[0]}" alt="${product.name}" />
         <div class="miniaturas-container">
-            <img class="miniatura-img" src="${product.images[1]}" alt="${product.name}" />
-            <img class="miniatura-img" src="${product.images[2]}" alt="${product.name}" />
-            <img class="miniatura-img" src="${product.images[3]}" alt="${product.name}" />
+            <img class="miniatura-img active-img all-images" id="img1" onclick="changeImg(1)" src="${product.images[0]}" alt="${product.name}" />
+            <img class="miniatura-img all-images" id="img2" onclick="changeImg(2)" src="${product.images[1]}" alt="${product.name}" />
+            <img class="miniatura-img all-images" id="img3" onclick="changeImg(3)" src="${product.images[2]}" alt="${product.name}" />
+            <img class="miniatura-img all-images" id="img4" onclick="changeImg(4)" src="${product.images[3]}" alt="${product.name}" />
         </div>
     </div>
     <div class="product-detail-card">
@@ -65,3 +69,18 @@ function showProductDetails(product) {
 }
 
 
+//Cambia segun que imagen se desea ver
+ function changeImg(index){
+        let bigImgBox = document.getElementById(`bigImg`);
+        let smallImgBox = document.getElementById(`img${index}`);
+        const images = document.getElementsByClassName("all-images");
+      
+        for (const img of images) {
+          if(img.getAttribute("src") === bigImgBox.getAttribute("src") ){img.classList.remove("active-img")}
+        } 
+        smallImgBox.classList.add("active-img")
+        bigImgBox.setAttribute("src", smallImgBox.getAttribute("src"));
+       
+      
+        
+      }

@@ -238,13 +238,15 @@
 
 .miniatura-img {
     /* layout */
-    width: 187.065px;
-    height: 125.093px;
-
+    width: 25%;
+    
     /* style */
     border-radius: 9.181px;
 }
 
+.active-img{
+    border: 3px solid #2A49FF;
+}
 
 /*  RESPONSIVE   */
 
