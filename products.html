@@ -45,7 +45,7 @@
     </nav>
     <main id='products-main'>
 
-      <div class="container-lg">
+      <!-- <div class="container-lg"> -->
         
   
         <!-- <div class="container-fluid text-center" id="product-list-header">
@@ -55,84 +55,10 @@
           </div> -->
           <div class="h2-container">
             <div class="title-decoration">
-              <h2 class="h2">PRODUCTOS</h2>
+              <h2 class="h2"></h2>
             </div>
           </div>
-          <div class="container">
-            <div class="row">
-              <div class="col text-end">
-                <div
-                  class="btn-group btn-group-toggle mb-4"
-                  data-bs-toggle="buttons"
-                >
-
-                      <input  
-                        type="radio"  
-                        class="btn-check"  
-                        name="options"  
-                        id="sortAsc"  
-                      />  
-                      <label class="btn btn-light" for="sortAsc">
-                        <i class="fas fa-sort-amount-down me-1"></i> $ </label>  
-                
-                      <input  
-                        type="radio" 
-                        class="btn-check"  
-                        name="options"  
-                        id="sortDesc"  
-                      />  
-                      <label class="btn btn-light" for="sortDesc">
-                      <i class="fas fa-sort-amount-up"></i> $ </label>  
-                
-                      <input  
-                        type="radio"  
-                        class="btn-check"  
-                        name="options"  
-                        id="sortByRelevance"  
-                        checked  
-                      />  
-                      <label class="btn btn-light" for="sortByRelevance">  
-                        <i class="fas fa-sort-amount-down me-1"></i> Rel. 
-                      </label>  
-                    </div>  
-                  </div>  
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-                <div class="row container p-0 m-0">
-                  <div class="col">
-                    <p class="font-weight-normal text-end my-2">Cant.</p>
-                  </div>
-                  <div class="col">
-                    <input
-                      class="form-control"
-                      type="number"
-                      placeholder="min."
-                      id="rangeFilterCountMin"
-                    />
-                  </div>
-                  <div class="col">
-                    <input
-                      class="form-control"
-                      type="number"
-                      placeholder="máx."
-                      id="rangeFilterCountMax"
-                    />
-                  </div>
-                  <div class="col-3 p-0">
-                    <div class="btn-group" role="group">
-                      <button class="btn btn-light btn-block" id="rangeFilterCount">
-                        Filtrar
-                      </button>
-                      <button class="btn btn-link btn-sm" id="clearRangeFilter">
-                        Limpiar
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
             <div class="row">
               <div class="list-group" id="cat-list-container"></div>
             </div>
@@ -149,12 +75,94 @@
         <input type="search" id="product-search" name="q" placeholder="Escribe aquí tu búsqueda..." />
         <button id="search-button" class='primary-button'>Buscar</button>
         </div>
+
+        <div id="sort-and-filter">
+          
+            <!-- Filter: -->
+          <div class="filters">
+                <div>
+                  <p class="font-weight-normal text-end my-2">Cant.</p>
+                </div>
+                <!-- <div> -->
+                  <input
+                    class="form-control"
+                    type="number"
+                    placeholder="min."
+                    id="rangeFilterCountMin"
+                  />
+                <!-- </div> -->
+                <!-- <div> -->
+                  <input
+                    class="form-control"
+                    type="number"
+                    placeholder="máx."
+                    id="rangeFilterCountMax"
+                  />
+                <!-- </div> -->
+                <div class="col">
+                  <div class="btn-group" role="group">
+                    <button class="btn btn-light btn-block" id="rangeFilterCount">
+                      Filtrar
+                    </button>
+                    <button class="btn btn-link btn-sm" id="clearRangeFilter">
+                      Limpiar
+                    </button>
+                  </div>
+                </div>
+              </div>
+          <!-- </div> -->
+          <!-- End of filter: -->
+
+          <!-- Sort: -->
+          <div class="sorting">
+            <!-- <div> -->
+              <div
+                class="btn-group btn-group-toggle mb-4"
+                data-bs-toggle="buttons"
+              >
+
+                    <input  
+                      type="radio"  
+                      class="btn-check"  
+                      name="options"  
+                      id="sortAsc"  
+                    />  
+                    <label class="btn btn-light" for="sortAsc">
+                      <i class="fas fa-sort-amount-down me-1"></i> $ </label>  
+              
+                    <input  
+                      type="radio" 
+                      class="btn-check"  
+                      name="options"  
+                      id="sortDesc"  
+                    />  
+                    <label class="btn btn-light" for="sortDesc">
+                    <i class="fas fa-sort-amount-up"></i> $ </label>  
+              
+                    <input  
+                      type="radio"  
+                      class="btn-check"  
+                      name="options"  
+                      id="sortByRelevance"  
+                      checked  
+                    />  
+                    <label class="btn btn-light" for="sortByRelevance">  
+                      <i class="fas fa-sort-amount-down me-1"></i> Rel. 
+                    </label>  
+                  </div>  
+                <!-- </div>   -->
+              <!-- </div> -->
+          </div>
+           <!-- End of sort: -->
+
+        </div>
+
         <div id="product-list">
         
         </div>
   
   
-      </div>
+      <!-- </div> -->
       
       <p id="noResultsMessage" class='body-light' style="display: none">No se encontraron resultados para tu búsqueda.</p>
       
