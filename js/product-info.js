@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         if(object.status === 'ok'){
             let product = object.data;
             showProductDetails(product)
+            showRelatedProducts(product)
         };
     });
 });
@@ -83,4 +84,46 @@ function showProductDetails(product) {
        
       
         
-      }
+}
+
+
+function showRelatedProducts(product) {
+    const container = document.getElementById('related-products-container');
+    
+    // Limpia el contenido actual del contenedor
+    container.innerHTML = '';
+
+    // Verifica si product.relatedProducts es un array y tiene elementos
+    if (Array.isArray(product.relatedProducts) && product.relatedProducts.length > 0) {
+        // Crea un grupo de tarjetas
+        const cardGroup = document.createElement('div');
+        cardGroup.className = 'card-group';
+
+        for (let relatedProduct of product.relatedProducts) {
+            const card = document.createElement('div');
+            card.className = 'card border-0 cursor-active';
+            
+            card.innerHTML = `
+                <img class="product-image" src="${relatedProduct.image}" alt="${relatedProduct.name}" />
+                <div class="card-body">
+                    <h5 class="card-title">${relatedProduct.name}</h5>
+                </div>
+            `;
+            
+            // Añadir evento click a la tarjeta
+            card.addEventListener('click', function() {
+                localStorage.setItem('productID', relatedProduct.id); // Guardar el ID del producto relacionado
+                window.location.href = 'product-info.html'; // Redirige a la página
+            });
+
+            // Añade la tarjeta al grupo de tarjetas
+            cardGroup.appendChild(card);
+        }
+
+        // Añade el grupo de tarjetas al contenedor
+        container.appendChild(cardGroup);
+    } else {
+        // Manejar el caso donde no hay productos relacionados
+        container.innerHTML = '<p>No hay productos relacionados.</p>';
+    }
+}
