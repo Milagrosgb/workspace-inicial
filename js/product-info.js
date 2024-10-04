@@ -95,6 +95,12 @@ function showRelatedProducts(product) {
 
     // Verifica si product.relatedProducts es un array y tiene elementos
     if (Array.isArray(product.relatedProducts) && product.relatedProducts.length > 0) {
+        // Crea un título para los productos relacionados
+        const title = document.createElement('h4');
+        title.textContent = 'Productos Relacionados';
+        title.className = 'titlepr';
+        container.appendChild(title); // Añade el título al contenedor
+     
         // Crea un grupo de tarjetas
         const cardGroup = document.createElement('div');
         cardGroup.className = 'card-group';
