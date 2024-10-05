@@ -248,6 +248,62 @@
     border: 3px solid #2A49FF;
 }
 
+/*estilo para los comentarios */  
+#comments-container {  
+    background-color: #f8f9fa;
+    border: 1px solid #007bff; 
+    border-radius: 8px;  
+    padding: 20px;   
+     margin-top: 20px;  
+     margin: 0 20px; 
+    width: calc(100% - 40px);   
+    box-sizing: border-box;
+    padding-left: 20px;   
+}  
+
+.comment {/*personalizado para cada umo*/
+    border-bottom: 1px solid #dee2e6;  
+    padding: 15px 0;   
+    width: 100%; 
+    box-sizing: border-box; 
+    display: flex; 
+}  
+.comment:last-child {  
+    border-bottom: none;   
+}    
+.comment strong {  /*nombre del usuario */
+    font-size: 1.1em; 
+    color: #007bff; 
+}  
+.rating-title {
+    margin-left: 20px; 
+}
+.rating {  
+    margin-top: 10px; 
+}  
+
+.star {  
+    color: gold;
+}  
+
+/* Estilo del ícono de usuario */  
+.user-icon {  
+    background-color: #2a49ff; /* Color azul */  
+    border-radius: 50%; /* Hace que el contenedor sea redondo */  
+    width: 40px; /* Ancho del contenedor */  
+    height: 40px; /* Alto del contenedor */  
+    display: flex; /* Usar flexbox para centrar el ícono */  
+    justify-content: center; /* Centrar horizontalmente */  
+    align-items: center; /* Centrar verticalmente */  
+    margin-right: 10px; /* Espacio entre el ícono y el texto */  
+    align-self: flex-start; /* Alinear el ícono con el principio */  
+}  
+.user-icon i {  
+    color: white;  
+    font-size: 20px; 
+}
+
+
 /*  RESPONSIVE   */
 
 /* TABLETS*/
