@@ -323,7 +323,7 @@
 
     width: 100%;
     height: 100%;
-
+    resize: none;
     background: #FAFBFF;
     border: 1px solid #99A8FF;
     border-radius: 4px;
@@ -364,11 +364,11 @@
     align-items: center;
     padding: 16px 40px;
     gap: 16px;
-
     width: 134px;
     height: 40px;
 
     background: #3969FC;
+    border: none;
     /* shadow */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: 40px;
