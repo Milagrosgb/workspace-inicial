@@ -1,35 +1,35 @@
 document.addEventListener("DOMContentLoaded", (e) => {
     const productID = localStorage.getItem("productID");
     const url = PRODUCT_INFO_URL + productID + EXT_TYPE;
-    const commentsURL = PRODUCT_INFO_COMMENTS_URL  + productID + ".json";//esta es la url base que apunta a la api donde se almacenan los comentario de los productos
+    const commentsURL = PRODUCT_INFO_COMMENTS_URL + productID + ".json";//esta es la url base que apunta a la api donde se almacenan los comentario de los productos
 
     getJSONData(url)
-    .then(object=>{
-        if(object.status === 'ok'){
-            let product = object.data;
-            showProductDetails(product)
-            showRelatedProducts(product)
-        }
-    });
+        .then(object => {
+            if (object.status === 'ok') {
+                let product = object.data;
+                showProductDetails(product)
+                showRelatedProducts(product)
+            }
+        });
 
     getJSONData(commentsURL)//carga comentarios del producto
-       .then(Response => {
-       if(Response.status === "ok"){
-        let calification = Response.data;
-        showComments(calification);//muestra los comentarios
-        console.log("Comentarios cargados correctamente");
-    
-         // showComments(commentsStorage);
-        }
-    });
+        .then(Response => {
+            if (Response.status === "ok") {
+                let calification = Response.data;
+                showComments(calification);//muestra los comentarios
+                console.log("Comentarios cargados correctamente");
+
+                // showComments(commentsStorage);
+            }
+        });
 });
 
 
-function showComments(comments) {  
-    const commentsContainer = document.getElementById('comments-container');  
+function showComments(comments) {
+    const commentsContainer = document.getElementById('comments-container');
     commentsContainer.innerHTML = ""; // Limpia el contenedor  
 
-    comments.forEach(comment => {  
+    comments.forEach(comment => {
         const commentHTML = `  
                   <div class="comment" style="display: flex; justify-content: space-between; align-items: center;">  
                 <div style="display: flex; align-items: center;">  
@@ -46,27 +46,27 @@ function showComments(comments) {
                     <div>${getStars(comment.score)}</div>  
                 </div>  
             </div>   
-        `;      
-        commentsContainer.innerHTML += commentHTML;  
-    });  
-}  
+        `;
+        commentsContainer.innerHTML += commentHTML;
+    });
+}
 
 function getStars(score) {
     let starsHTML = "";
-      for (let i = 1; i <= 5; i++) {
-       if (i <= score) {
-        starsHTML += '<span class="fa fa-star checked"></span>'; //llena
-      } else {
-        starsHTML += '<span class="fa fa-star"></span>'; //vacia
-      }
+    for (let i = 1; i <= 5; i++) {
+        if (i <= score) {
+            starsHTML += '<span class="fa fa-star checked"></span>'; //llena
+        } else {
+            starsHTML += '<span class="fa fa-star"></span>'; //vacia
+        }
     }
     return starsHTML;
-  }
+}
 
 
 function showProductDetails(product) {
     const container = document.getElementById('product-container');
-    
+
     // Limpia el contenido actual del contenedor
     container.innerHTML = '';
 
@@ -74,9 +74,9 @@ function showProductDetails(product) {
     console.log("Image URL:", product.images); // Verifica la URL de la imagen
     console.log(product); // Verifica la estructura del producto
 
-   
 
-    
+
+
     // Crea el HTML dinámico con la estructura proporcionada
     const html = `
 <div class="product-details-container">
@@ -124,22 +124,71 @@ function showProductDetails(product) {
 
 
 //Cambia segun que imagen se desea ver
- function changeImg(index){
-        let bigImgBox = document.getElementById(`bigImg`);
-        let smallImgBox = document.getElementById(`img${index}`);
-        const images = document.getElementsByClassName("all-images");
-      
-        for (const img of images) {
-          if(img.getAttribute("src") === bigImgBox.getAttribute("src") ){img.classList.remove("active-img")}
-        } 
-        smallImgBox.classList.add("active-img")
-        bigImgBox.setAttribute("src", smallImgBox.getAttribute("src"));
-       
-      
-        
-      }
+function changeImg(index) {
+    let bigImgBox = document.getElementById(`bigImg`);
+    let smallImgBox = document.getElementById(`img${index}`);
+    const images = document.getElementsByClassName("all-images");
+
+    for (const img of images) {
+        if (img.getAttribute("src") === bigImgBox.getAttribute("src")) { img.classList.remove("active-img") }
+    }
+    smallImgBox.classList.add("active-img")
+    bigImgBox.setAttribute("src", smallImgBox.getAttribute("src"));
 
 
+
+}
+
+
+const stars = document.querySelectorAll('.stars');
+
+stars.forEach(star => {
+    star.addEventListener('mouseover', () => {
+        resetStars();
+        star.classList.add('checked');
+        let prevSibling = star.previousElementSibling;
+        while (prevSibling) {
+            prevSibling.classList.add('checked');
+            prevSibling = prevSibling.previousElementSibling;
+        }
+    });
+
+    star.addEventListener('mouseout', () => {
+        resetStars();
+        setSelectedStars();
+    });
+
+    star.addEventListener('click', () => {
+        resetStars();
+        resetSelected();
+        star.classList.add('selected');
+        let prevSibling = star.previousElementSibling;
+        while (prevSibling) {
+            prevSibling.classList.add('selected');
+            prevSibling = prevSibling.previousElementSibling;
+        }
+    });
+});
+
+function resetSelected() {
+    stars.forEach(star => {
+        star.classList.remove('selected');
+    });
+}
+
+function resetStars() {
+    stars.forEach(star => {
+        star.classList.remove('checked');
+    });
+}
+
+function setSelectedStars() {
+    stars.forEach(star => {
+        if (star.classList.contains('selected')) {
+            star.classList.add('checked');
+        }
+    });
+}
 
 function showRelatedProducts(product) {
     const container = document.getElementById('related-products-container');

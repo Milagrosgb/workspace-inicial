@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>eMercado - Todo lo que busques está aquí</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/font.css" />
-  <link rel="stylesheet" href="css/product-info.css">
-  <link rel="stylesheet" href="css/styles-input.css">
-  <link href="css/styles.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">  
-
-
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/font.css" />
+<link rel="stylesheet" href="css/product-info.css">
+<link rel="stylesheet" href="css/styles-input.css">
+<link href="css/styles.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-lg">
-      <a class="navbar-brand" href="index.html"><img src="img/logo-eco.png" id="logo-eco" class="logo-eco" width="80"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="index.html"><img src="img/logo-eco.png" id="logo-eco" class="logo-eco"
+          width="80"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -42,16 +42,38 @@
 
   <main>
     <div id="product-container"></div>
- 
-      <h4 class="rating-title">¿Qué piensan nuestros usuarios?</h4>  
-      <div id="comments-container" class="comments-box">  
-        
-      </div>  
-    </div>
-  
 
-   <!-- <div id="comments-container"-->
-   
+    <!-- Agregar comentarios -->
+
+    <div class="add-comments-container">
+      <h4 class="add-rating-title">Deja tu reseña sobre este producto</h4>
+      <div class="add-rating">
+        <h5 class="calification-title">Calificación: </h5>
+        <div class="add-rating-stars">
+          <span class="fa fa-star stars" data-value="1"></span>
+          <span class="fa fa-star stars" data-value="2"></span>
+          <span class="fa fa-star stars" data-value="3"></span>
+          <span class="fa fa-star stars" data-value="4"></span>
+          <span class="fa fa-star stars" data-value="5"></span>
+        </div>
+      </div>
+      <div class="calification-message-container">
+        <textarea class="calification-message" placeholder="Cuéntanos que te pareció este producto..."></textarea>
+      </div>
+      <div class="send-calification-container">
+        <button class="send-calification">ENVIAR</button>
+      </div>
+
+    </div>
+
+
+    <h4 class="rating-title">¿Qué piensan nuestros usuarios?</h4>
+    <div id="comments-container" class="comments-box">
+
+    </div>
+
+    <!-- <div id="comments-container"-->
+
 
 
     <div id="related-products-container">
@@ -87,4 +109,3 @@
 </body>
 
 </html>
-
