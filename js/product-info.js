@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
 
     getJSONData(commentsURL)//carga comentarios del producto
-    .then(Response => {
-    if(Response.status === "ok"){
+       .then(Response => {
+       if(Response.status === "ok"){
         let calification = Response.data;
         showComments(calification);//muestra los comentarios
         console.log("Comentarios cargados correctamente");
@@ -24,29 +24,31 @@ document.addEventListener("DOMContentLoaded", (e) => {
 });
 
 
-function showComments(comments) {
-    const commentsContainer = document.getElementById('comments-container');
-    commentsContainer.innerHTML = ""; // Limpia el contenedor
+function showComments(comments) {  
+    const commentsContainer = document.getElementById('comments-container');  
+    commentsContainer.innerHTML = ""; // Limpia el contenedor  
 
-    comments.forEach(comment => {
-        const commentHTML = `
-            <div class="col-12 mb-3"> <!-- Hace que el comentario ocupe todo el ancho -->
-                <div class="list-group-item">
-                    <div>
-                        <strong>${comment.user}</strong> - <span class="text-muted">${comment.dateTime}</span>
-                    </div>
-                    <p>${comment.description}</p>
-                    <div class="rating">
-                        <div>Calificación: ${getStars(comment.score)}</div>
-                    </div>
-                </div>
-            </div>
-        `;
-        commentsContainer.innerHTML += commentHTML;
-    });
-}
-
-
+    comments.forEach(comment => {  
+        const commentHTML = `  
+                  <div class="comment" style="display: flex; justify-content: space-between; align-items: center;">  
+                <div style="display: flex; align-items: center;">  
+                    <div class="user-icon">  
+                        <i class="fas fa-user"></i>  
+                    </div>  
+                    <div>  
+                        <strong>${comment.user}</strong>  
+                        <div class="text-muted">${new Date(comment.dateTime).toLocaleString()}</div>  
+                        <p>${comment.description}</p>  
+                    </div>  
+                </div>  
+                <div class="rating">  
+                    <div>${getStars(comment.score)}</div>  
+                </div>  
+            </div>   
+        `;      
+        commentsContainer.innerHTML += commentHTML;  
+    });  
+}  
 
 function getStars(score) {
     let starsHTML = "";
