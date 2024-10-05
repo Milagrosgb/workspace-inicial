@@ -1,7 +1,10 @@
+const productID = localStorage.getItem("productID");
+
 document.addEventListener("DOMContentLoaded", (e) => {
-    const productID = localStorage.getItem("productID");
+    
     const url = PRODUCT_INFO_URL + productID + EXT_TYPE;
     const commentsURL = PRODUCT_INFO_COMMENTS_URL + productID + ".json";//esta es la url base que apunta a la api donde se almacenan los comentario de los productos
+    let starCal; //crea variable donde se guardara el numero de estrellas seleccionadas al calificar
 
     getJSONData(url)
         .then(object => {
@@ -17,17 +20,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
             if (Response.status === "ok") {
                 let calification = Response.data;
                 showComments(calification);//muestra los comentarios
-                console.log("Comentarios cargados correctamente");
-
-                // showComments(commentsStorage);
+                console.log("Comentarios cargados correctamente");    
             }
+            showComments(commentsStorage);
         });
 });
 
 
 function showComments(comments) {
     const commentsContainer = document.getElementById('comments-container');
-    commentsContainer.innerHTML = ""; // Limpia el contenedor  
+    // commentsContainer.innerHTML = ""; // Limpia el contenedor  
 
     comments.forEach(comment => {
         const commentHTML = `  
@@ -162,6 +164,7 @@ stars.forEach(star => {
         resetStars();
         resetSelected();
         star.classList.add('selected');
+        starCal = star.getAttribute("data-value"); //guarda la cantidad de estrellas que se marco
         let prevSibling = star.previousElementSibling;
         while (prevSibling) {
             prevSibling.classList.add('selected');
@@ -186,6 +189,7 @@ function setSelectedStars() {
     stars.forEach(star => {
         if (star.classList.contains('selected')) {
             star.classList.add('checked');
+           
         }
     });
 }
@@ -236,3 +240,66 @@ function showRelatedProducts(product) {
         container.innerHTML = '<p>No hay productos relacionados.</p>';
     }
 }
+
+//Desafiate (agregar calificacion) 
+
+let commentsStorage =[]; //crea una lista vacia donde luego se cargaran los comentarios que realicemos
+const sendBtn = document.querySelector(".send-calification"); //boton de enviar comentario
+// let starsCount = 
+
+//Guarda en un array el contenido de localStorage (comentarios realizados)
+if (localStorage.getItem(`califications${productID}`) !== null){
+    commentsStorage = JSON.parse(localStorage.getItem(`califications${productID}`));
+  };
+
+//Funcion que guarda un nuevo comentario realizado en localStorage y ademas lo muestra
+let setComment = function (){
+    //Crea un objeto para almacenar los datos de un nuevo comentario
+    let newComment = {product:"", score:"", description:"", user:"", dateTime: ""  }
+    //Si los campos del formulario no estan vacios procede
+    if((starCal !== undefined) && (document.getElementById("textArea").value !== "")){
+      newComment.product = localStorage.getItem("productID"); //GUARDA EL ID DEL PRDUCTO
+      newComment.score = starCal; //GUARDA LA PUNTUACION EN ESTRELLAS
+      newComment.description = document.getElementById("textArea").value; //GUARDA EL MENSAJE
+      newComment.user = localStorage.getItem("user"); //GUARDA EL USUARIO
+      newComment.dateTime =  `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()+1}:${new Date().getSeconds()} ` //GUARDA LA FECHA Y HORA
+      commentsStorage.push(newComment);  //AGREGA EL NUEVO COMENTARIO A LA LISTA DE LOS COMOENTARIOS ANTERIORES
+  
+      
+      //Limpia los campos luego de enviar el comentario
+      document.getElementById("textArea").value = "";
+      let stars = document.querySelectorAll(".stars");
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove("checked") 
+      }
+      
+      //Muestra el comentario realizado
+      document.getElementById("comments-container").innerHTML += `  
+                  <div class="comment" style="display: flex; justify-content: space-between; align-items: center;">  
+                <div style="display: flex; align-items: center;">  
+                    <div class="user-icon">  
+                        <i class="fas fa-user"></i>  
+                    </div>  
+                    <div>  
+                        <strong>${newComment.user}</strong>  
+                        <div class="text-muted">${new Date(newComment.dateTime).toLocaleString()}</div>  
+                        <p>${newComment.description}</p>  
+                    </div>  
+                </div>  
+                <div class="rating">  
+                    <div>${getStars(newComment.score)}</div>  
+                </div>  
+            </div>   
+        `
+  
+  
+    };
+    //Actualiza el localStorage
+    localStorage.setItem(`califications${productID}`, JSON.stringify(commentsStorage))
+  }
+
+  //Evento que agrega un comentario
+sendBtn.addEventListener("click", ()=>{
+    setComment();
+    document.getElementById("message").style.display = "block"
+  })
