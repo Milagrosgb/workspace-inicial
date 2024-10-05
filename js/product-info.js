@@ -1,14 +1,67 @@
 document.addEventListener("DOMContentLoaded", (e) => {
     const productID = localStorage.getItem("productID");
     const url = PRODUCT_INFO_URL + productID + EXT_TYPE;
+    const commentsURL = PRODUCT_INFO_COMMENTS_URL  + productID + ".json";//esta es la url base que apunta a la api donde se almacenan los comentario de los productos
+
     getJSONData(url)
     .then(object=>{
         if(object.status === 'ok'){
             let product = object.data;
             showProductDetails(product)
-        };
+        }
+    });
+
+    getJSONData(commentsURL)//carga comentarios del producto
+       .then(Response => {
+       if(Response.status === "ok"){
+        let calification = Response.data;
+        showComments(calification);//muestra los comentarios
+        console.log("Comentarios cargados correctamente");
+    
+         // showComments(commentsStorage);
+        }
     });
 });
+
+
+function showComments(comments) {  
+    const commentsContainer = document.getElementById('comments-container');  
+    commentsContainer.innerHTML = ""; // Limpia el contenedor  
+
+    comments.forEach(comment => {  
+        const commentHTML = `  
+                  <div class="comment" style="display: flex; justify-content: space-between; align-items: center;">  
+                <div style="display: flex; align-items: center;">  
+                    <div class="user-icon">  
+                        <i class="fas fa-user"></i>  
+                    </div>  
+                    <div>  
+                        <strong>${comment.user}</strong>  
+                        <div class="text-muted">${new Date(comment.dateTime).toLocaleString()}</div>  
+                        <p>${comment.description}</p>  
+                    </div>  
+                </div>  
+                <div class="rating">  
+                    <div>${getStars(comment.score)}</div>  
+                </div>  
+            </div>   
+        `;      
+        commentsContainer.innerHTML += commentHTML;  
+    });  
+}  
+
+function getStars(score) {
+    let starsHTML = "";
+      for (let i = 1; i <= 5; i++) {
+       if (i <= score) {
+        starsHTML += '<span class="fa fa-star checked"></span>'; //llena
+      } else {
+        starsHTML += '<span class="fa fa-star"></span>'; //vacia
+      }
+    }
+    return starsHTML;
+  }
+
 
 function showProductDetails(product) {
     const container = document.getElementById('product-container');
@@ -84,3 +137,4 @@ function showProductDetails(product) {
       
         
       }
+
