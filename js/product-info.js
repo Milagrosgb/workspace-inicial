@@ -85,10 +85,7 @@ function showProductDetails(product) {
     <div class="product-images-container">
         <img class="big-product-image" id="bigImg"  src="${product.images[0]}" alt="${product.name}" />
         <div class="miniaturas-container">
-            <img class="miniatura-img active-img all-images" id="img1" onclick="changeImg(1)" src="${product.images[0]}" alt="${product.name}" />
-            <img class="miniatura-img all-images" id="img2" onclick="changeImg(2)" src="${product.images[1]}" alt="${product.name}" />
-            <img class="miniatura-img all-images" id="img3" onclick="changeImg(3)" src="${product.images[2]}" alt="${product.name}" />
-            <img class="miniatura-img all-images" id="img4" onclick="changeImg(4)" src="${product.images[3]}" alt="${product.name}" />
+            ${addImage(product.images)}
         </div>
     </div>
     <div class="product-detail-card">
@@ -124,6 +121,16 @@ function showProductDetails(product) {
     container.innerHTML = html;
 }
 
+//Funcion que agrega las imagenes 
+let addImage = function (array){ 
+    let imageToAdd = ""; 
+    for (let i = 0; i < array.length; i++) { 
+        if (i===0){ 
+            imageToAdd += `<img class="miniatura-img active-img all-images" id="img${i}" onclick="changeImg(${i})" src="${array[i]}" />` 
+        } else { imageToAdd += `<img class="miniatura-img all-images" id="img${i}" onclick="changeImg(${i})" src="${array[i]}" />`} 
+    };
+    return imageToAdd; 
+}
 
 //Cambia segun que imagen se desea ver
 function changeImg(index) {
