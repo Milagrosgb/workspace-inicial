@@ -1,6 +1,7 @@
 const listEl = document.querySelector('#product-list');
 const pageTitle = document.querySelector('.h2');
 let currentProductsArray = [];
+let originalArray = [];
 let minCount = undefined;
 let maxCount = undefined;
 const ORDER_BY_COST = 'cost';
@@ -13,11 +14,11 @@ function setCatID(id) {
   window.location.href = 'product-info.html';
 }
 
-const showProductsList = () => {
+const showProductsList = (array) => {
   let HTMLtoAppend = '';
 
-  for (let i = 0; i < currentProductsArray.length; i++) {
-    let post = currentProductsArray[i];
+  for (let i = 0; i < array.length; i++) {
+    let post = array[i];
 
     if (
       (minCount == undefined ||
@@ -53,7 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const catID = localStorage.getItem('catID');
   getJSONData(`${PRODUCTS_URL}${catID}${EXT_TYPE}`).then(function (resultObj) {
     if (resultObj.status === 'ok') {
-      currentProductsArray = resultObj.data.products;
+      originalArray = resultObj.data.products;
+      currentProductsArray = originalArray;
 
       showProductsList(currentProductsArray);
       pageTitle.innerHTML = resultObj.data.catName.toUpperCase();
@@ -79,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
       minCount = undefined;
       maxCount = undefined;
 
-      showProductsList();
+      showProductsList(originalArray);
     });
 
   document.getElementById('sortAsc').addEventListener('click', () => {
@@ -94,43 +96,45 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
 const searchInput = document.getElementById('product-search');
-const productCards = document.getElementsByClassName('product-card');
 const noResultMessage = document.getElementById('noResultsMessage');
 const searchButton = document.getElementById('search-button');
 
-function filterResults() {
-  let searchValue = searchInput.value;
-  let regex = new RegExp(searchValue, 'i');
-  let counter = 0;
+//Funcion del buscador
+function filterResults (){
 
-  for (let card of productCards) {
-    const cardTitle = card.querySelector('.card-title');
-    const cardDescription = card.querySelector('.card-text');
-    if (regex.test(cardTitle.textContent)) {
-      card.style.display = '';
-      counter++;
-    } else if (regex.test(cardDescription.textContent)) {
-      card.style.display = '';
-      counter++;
-    } else {
-      card.style.display = 'none';
-    }
-  }
-  if (counter === 0) {
-    noResultMessage.style.display = '';
-  } else if (searchValue.length == 0) {
-    noResultMessage.style.display = 'none';
-  }
-  counter = 0;
+  let regex = new RegExp(searchInput.value, 'i');
+  let matchProducts = [];
+  currentProductsArray.forEach(element => {   
+      if(regex.test(element.name) || regex.test(element.description)){
+          matchProducts.push(element);
+          currentProductsArray = matchProducts;
+          showProductsList(currentProductsArray);
+          noResultMessage.style.display = "none";        
+      } else {
+          matchProducts= []
+          showProductsList(matchProducts)
+          noResultMessage.style.display = '';    
+      }      
+      resetProducts();       
+  });  
 }
 
-searchInput.addEventListener('input', filterResults);
+//Funcion que muestra los productos de nuevo si el input esta vacio
+function resetProducts (){
+  if (searchInput.value == ""){
+      currentProductsArray = originalArray;
+      showProductsList(currentProductsArray);
+      console.log("Reseteado")
+  }
+}
 
+//Evento del buscador
+searchInput.addEventListener('input', filterResults);
 searchButton.addEventListener('click', filterResults);
 
 // Sort:
-
 function sortProducts(criteria, array) {
   let result = [];
   if (criteria === ORDER_ASC_BY_PRICE) {
