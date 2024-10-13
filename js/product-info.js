@@ -310,3 +310,12 @@ sendBtn.addEventListener("click", ()=>{
     setComment();
     document.getElementById("message").style.display = "block"
   })
+
+
+
+
+  const darkMode = document.querySelector(".dark-mode");
+const body = document.body;
+  darkMode.addEventListener("click",()=>{
+body.classList.toggle("active");
+  });
