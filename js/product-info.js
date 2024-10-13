@@ -311,6 +311,9 @@ sendBtn.addEventListener("click", ()=>{
     document.getElementById("message").style.display = "block"
   })
 
+
+
+
   const darkMode = document.querySelector(".dark-mode");
 const body = document.body;
   darkMode.addEventListener("click",()=>{
