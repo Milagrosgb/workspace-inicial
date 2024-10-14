@@ -262,13 +262,14 @@ if (localStorage.getItem(`califications${productID}`) !== null){
 //Funcion que guarda un nuevo comentario realizado en localStorage y ademas lo muestra
 let setComment = function (){
     //Crea un objeto para almacenar los datos de un nuevo comentario
-    let newComment = {product:"", score:"", description:"", user:"", dateTime: ""  }
+    let newComment = {product:"", score:"", description:"", user:"", dateTime: ""  };
+    const userSession = JSON.parse(localStorage.getItem('userSession'));
     //Si los campos del formulario no estan vacios procede
     if((starCal !== undefined) && (document.getElementById("textArea").value !== "")){
       newComment.product = localStorage.getItem("productID"); //GUARDA EL ID DEL PRDUCTO
       newComment.score = starCal; //GUARDA LA PUNTUACION EN ESTRELLAS
       newComment.description = document.getElementById("textArea").value; //GUARDA EL MENSAJE
-      newComment.user = localStorage.getItem("user"); //GUARDA EL USUARIO
+      newComment.user = userSession.username; //GUARDA EL USUARIO //GUARDA EL USUARIO
       newComment.dateTime =  `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()+1}:${new Date().getSeconds()} ` //GUARDA LA FECHA Y HORA
       commentsStorage.push(newComment);  //AGREGA EL NUEVO COMENTARIO A LA LISTA DE LOS COMOENTARIOS ANTERIORES
   
