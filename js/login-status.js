@@ -19,6 +19,11 @@ function checkLoginStatus() {
 
 }
 
+
+
+
+
+
 checkLoginStatus();
 
 // Esta sería la parte de cerrar sesión, queda comentada para usar a futuro:
