@@ -1,4 +1,6 @@
 main {
+
+    font-family: 'Mulish';
     background: #FFF;
     display: flex;
     justify-content: center;
@@ -6,7 +8,6 @@ main {
     color: var(--Medium-gray, #6E7591);
 
     /* Label */
-    font-family: Mulish;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -15,9 +16,10 @@ main {
 }
 
 .user-profile-container {
+    font-family: 'Mulish';
     margin-top: 100px;
     padding: 60px 90px 5px 90px;
-    border-radius: 15px; /* Eliminado el duplicado */
+    border-radius: 15px; 
     background: #EBEEFF;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -51,12 +53,15 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
     left: 50%; /* Posiciona horizontalmente el ícono al 50% */
     transform: translateX(-50%); /* Ajuste para centrar exactamente */
     flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .user-icon {
     left: 0px;
-    width: 177px;
-    height: 177px;
+    width: 157px;
+    height: 157px;
     object-fit: cover;
     border-radius: 92px;
 }
@@ -70,7 +75,14 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
     object-fit: cover;
 }
 
+.icon-border {
+    position: absolute;
+    width: 187px;
+    height: 187px;
+}
+
 .label {
+    font-family: 'Mulish';
     display: flex;
     flex-direction: column;
     justify-content: center;
