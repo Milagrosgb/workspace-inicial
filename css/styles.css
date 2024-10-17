@@ -829,9 +829,6 @@ a.custom-card:hover {
   .sorting {
     height: auto;
   }
-  .sorting > div {
-    /* margin: 0; */
-  }
 
   .button-group label {
     width: auto;
@@ -1033,42 +1030,41 @@ a.custom-card:hover {
     width: auto;
     padding: 8px 4px;
   }
-}
 
+}
 .navbar-user {
-  color: rgba(255, 255, 255, 0.55);
-  font: 16px var(--bs-font-sans-serif);
-  transition: color 0.15s ease-in-out;
+  color: rgba(255, 255, 255, 0.55)!important; 
+  font: 16px var(--bs-font-sans-serif)!important;
+  transition: color 0.15s ease-in-out!important;
 }
-
 .navbar-user:hover {
-  color: #cbdcff;
+  color: #cbdcff!important;
 }
 
 .dropdown-menu {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  border: none;
-  min-width: 125px;
-  position: absolute; 
-  right: 0;        
-  left: auto;       
+  background-color: rgba(0, 0, 0, 0.5)!important;
+  backdrop-filter: blur(5px)!important;
+  border: none!important;
+  min-width: 125px!important;
+  position: absolute!important; 
+  right: 0!important;        
+  left: auto!important;       
 }
 
 .dropdown-item {
-  color: #ffffff;
+  color: #ffffff!important;
 }
 
 .dropdown-item:hover {
-  background-color: #fb15ff;
-  color: #ffffff;
+  background-color: #fb15ff!important;
+  color: #ffffff!important;
 }
 
 .dropdown-toggle {
-  color: #ffffff;
+  color: #ffffff!important;
 }
 
 .dropdown-toggle:hover {
-  color: #f8f9fa;
+  color: #f8f9fa!important;
 }
 
