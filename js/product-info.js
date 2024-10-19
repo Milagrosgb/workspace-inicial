@@ -1,27 +1,29 @@
 const productID = localStorage.getItem("productID");
+let commentsStorage =[]; //crea una lista vacia donde luego se cargaran los comentarios que realicemos
 
 document.addEventListener("DOMContentLoaded", (e) => {
-  const url = PRODUCT_INFO_URL + productID + EXT_TYPE;
-  const commentsURL = PRODUCT_INFO_COMMENTS_URL + productID + ".json"; //esta es la url base que apunta a la api donde se almacenan los comentario de los productos
-  let starCal; //crea variable donde se guardara el numero de estrellas seleccionadas al calificar
+    savedCalification() //obtiene los comentarios previamente guardados
+    const url = PRODUCT_INFO_URL + productID + EXT_TYPE;
+    const commentsURL = PRODUCT_INFO_COMMENTS_URL + productID + ".json";//esta es la url base que apunta a la api donde se almacenan los comentario de los productos
+    
+    getJSONData(url)
+        .then(object => {
+            if (object.status === 'ok') {
+                let product = object.data;
+                showProductDetails(product)
+                showRelatedProducts(product)
+            }
+        });
 
-  getJSONData(url).then((object) => {
-    if (object.status === "ok") {
-      let product = object.data;
-      showProductDetails(product);
-      showRelatedProducts(product);
-    }
-  });
-
-  getJSONData(commentsURL) //carga comentarios del producto
-    .then((Response) => {
-      if (Response.status === "ok") {
-        let calification = Response.data;
-        showComments(calification); //muestra los comentarios
-        console.log("Comentarios cargados correctamente");
-      }
-      showComments(commentsStorage);
-    });
+    getJSONData(commentsURL)//carga comentarios del producto
+        .then(Response => {
+            if (Response.status === "ok") {
+                let calification = Response.data;
+                showComments(calification);//muestra los comentarios
+                console.log("Comentarios cargados correctamente");    
+            }
+            showComments(commentsStorage);
+        });
 });
 
 function showComments(comments) {
@@ -64,58 +66,25 @@ function getStars(score) {
   return starsHTML;
 }
 
+//Funcion que muestra la informacion de un producto
 function showProductDetails(product) {
-  const container = document.getElementById("product-container");
-
-  // Limpia el contenido actual del contenedor
-  container.innerHTML = "";
-
-  // Verifica si product.images es una URL válida
-  console.log("Image URL:", product.images); // Verifica la URL de la imagen
-  console.log(product); // Verifica la estructura del producto
-
-  // Crea el HTML dinámico con la estructura proporcionada
-  const html = `
-<div class="product-details-container">
-    <div class="product-images-container">
-        <img class="big-product-image" id="bigImg"  src="${
-          product.images[0]
-        }" alt="${product.name}" />
-        <div class="miniaturas-container">
-            ${addImage(product.images)}
-        </div>
-    </div>
-    <div class="product-detail-card">
-        <div class="product-name">
-            <h4 class="product-name-title">${product.name}</h4>
-        </div>
-        <div class="product-description">
-            <div class="description-title">Descripción</div>
-            <div class="description-text">${product.description}</div>
-        </div>
-        <div class="product-category">
-            <div class="category-title">Categoría</div>
-            <div class="category-text">${product.category}</div>
-            <div class="product-quantity">
-                <div>
-                    <span>Cant.</span>
-                    <span>${product.soldCount}</span>
-                    <span>artículos</span>
-                </div>
-            </div>
-        </div>
-        <div class="product-cost">
-            <h4 class="cost-text">$${product.cost}</h4>
-        </div>
-        <div class="buttons-container">
-            <button class="button-text buy-button">Comprar</button>
-            <button class="button-text add-to-cart-button">Añadir al carrito</button>
-        </div>
-    </div>
-</div>
-`;
-  // Añade el HTML al contenedor
-  container.innerHTML = html;
+    // Verifica si product.images es una URL válida
+    console.log("Image URL:", product.images); // Verifica la URL de la imagen
+    console.log(product); // Verifica la estructura del producto
+    //Agrega la imagen grande
+    document.querySelector(".product-images-container").innerHTML += `<img class="big-product-image" id="bigImg"  src="${product.images[0]}" alt="${product.name}" />`;
+    //Agrega las imagenes en miniatura
+    document.querySelector(".miniaturas-container").innerHTML += addImage(product.images);
+    //Agrega el nombre del producto
+    document.querySelector(".product-name").innerHTML = `<h4 class="product-name-title">${product.name}</h4>`;
+    //Agrega descripcion del producto
+    document.querySelector(".product-description").innerHTML += ` <div class="description-text">${product.description}</div>`;
+    //Agrega categoria del producto
+    document.querySelector(".category-title").innerHTML += `<div class="category-text">${product.category}</div>`;
+    //Agrega la cantidad de vendidos
+    document.querySelector(".product-count").innerHTML = `<span>${product.soldCount}</span>`;
+    //Agrega el precio 
+    document.querySelector(".product-cost").innerHTML = `<h4 class="cost-text">$${product.cost}</h4>`;
 }
 
 //Funcion que agrega las imagenes
@@ -141,40 +110,38 @@ function changeImg(index) {
     if (img.getAttribute("src") === bigImgBox.getAttribute("src")) {
       img.classList.remove("active-img");
     }
-  }
-  smallImgBox.classList.add("active-img");
-  bigImgBox.setAttribute("src", smallImgBox.getAttribute("src"));
+    smallImgBox.classList.add("active-img")
+    bigImgBox.setAttribute("src", smallImgBox.getAttribute("src"));
 }
 
-const stars = document.querySelectorAll(".stars");
+const stars = document.querySelectorAll('.stars');
+stars.forEach(star => {
+    star.addEventListener('mouseover', () => {
+        resetStars();
+        star.classList.add('checked');
+        let prevSibling = star.previousElementSibling;
+        while (prevSibling) {
+            prevSibling.classList.add('checked');
+            prevSibling = prevSibling.previousElementSibling;
+        }
+    });
 
-stars.forEach((star) => {
-  star.addEventListener("mouseover", () => {
-    resetStars();
-    star.classList.add("checked");
-    let prevSibling = star.previousElementSibling;
-    while (prevSibling) {
-      prevSibling.classList.add("checked");
-      prevSibling = prevSibling.previousElementSibling;
-    }
-  });
+    star.addEventListener('mouseout', () => {
+        resetStars();
+        setSelectedStars();
+    });
 
-  star.addEventListener("mouseout", () => {
-    resetStars();
-    setSelectedStars();
-  });
-
-  star.addEventListener("click", () => {
-    resetStars();
-    resetSelected();
-    star.classList.add("selected");
-    starCal = star.getAttribute("data-value"); //guarda la cantidad de estrellas que se marco
-    let prevSibling = star.previousElementSibling;
-    while (prevSibling) {
-      prevSibling.classList.add("selected");
-      prevSibling = prevSibling.previousElementSibling;
-    }
-  });
+    star.addEventListener('click', () => {
+        resetStars();
+        resetSelected();
+        star.classList.add('selected');
+        starCal = star.getAttribute("data-value"); //guarda la cantidad de estrellas que se marco
+        let prevSibling = star.previousElementSibling;
+        while (prevSibling) {
+            prevSibling.classList.add('selected');
+            prevSibling = prevSibling.previousElementSibling;
+        }
+    });
 });
 
 function resetSelected() {
@@ -247,54 +214,39 @@ function showRelatedProducts(product) {
   }
 }
 
-//Desafiate (agregar calificacion)
-
-let commentsStorage = []; //crea una lista vacia donde luego se cargaran los comentarios que realicemos
-const sendBtn = document.querySelector(".send-calification"); //boton de enviar comentario
-// let starsCount =
-
-//Guarda en un array el contenido de localStorage (comentarios realizados)
-if (localStorage.getItem(`califications${productID}`) !== null) {
-  commentsStorage = JSON.parse(
-    localStorage.getItem(`califications${productID}`)
-  );
+//Desafiate (agregar calificacion) 
+function savedCalification(){
+    //Guarda en un array el contenido de localStorage (comentarios realizados)
+    if (localStorage.getItem(`califications${productID}`) !== null){
+        commentsStorage = JSON.parse(localStorage.getItem(`califications${productID}`));
+    };
 }
 
+
 //Funcion que guarda un nuevo comentario realizado en localStorage y ademas lo muestra
-let setComment = function () {
-  //Crea un objeto para almacenar los datos de un nuevo comentario
-  let newComment = {
-    product: "",
-    score: "",
-    description: "",
-    user: "",
-    dateTime: "",
-  };
-  //Si los campos del formulario no estan vacios procede
-  if (
-    starCal !== undefined &&
-    document.getElementById("textArea").value !== ""
-  ) {
-    newComment.product = localStorage.getItem("productID"); //GUARDA EL ID DEL PRDUCTO
-    newComment.score = starCal; //GUARDA LA PUNTUACION EN ESTRELLAS
-    newComment.description = document.getElementById("textArea").value; //GUARDA EL MENSAJE
-    newComment.user = localStorage.getItem("user"); //GUARDA EL USUARIO
-    newComment.dateTime = `${new Date().getFullYear()}-${
-      new Date().getMonth() + 1
-    }-${new Date().getDate()} ${new Date().getHours()}:${
-      new Date().getMinutes() + 1
-    }:${new Date().getSeconds()} `; //GUARDA LA FECHA Y HORA
-    commentsStorage.push(newComment); //AGREGA EL NUEVO COMENTARIO A LA LISTA DE LOS COMOENTARIOS ANTERIORES
-
-    //Limpia los campos luego de enviar el comentario
-    document.getElementById("textArea").value = "";
-    let stars = document.querySelectorAll(".stars");
-    for (let i = 0; i < stars.length; i++) {
-      stars[i].classList.remove("checked");
-    }
-
-    //Muestra el comentario realizado
-    document.getElementById("comments-container").innerHTML += `  
+let setComment = function (){
+    //Crea un objeto para almacenar los datos de un nuevo comentario
+    let newComment = {product:"", score:"", description:"", user:"", dateTime: ""  };
+    const userSession = JSON.parse(localStorage.getItem('userSession'));
+    //Si los campos del formulario no estan vacios procede
+    if((starCal !== undefined) && (document.getElementById("textArea").value !== "")){
+      newComment.product = localStorage.getItem("productID"); //GUARDA EL ID DEL PRDUCTO
+      newComment.score = starCal; //GUARDA LA PUNTUACION EN ESTRELLAS
+      newComment.description = document.getElementById("textArea").value; //GUARDA EL MENSAJE
+      newComment.user = userSession.username; //GUARDA EL USUARIO //GUARDA EL USUARIO
+      newComment.dateTime =  `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()+1}:${new Date().getSeconds()} ` //GUARDA LA FECHA Y HORA
+      commentsStorage.push(newComment);  //AGREGA EL NUEVO COMENTARIO A LA LISTA DE LOS COMOENTARIOS ANTERIORES
+  
+      
+      //Limpia los campos luego de enviar el comentario
+      document.getElementById("textArea").value = "";
+      let stars = document.querySelectorAll(".stars");
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove("checked") 
+      }
+      
+      //Muestra el comentario realizado
+      document.getElementById("comments-container").innerHTML += `  
                   <div class="comment" style="display: flex; justify-content: space-between; align-items: center;">  
                 <div style="display: flex; align-items: center;">  
                     <div class="user-icon">  
@@ -312,19 +264,27 @@ let setComment = function () {
                     <div>${getStars(newComment.score)}</div>  
                 </div>  
             </div>   
-        `;
+        `
+  
+  
+    };
+    //Actualiza el localStorage
+    localStorage.setItem(`califications${productID}`, JSON.stringify(commentsStorage))
   }
-  //Actualiza el localStorage
-  localStorage.setItem(
-    `califications${productID}`,
-    JSON.stringify(commentsStorage)
-  );
-};
+
+
 
 //Evento que agrega un comentario
-sendBtn.addEventListener("click", () => {
-  setComment();
-  document.getElementById("message").style.display = "block";
-});
+document.querySelector(".send-calification").addEventListener("click", ()=>{
+    setComment();
+    document.getElementById("message").style.display = "block"
 
+  })
+
+  function logout() {
+    console.log('Función de cerrar sesión llamada'); 
+    localStorage.removeItem('userSession');
+    console.log('Sesión cerrada y datos eliminados de localStorage.');
+    window.location.href = 'index.html';
+}
 

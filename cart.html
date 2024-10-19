@@ -34,6 +34,19 @@
           <li class="nav-item">
           </li>
         </ul>
+        
+        <script>
+
+          fetch("menu.html")
+             .then(response => response.text())
+           .then(data => {
+
+               document.getElementById("menu-placeholder").innerHTML = data
+               checkLoginStatus(); 
+           })
+           .catch(error => console.error('errormenu:', error));
+   </script>
+
       </div>
     </div>
   </nav>
@@ -63,6 +76,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/login-status.js"></script>
+  <script src="css/styles.css"></script>
 </body>
 
 </html>
