@@ -829,9 +829,6 @@ a.custom-card:hover {
   .sorting {
     height: auto;
   }
-  .sorting > div {
-    /* margin: 0; */
-  }
 
   .button-group label {
     width: auto;
@@ -1033,60 +1030,41 @@ a.custom-card:hover {
     width: auto;
     padding: 8px 4px;
   }
+
 }
-
-/*estilos nombre de usuario en navbar*/
-
 .navbar-user {
-  color: rgba(255, 255, 255, 0.55);
-  font: 16px font-family var(--bs-font-sans-serif);
-  transition: color 0.15s ease-in-out;
+  color: rgba(255, 255, 255, 0.55)!important; 
+  font: 16px var(--bs-font-sans-serif)!important;
+  transition: color 0.15s ease-in-out!important;
 }
-
 .navbar-user:hover {
-  color: #cbdcff;
+  color: #cbdcff!important;
 }
 
-/*fin estilos nombre de usuario en navbar*/
-
-/* Cambiar el fondo y color del texto del menú desplegable */
 .dropdown-menu {
-  background-color: #343a40; /* Color de fondo */
-  border: none; /* Quitar el borde */
+  background-color: rgba(0, 0, 0, 0.5)!important;
+  backdrop-filter: blur(5px)!important;
+  border: none!important;
+  min-width: 125px!important;
+  position: absolute!important; 
+  right: 0!important;        
+  left: auto!important;       
 }
 
-/* Cambiar el color del texto de los ítems del menú */
 .dropdown-item {
-  color: #ffffff; /* Color del texto */
+  color: #ffffff!important;
 }
 
-/* Cambiar el color del texto al pasar el mouse */
 .dropdown-item:hover {
-  background-color: #fb15ff; /* Color de fondo al pasar el mouse */
-  color: #ffffff; /* Color del texto al pasar el mouse */
+  background-color: #fb15ff!important;
+  color: #ffffff!important;
 }
 
-/* Cambiar el color del encabezado del menú desplegable */
 .dropdown-toggle {
-  color: #ffffff; /* Color del texto */
+  color: #ffffff!important;
 }
 
-/* Cambiar el color del texto al pasar el mouse sobre el enlace desplegable */
 .dropdown-toggle:hover {
-  color: #f8f9fa; /* Color al pasar el mouse */
-}
-.dropdown-menu {
-  min-width: 200px; /* Puedes ajustar este valor al tamaño que prefieras */
-}
-.dropdown-menu {
-  right: 0;
-  left: auto; /* Esto asegurará que el menú se alinee al lado derecho del botón */
-  min-width: 200px; /* Ajusta el ancho si es necesario */
-}
-.dropdown-menu {
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 50% de transparencia */
-  backdrop-filter: blur(5px); /* Añade un ligero desenfoque para hacer más visible el texto */
-  border: none; /* Remueve los bordes si no los necesitas */
-  min-width: 200px; /* Ajusta el ancho si lo deseas */
+  color: #f8f9fa!important;
 }
 
