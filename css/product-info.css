@@ -459,6 +459,19 @@ gap: 24px;
 align-self: stretch;
 }
 
+/* dark mode */
+
+body.active{
+    background-color: #2c2c2e;
+  }
+
+  .dark-mode-title {
+    color: white;
+  }
+
+  
+/* end of dark mode */
+
 /*  RESPONSIVE   */
 
 /* DESKTOP */

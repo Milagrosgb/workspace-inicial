@@ -173,6 +173,17 @@ function showRelatedProducts(product) {
         const title = document.createElement('h4');
         title.textContent = 'Productos Relacionados';
         title.className = 'titlepr';
+
+        // dark mode
+
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            title.classList.add('dark-mode-title');
+            const ratingTitle = document.querySelector(".rating-title");
+            ratingTitle.classList.add('dark-mode-title');
+        }
+
+        // end of dark mode
+
         container.appendChild(title); // Añade el título al contenedor
      
         // Crea un grupo de tarjetas
@@ -285,3 +296,12 @@ document.querySelector(".send-calification").addEventListener("click", ()=>{
     window.location.href = 'index.html';
 }
 
+// dark mode
+
+const body = document.body;
+const RPtitle = document.getElementsByClassName("titlepr");
+console.log(Array.from(RPtitle));
+
+if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('active');
+}
