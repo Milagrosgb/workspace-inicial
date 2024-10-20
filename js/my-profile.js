@@ -1,3 +1,14 @@
+
+
+
+
+function logout() {
+    console.log('Función de cerrar sesión llamada'); 
+    localStorage.removeItem('userSession');
+    console.log('Sesión cerrada y datos eliminados de localStorage.');
+    window.location.href = 'index.html';
+}
+
 const image = document.getElementById("profile-picture");
 const imagePreview = "img/user-icon-generic.png";
 
@@ -26,3 +37,24 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 
     }
 });
+
+const darkModeToggle = document.querySelector(".dark-mode");
+const body = document.body;
+
+
+if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('active');
+}
+
+darkModeToggle.addEventListener("click", () => {
+    console.log("Dark mode toggled"); 
+    body.classList.toggle("active");
+
+    // Guardar el estado en localStorage
+    if (body.classList.contains('active')) {
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        localStorage.setItem('darkMode', 'disabled');
+    }
+});
+

@@ -51,9 +51,31 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
         </ul>
-        <div class="navbar-user">
-          <span id="user-name"></span>
+       
+        <div class="dark-mode">
+          <div class="circle">
+            <ion-icon class="sun" name="sunny"></ion-icon>
+            <ion-icon class="moon" name="moon"></ion-icon>
+          </div>
         </div>
+        
+
+
+        <div id="menu-placeholder"></div>
+
+        <script>
+
+             fetch("menu.html")
+                .then(response => response.text())
+              .then(data => {
+
+                  document.getElementById("menu-placeholder").innerHTML = data
+                  checkLoginStatus(); 
+              })
+              .catch(error => console.error('errormenu:', error));
+      </script>
+
+
       </div>
     </div>
   </nav>
@@ -110,6 +132,9 @@
   <script src="js/init.js"></script>
   <script src="js/login-status.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="js/login-status.js"></script>
+  <script src="css/styles.css"></script>
+
 </body>
 
 </html>
