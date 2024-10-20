@@ -58,3 +58,65 @@ darkModeToggle.addEventListener("click", () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Obtener los datos de la sesión desde localStorage
+    const userSession = JSON.parse(localStorage.getItem('userSession')); // Solo necesitas parsear una vez
+    const emailField = document.getElementById("email");
+
+    // Verificar si existe la información del usuario en el localStorage
+    if (userSession) {
+        // Acceder al campo "username" que contiene el email
+        const userEmail = userSession.username;
+
+        // Asignar el valor de "username" al campo de email en el formulario
+        emailField.value = userEmail;
+    }
+
+    // Cargar otros datos del perfil desde localStorage si existen
+    const firstName = localStorage.getItem("firstName");
+    const secondName = localStorage.getItem("secondName");
+    const lastName = localStorage.getItem("lastName");
+    const secondLastName = localStorage.getItem("secondLastName");
+    const phone = localStorage.getItem("phone");
+
+    if (firstName) document.getElementById("firstName").value = firstName;
+    if (secondName) document.getElementById("secondName").value = secondName;
+    if (lastName) document.getElementById("lastName").value = lastName;
+    if (secondLastName) document.getElementById("secondLastName").value = secondLastName;
+    if (phone) document.getElementById("phone").value = phone;
+
+    // Al hacer clic en el botón "Guardar cambios"
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+        // Validar los campos obligatorios
+        const firstNameValue = document.getElementById("firstName").value.trim();
+        const lastNameValue = document.getElementById("lastName").value.trim();
+        const emailValue = emailField.value.trim();
+
+        if (!firstNameValue || !lastNameValue || !emailValue) {
+            alert("Por favor, complete todos los campos obligatorios.");
+            return;
+        }
+
+        // Guardar los datos en localStorage
+        localStorage.setItem("firstName", firstNameValue);
+        localStorage.setItem("secondName", document.getElementById("secondName").value.trim());
+        localStorage.setItem("lastName", lastNameValue);
+        localStorage.setItem("secondLastName", document.getElementById("secondLastName").value.trim());
+        localStorage.setItem("phone", document.getElementById("phone").value.trim());
+
+        alert("Los datos se han guardado correctamente.");
+    });
+});
+function logout() {
+    console.log('Función de cerrar sesión llamada'); 
+    localStorage.removeItem('userSession');
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("secondName");
+    localStorage.removeItem("lastName");
+    localStorage.removeItem("secondLastName");
+    localStorage.removeItem("phone");
+    console.log('Sesión cerrada y datos eliminados de localStorage.');
+    window.location.href = 'index.html';
+}
