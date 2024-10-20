@@ -1,4 +1,7 @@
 
+
+
+
 function logout() {
     console.log('Función de cerrar sesión llamada'); 
     localStorage.removeItem('userSession');
@@ -35,24 +38,23 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
     }
 });
 
-const darkMode = document.querySelector(".dark-mode");
+const darkModeToggle = document.querySelector(".dark-mode");
 const body = document.body;
-  darkMode.addEventListener("click",()=>{
-body.classList.toggle("active");
-  });
 
 
 if (localStorage.getItem('darkMode') === 'enabled') {
-    document.body.classList.add('active');
+    body.classList.add('active');
 }
 
-document.getElementById('darkModeToggle').addEventListener('click', () => {
-    document.body.classList.toggle('active');
-    
+darkModeToggle.addEventListener("click", () => {
+    console.log("Dark mode toggled"); 
+    body.classList.toggle("active");
 
-    if (document.body.classList.contains('active')) {
+    // Guardar el estado en localStorage
+    if (body.classList.contains('active')) {
         localStorage.setItem('darkMode', 'enabled');
     } else {
         localStorage.setItem('darkMode', 'disabled');
     }
 });
+
