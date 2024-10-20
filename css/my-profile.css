@@ -14,11 +14,12 @@ main {
 }
 
 .user-profile-container {
-  margin-top: 100px;
-  padding: 60px 90px 5px 90px;
-  border-radius: 15px; /* Eliminado el duplicado */
-  background: #EBEEFF;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    font-family: 'Mulish';
+    margin-top: 100px;
+    padding: 60px 90px 5px 90px;
+    border-radius: 15px; 
+    background: #EBEEFF;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .form-control {
@@ -46,18 +47,21 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
 #profile-icon {
-  position: absolute;
-  left: 50%; /* Posiciona horizontalmente el ícono al 50% */
-  transform: translateX(-50%); /* Ajuste para centrar exactamente */
-  flex-shrink: 0;
+    position: absolute;
+    left: 50%; /* Posiciona horizontalmente el ícono al 50% */
+    transform: translateX(-50%); /* Ajuste para centrar exactamente */
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .user-icon {
-  left: 0px;
-  width: 177px;
-  height: 177px;
-  object-fit: cover;
-  border-radius: 92px;
+    left: 0px;
+    width: 157px;
+    height: 157px;
+    object-fit: cover;
+    border-radius: 92px;
 }
 
 .edit-icon {
@@ -67,6 +71,12 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
   width: 40px;
   height: 40px;
   object-fit: cover;
+}
+
+.icon-border {
+    position: absolute;
+    width: 187px;
+    height: 187px;
 }
 
 .label {
