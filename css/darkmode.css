@@ -29,7 +29,23 @@ body.active input, body.active .form-control {
 /* my-profile*/
 
 /* product-info */
+/* Estilos para el contenedor del producto en modo oscuro */
+body.active #product-container {
+    background-color: #1e1e1e; /* Fondo oscuro para el contenedor de detalles del producto */
+    color: white; /* Texto blanco */
+}
+/* Estilos para la tarjeta de detalles del producto */
+body.active .product-detail-card {
+    background-color: #292929; /* Fondo oscuro para la tarjeta */
+    color: white; /* Texto en blanco */
+    border: 1px solid #444; /* Borde gris oscuro */
+}
 
+/* Descripción del producto */
+body.active .product-description {
+    background-color: #1e1e1e; /* Fondo oscuro */
+    color: #ddd; /* Texto gris claro */
+}
 /* product-info */
 
 .dark-mode {
