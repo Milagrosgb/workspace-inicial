@@ -295,13 +295,3 @@ document.querySelector(".send-calification").addEventListener("click", ()=>{
     console.log('Sesión cerrada y datos eliminados de localStorage.');
     window.location.href = 'index.html';
 }
-
-// dark mode
-
-const body = document.body;
-const RPtitle = document.getElementsByClassName("titlepr");
-console.log(Array.from(RPtitle));
-
-if (localStorage.getItem('darkMode') === 'enabled') {
-    body.classList.add('active');
-}
