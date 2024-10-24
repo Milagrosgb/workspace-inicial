@@ -10,44 +10,59 @@ body {
 }
 
 body.active {
-    background-color: #2c2c2e;
-    color: white; 
+    --Black: #fafbff;
+    color: #fafbff;
+    --Medium-gray: #fafbff;
+    background-color: #131313; /* Fondo oscuro */
+
 }
 
-/* my-profile*/
+/* Estilos específicos para product-info */
+body.active,
+body.active #product-container,
+body.active .product-detail-card,
+body.active .add-comments-container,
+body.active .calification-message,
+body.active #comments-container,
+body.active .card {
+    color: white; /* Texto en blanco */
+}
+
+/* Estilos específicos para product-detail-card */
+body.active .product-detail-card,
+body.active #comments-container,
+body.active .add-comments-container,
+body.active .card {
+    background-color: #292929;
+    border: 1px solid #444;
+}
+body.active .calification-message {
+    background-color: #131313;
+    border: 1px solid #444;
+}
+body.active .product-detail-card .description-title,
+body.active .product-detail-card .category-title,
+body.active .product-detail-card .product-name-title,
+body.active .product-detail-card .description-text {
+    color: #ffffff;
+}
+body.active .add-to-cart-button{
+    color: #1e1e1e;
+}
+
+/* Estilos específicos para my-profile */
 body.active .user-profile-container {
-    background-color: #1e1e1e; 
-    color: white; 
+    background-color: #1e1e1e;
 }
 
-
-body.active input, body.active .form-control {
+body.active input, 
+body.active .form-control {
     background-color: #333;
-    color: white;
+    color: #fafbff;
     border: 1px solid #555;
 }
-/* my-profile*/
 
-/* product-info */
-/* Estilos para el contenedor del producto en modo oscuro */
-body.active #product-container {
-    background-color: #1e1e1e; /* Fondo oscuro para el contenedor de detalles del producto */
-    color: white; /* Texto blanco */
-}
-/* Estilos para la tarjeta de detalles del producto */
-body.active .product-detail-card {
-    background-color: #292929; /* Fondo oscuro para la tarjeta */
-    color: white; /* Texto en blanco */
-    border: 1px solid #444; /* Borde gris oscuro */
-}
-
-/* Descripción del producto */
-body.active .product-description {
-    background-color: #1e1e1e; /* Fondo oscuro */
-    color: #ddd; /* Texto gris claro */
-}
-/* product-info */
-
+/* Estilos para el botón de modo oscuro */
 .dark-mode {
     width: 50px;
     height: 24px;
@@ -56,11 +71,11 @@ body.active .product-description {
     border-radius: 999px;
     background-color: #dfdede;
     cursor: pointer;
+    transition: background-color 0.5s ease;
 }
 
 body.active .dark-mode {
     background-color: white;
-    transition: background-color 0.5s ease;
 }
 
 .dark-mode .circle {
@@ -70,7 +85,6 @@ body.active .dark-mode {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     background-color: white;
     transform: translate(10%);
     position: relative;
