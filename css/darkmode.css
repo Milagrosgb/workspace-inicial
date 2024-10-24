@@ -51,6 +51,12 @@ body.active .add-to-cart-button{
 }
 
 /* Estilos específicos para my-profile */
+
+body.active #profile-icon .icon-border,
+body.active #profile-icon .edit-icon {
+    filter: invert(100%); 
+}
+
 body.active .user-profile-container {
     background-color: #1e1e1e;
 }
