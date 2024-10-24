@@ -68,6 +68,49 @@ body.active .form-control {
     border: 1px solid #555;
 }
 
+/* Estilos específicos para categories*/
+body.active .list-group-item,
+body.active .btn {
+    background-color: #333;
+    color: #fafbff;
+    border: 1px solid #555;
+}
+body.active .img-thumbnail {
+    background-color: #1e1e1e;
+}
+
+/* Estilos específicos para index*/
+body.active .card-content {
+    background-color: #333;
+    color: #fafbff;
+    border: 1px solid #555;
+}
+body.active .card-content:hover,
+.more-btn-box:hover {
+  box-shadow: 4px 4px 4px 0px rgba(22, 25, 28, 0.25);
+  background: #e685f2;
+  color:#131313;
+}
+body.active .outline-button {
+    background-color: #333;
+    color: #fafbff;
+}
+body.active .outline-button:hover {
+    background-color:#2a49ff;
+    color: #fafbff;
+}
+
+
+/* Estilos específicos para products*/
+body.active #product-search {
+    background-color: #333;
+    color: #fafbff;
+    border: 1px solid #555;
+}
+
+
+
+
 /* Estilos para el botón de modo oscuro */
 .dark-mode {
     width: 50px;
