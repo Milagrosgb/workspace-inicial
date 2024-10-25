@@ -1,0 +1,77 @@
+/*Estilos del carrito de compras*/
+
+.cart-container {
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.products-added{
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 40px;
+
+
+    border-radius: 16px;
+    border: 1px solid #F5F5F5;
+    background: #FAFBFF;
+}
+
+.buy-btn {
+    display: flex;
+    height: 56px;
+    padding: 16px 80px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    border-radius: 40px;
+    border: none;
+    background: #3969FC;
+    /* shadow */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.btn-text {
+    color: #FAFBFF;
+    text-align: center;
+    font-family: Mulish;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+/*DISEÑO RESPONSIVE */
+
+
+@media (min-width: 576px) and (max-width: 992px) {
+
+    .cart-container {
+        display: flex;
+        padding: 0px 40px 40px 40px;
+        align-self: stretch;
+    }
+
+    .products-added{
+    width: 768px;
+    align-items: center;
+    }
+
+    .buy-btn {
+        height: 40px;
+        padding: 16px 40px;
+    }
+
+    .btn-text {
+        font-size: 14px;
+    }
+}
+
+
+
