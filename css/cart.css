@@ -10,8 +10,7 @@
 
 .products-added{
     display: flex;
-    padding: 40px;
-    width: fit-content !important;
+    width: 100%;
     flex-direction: column;
     align-items: flex-end;
     gap: 40px;
@@ -31,16 +30,14 @@
 
 .product {
     display: flex;
-    width: 800px;
+    width: 1000px;
     align-items: center;
     gap: 24px;
 }
 
 .cart-img{
     width: 200px;
-  
     flex-shrink: 0;
-
     border-radius: 9.846px;
 }
 
@@ -55,7 +52,7 @@
    
 .price-qty{
     display: flex;
-    padding-right: 40px;
+
     align-items: center;
     gap: 40px;
     align-self: stretch;
@@ -63,12 +60,12 @@
 
 }
 
-.price-container {
+.price-title {
     display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
-    flex: 1 0 0;
+    width: 100%;
+    justify-content: space-between;
+   
+    
 
     
 }
@@ -190,7 +187,7 @@ line-height: normal;
 
 /*DISEÑO RESPONSIVE */
 
-
+/* TABLETS */
 @media (min-width: 576px) and (max-width: 992px) {
 
     .cart-container {
@@ -215,13 +212,11 @@ line-height: normal;
 
     .product {
         display: flex;
+        width: 600px;
         align-items: center;
         gap: 24px;
         align-self: stretch;
     }
-
-  
-
 
     .buy-btn {
         height: 40px;
@@ -230,6 +225,37 @@ line-height: normal;
 
     .btn-text {
         font-size: 14px;
+    }
+}
+
+/* SMARTPHONE */
+@media (max-width: 575px) {
+
+    .products-added{
+        gap: 0;
+    }
+   
+    .product-info{
+        gap: 0;
+    }
+
+    .product{
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    }
+
+    .cart-img{
+        width: 100px;
+    }
+
+    .price-title{
+        width: 110%;
+    }
+
+    .price-qty{
+        padding: 0;
     }
 }
 

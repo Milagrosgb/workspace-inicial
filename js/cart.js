@@ -20,23 +20,26 @@ let showCartProducts = ()=>{
                 <img src="img/car3.jpg" class="cart-img" alt="" />
         
             <div class="product-info">
-                <h4 class="card-title">Nombre del producto</h4>
-                
+                <div class="price-title">
+                    <h4 class="card-title product-title">Nombre del producto</h4>
+                    <p class="subtitle-1 price">USD 100</p>
+                </div>
                 <div class="price-qty">
-                    <div class="price-container">
-                        <p class="subtitle-1 price">USD 100</p>
-                    </div>
+                   
                     <div class="qty">
                         <button id="menos" class="menos" type="button">-</button>
                         <input type="text"  id="contador" class="form-control contador" value="1" min="1"/>        
                         <button id="mas" class="mas" type="button">+</button>
                     </div>
-                    <div class="final-price">USD 200</div>
+                    <div class="final-price">USD 100</div>
 
                 </div>
             </div>
         </div>
 
+        
+
+        
          
     
     `;
@@ -47,3 +50,4 @@ let showCartProducts = ()=>{
 }
 
 showCartProducts()
+
