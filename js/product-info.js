@@ -295,3 +295,18 @@ document.querySelector(".send-calification").addEventListener("click", ()=>{
     console.log('Sesión cerrada y datos eliminados de localStorage.');
     window.location.href = 'index.html';
 }
+
+function cargarCarrito() {
+    const carritoGuardado = localStorage.getItem('carrito');
+    return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+}
+
+const carrito = cargarCarrito();
+let btnComprar = document.getElementById("btnComprar");
+
+btnComprar.addEventListener("click", ()=>{
+    carrito.push(localStorage.getItem("productID"))
+    localStorage.setItem("carrito", JSON.stringify(carrito))   
+
+    window.location.href = "./cart.html"
+})
