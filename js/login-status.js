@@ -24,7 +24,7 @@ function checkLoginStatus() {
 
 
 
-checkLoginStatus();
+/*checkLoginStatus();
 
 // Esta sería la parte de cerrar sesión, queda comentada para usar a futuro:
 
@@ -33,4 +33,4 @@ checkLoginStatus();
 //     console.log('El usuario cerró sesión y se eliminó la información de la sesión.');
 // }
 
-// logoutUser();
+// logoutUser()*/
