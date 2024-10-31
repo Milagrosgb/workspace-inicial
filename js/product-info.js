@@ -10,8 +10,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
         .then(object => {
             if (object.status === 'ok') {
                 let product = object.data;
-                showProductDetails(product)
-                showRelatedProducts(product)
+                localStorage.setItem("product", JSON.stringify(product))
+                showProductDetails(product);
+                showRelatedProducts(product);
+                
             }
         });
 
@@ -25,6 +27,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
             showComments(commentsStorage);
         });
 });
+
+
 
 
 function showComments(comments) {
@@ -52,6 +56,7 @@ function showComments(comments) {
         commentsContainer.innerHTML += commentHTML;
     });
 }
+
 
 function getStars(score) {
     let starsHTML = "";
@@ -83,7 +88,7 @@ function showProductDetails(product) {
     //Agrega la cantidad de vendidos
     document.querySelector(".product-count").innerHTML = `<span>${product.soldCount}</span>`;
     //Agrega el precio 
-    document.querySelector(".product-cost").innerHTML = `<h4 class="cost-text">$${product.cost}</h4>`;
+    document.querySelector(".product-cost").innerHTML = `<h4 class="cost-text">${product.currency}${product.cost}</h4>`;
 }
 
 //Funcion que agrega las imagenes 
@@ -295,3 +300,31 @@ document.querySelector(".send-calification").addEventListener("click", ()=>{
     console.log('Sesión cerrada y datos eliminados de localStorage.');
     window.location.href = 'index.html';
 }
+
+
+//Desafiate (agregar producto al carrito)
+const carrito = cargarCarrito();
+
+function cargarCarrito() {
+    const carritoGuardado = localStorage.getItem('carrito');
+    return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+}
+
+//Evento boton agregar al carrito
+document.getElementById("cart-btn").addEventListener("click", ()=>{
+    let product = JSON.parse(localStorage.getItem("product"));
+
+    if (carrito.findIndex((element)=> element.id == product.id) !== -1){
+        console.log("El producto ya esta agregado")
+    } else {
+        carrito.push(product)
+        localStorage.setItem("carrito", JSON.stringify(carrito))  
+        console.log("el producto se agrego")
+    }
+})
+
+
+   
+  
+    
+
