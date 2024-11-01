@@ -303,8 +303,6 @@ document.querySelector(".send-calification").addEventListener("click", ()=>{
 
 
 //Desafiate (agregar producto al carrito)
-const carrito = cargarCarrito();
-
 function cargarCarrito() {
     const carritoGuardado = localStorage.getItem('carrito');
     return carritoGuardado ? JSON.parse(carritoGuardado) : [];
@@ -323,8 +321,8 @@ document.getElementById("cart-btn").addEventListener("click", ()=>{
     }
 })
 
+let btnComprar = document.getElementById("btnComprar");
 
-   
-  
-    
-
+btnComprar.addEventListener("click", ()=>{
+    window.location.href = "./cart.html"
+})
