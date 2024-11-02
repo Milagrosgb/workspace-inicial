@@ -40,13 +40,12 @@ let showCartProducts = ()=>{
             </div>
         </div>
 
-    `;     
+    `; 
+    
     });
 
     document.querySelector(".total").innerHTML += ` <h5 class="total-price-text">600 USD</h5>`
 
 }
-
-
 
 
