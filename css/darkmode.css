@@ -32,7 +32,8 @@ body.active .card {
 body.active .product-detail-card,
 body.active #comments-container,
 body.active .add-comments-container,
-body.active .card {
+body.active .card,
+body.active .offcanvas {
     background-color: #292929;
     border: 1px solid #444;
 }
@@ -43,7 +44,8 @@ body.active .calification-message {
 body.active .product-detail-card .description-title,
 body.active .product-detail-card .category-title,
 body.active .product-detail-card .product-name-title,
-body.active .product-detail-card .description-text {
+body.active .product-detail-card .description-text,
+body.active .offcanvas .offcanvas-text {
     color: #ffffff;
 }
 body.active .add-to-cart-button{
