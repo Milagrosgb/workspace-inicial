@@ -333,5 +333,9 @@ let btnComprar = document.getElementById("btnComprar");
 
 btnComprar.addEventListener("click", ()=>{
     agregarCarrito;
-    window.location.href = "./cart.html"
+    irAlCarrito();
 })
+
+function irAlCarrito(){
+    window.location.href = "./cart.html"
+}
