@@ -312,18 +312,18 @@ function cargarCarrito() {
 
 
 //Evento boton agregar al carrito
-document.getElementById("cart-btn").addEventListener("click", agregarCarrito() )
+document.getElementById("cart-btn").addEventListener("click", agregarCarrito)
 
 //funcion que agrega al carrito
 function agregarCarrito (){
     let product = JSON.parse(localStorage.getItem("product"));
-    console.log(carrito)
+    console.log(carrito);
     if (carrito.findIndex((element)=> element.id == product.id) !== -1){
-        console.log("El producto ya esta agregado")
+        console.log("El producto ya esta agregado");
     } else {
         carrito.push(product)
-        localStorage.setItem("carrito", JSON.stringify(carrito))  
-        console.log("el producto se agrego")
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        console.log("el producto se agrego");
     }
 }
     
@@ -332,6 +332,6 @@ function agregarCarrito (){
 let btnComprar = document.getElementById("btnComprar");
 
 btnComprar.addEventListener("click", ()=>{
-    agregarCarrito()
+    agregarCarrito;
     window.location.href = "./cart.html"
 })
