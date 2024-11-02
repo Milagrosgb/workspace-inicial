@@ -88,15 +88,29 @@
             </div>
             <div class="buttons-container">
               <button class="button-text buy-button" id="btnComprar">Comprar</button>
-              <button class="button-text add-to-cart-button" id="cart-btn">Añadir al carrito</button>
+              <button class="button-text add-to-cart-button" id="cart-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" href="#offcanvasExample"  role="button" aria-controls="offcanvasExample">Añadir al carrito</button>
+               
             </div>
             
-        </div>
+        </div>   
+      </div>
+    </div>
+    <!-- OFFcanvas -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title offcanvas-text" id="offcanvasExampleLabel"> ¡El producto esta en el carrito!</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
         
+        <div class="dropdown mt-3">
+          <p class="offcanvas-text">¿Quieres ver tus productos agregados?</p>
+          <button class="button" type="button" onclick="irAlCarrito()">
+            Ir al carrito
+          </button>
+        </div>
+      </div>
     </div>
-  
-    </div>
-
     <!-- Agregar comentarios -->
 
     <div class="add-comments-container">
@@ -136,6 +150,11 @@
     <div id="related-products-container">
 
     </div>
+
+   
+   
+    
+    
   </main>
 
   <footer class="text-muted">

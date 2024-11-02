@@ -18,7 +18,7 @@ function logout() {
 // Funcion que muestra los productos en el carrito de compras
 let showCartProducts = ()=>{
     let products = JSON.parse(localStorage.getItem("carrito"))
-    
+    document.querySelector(".product-list").innerHTML = '';
     products.forEach(product => {
         document.querySelector(".product-list").innerHTML += `
         <div class="product pb-4 border-bottom">
@@ -33,7 +33,9 @@ let showCartProducts = ()=>{
                         <button id="menos" class="menos" type="button">-</button>
                         <input type="text"  id="contador" class="form-control contador" value="1" min="1"/>        
                         <button id="mas" class="mas" type="button">+</button>
+                        <button type="button" class="btn remove-btn" onclick="removeProduct(${product.id})">Eliminar</button>
                     </div>
+                    
                     <div class="final-price">USD 100</div>
 
                 </div>
@@ -43,7 +45,19 @@ let showCartProducts = ()=>{
     `;     
     });
 
-    document.querySelector(".total").innerHTML += ` <h5 class="total-price-text">Aca va el precio total de todos los productos romi</h5>`
+    document.querySelector(".total").innerHTML = ` <h5 class="total-price-text">Aca va el precio total de todos los productos romi</h5>`
+
+}
+
+
+//Funcion que elimina producto del carrito
+function removeProduct(productID){
+    let carrito = JSON.parse(localStorage.getItem("carrito"))
+    let productIndex = carrito.findIndex((element)=> element.id == productID)
+    carrito.splice(productIndex, 1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    showCartProducts();
+    
 
 }
 
