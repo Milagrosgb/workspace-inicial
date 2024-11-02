@@ -1,11 +1,14 @@
 const productID = localStorage.getItem("productID");
 let commentsStorage =[]; //crea una lista vacia donde luego se cargaran los comentarios que realicemos
 
+
 document.addEventListener("DOMContentLoaded", (e) => {
-    savedCalification() //obtiene los comentarios previamente guardados
+    savedCalification(); //obtiene los comentarios previamente guardados
+    cargarCarrito();
     const url = PRODUCT_INFO_URL + productID + EXT_TYPE;
     const commentsURL = PRODUCT_INFO_COMMENTS_URL + productID + ".json";//esta es la url base que apunta a la api donde se almacenan los comentario de los productos
     
+
     getJSONData(url)
         .then(object => {
             if (object.status === 'ok') {
@@ -233,6 +236,8 @@ function savedCalification(){
 }
 
 
+
+
 //Funcion que guarda un nuevo comentario realizado en localStorage y ademas lo muestra
 let setComment = function (){
     //Crea un objeto para almacenar los datos de un nuevo comentario
@@ -303,11 +308,16 @@ document.querySelector(".send-calification").addEventListener("click", ()=>{
 
 
 //Desafiate (agregar producto al carrito)
-let carrito = cargarCarrito();
 
-function cargarCarrito() {
-    const carritoGuardado = localStorage.getItem('carrito');
-    return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+
+function cargarCarrito(){
+    //Crea el carrito
+    if (localStorage.getItem(`carrito`) !== null){
+       carrito = JSON.parse(localStorage.getItem(`carrito`));
+    } else {
+        carrito = []
+    }
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
 
