@@ -309,7 +309,7 @@ document.querySelector(".send-calification").addEventListener("click", ()=>{
 
 //Desafiate (agregar producto al carrito)
 
-// let carrito = cargarCarrito();
+
 function cargarCarrito(){
     //Crea el carrito
     if (localStorage.getItem(`carrito`) !== null){
