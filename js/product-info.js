@@ -303,21 +303,15 @@ document.querySelector(".send-calification").addEventListener("click", ()=>{
 
 
 //Desafiate (agregar producto al carrito)
-let carrito = cargarCarrito();
-
 function cargarCarrito() {
     const carritoGuardado = localStorage.getItem('carrito');
     return carritoGuardado ? JSON.parse(carritoGuardado) : [];
 }
 
-
 //Evento boton agregar al carrito
-document.getElementById("cart-btn").addEventListener("click", agregarCarrito() )
-
-//funcion que agrega al carrito
-function agregarCarrito (){
+document.getElementById("cart-btn").addEventListener("click", ()=>{
     let product = JSON.parse(localStorage.getItem("product"));
-    console.log(carrito)
+
     if (carrito.findIndex((element)=> element.id == product.id) !== -1){
         console.log("El producto ya esta agregado")
     } else {
@@ -325,13 +319,10 @@ function agregarCarrito (){
         localStorage.setItem("carrito", JSON.stringify(carrito))  
         console.log("el producto se agrego")
     }
-}
-    
+})
 
-//Evento boton comprar
 let btnComprar = document.getElementById("btnComprar");
 
 btnComprar.addEventListener("click", ()=>{
-    agregarCarrito()
     window.location.href = "./cart.html"
 })
