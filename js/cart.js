@@ -23,51 +23,6 @@ function showCartProducts() {
         `;
     });
 
-    addListenersToExistingButtons();
-    updateTotal();
-}
+    document.querySelector(".total").innerHTML +=  <h5 class="total-price-text">600 USD</h5>
 
-function addListenersToExistingButtons() {
-    document.querySelectorAll(".product").forEach(productElement => {
-        const menosBtn = productElement.querySelector(".menos");
-        const masBtn = productElement.querySelector(".mas");
-        const contadorInput = productElement.querySelector(".contador");
-        const finalPriceElement = productElement.querySelector(".final-price");
-        const price = parseFloat(finalPriceElement.textContent.replace(/[^0-9.]+/g,"")); // Precio unitario
-        const currency = finalPriceElement.textContent.includes("USD") ? "USD" : "$"; 
-
-        // Actualizar subtotal en función de la cantidad
-        function updateSubtotal() {
-            const cantidad = parseInt(contadorInput.value);
-            finalPriceElement.textContent = `${currency} ${(price * cantidad).toFixed(2)}`;
-            updateTotal();
-        }
-
-        // Se mantienen los botones existentes para actualizar la cantidad
-        masBtn.addEventListener("click", () => {
-            contadorInput.value = parseInt(contadorInput.value) + 1;
-            updateSubtotal();
-        });
-
-        menosBtn.addEventListener("click", () => {
-            if (parseInt(contadorInput.value) > 1) {
-                contadorInput.value = parseInt(contadorInput.value) - 1;
-                updateSubtotal();
-            }
-        });
-
-        contadorInput.addEventListener("input", updateSubtotal);
-    });
-}
-
-function updateTotal() {
-    let total = 0;
-    let currency = document.querySelector(".final-price").textContent.includes("USD") ? "USD" : "$"; 
-
-    document.querySelectorAll(".final-price").forEach(finalPriceElement => {
-        const amount = parseFloat(finalPriceElement.textContent.replace(/[^0-9.]+/g,""));
-        total += amount;
-    });
-
-    document.querySelector(".total").innerHTML = `<h5 class="total-price-text">Total: ${currency} ${total.toFixed(2)}</h5>`;
-}
+} 
