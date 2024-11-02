@@ -30,9 +30,9 @@ let showCartProducts = ()=>{
                 </div>
                 <div class="price-qty">   
                     <div class="qty">
-                        <button id="menos" class="menos" type="button">-</button>
-                        <input type="text"  id="contador" class="form-control contador" value="1" min="1"/>        
-                        <button id="mas" class="mas" type="button">+</button>
+                        <button class="menos" type="button">-</button>
+                        <input type="text" class="form-control contador" value="1" min="1"/>        
+                        <button class="mas" type="button">+</button>
                         <button type="button" class="btn remove-btn" onclick="removeProduct(${product.id})">Eliminar</button>
                     </div>
                     
