@@ -88,7 +88,7 @@ function showProductDetails(product) {
     //Agrega la cantidad de vendidos
     document.querySelector(".product-count").innerHTML = `<span>${product.soldCount}</span>`;
     //Agrega el precio 
-    document.querySelector(".product-cost").innerHTML = `<h4 class="cost-text">${product.currency}${product.cost}</h4>`;
+    document.querySelector(".product-cost").innerHTML = `<h4 class="cost-text">${product.currency} $${product.cost}</h4>`;
 }
 
 //Funcion que agrega las imagenes 
@@ -317,7 +317,8 @@ document.getElementById("cart-btn").addEventListener("click", ()=>{
     } else {
         carrito.push(product)
         localStorage.setItem("carrito", JSON.stringify(carrito))  
-        console.log("el producto se agrego")
+        console.log("El producto se agregó")
+        
     }
 })
 
