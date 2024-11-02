@@ -41,37 +41,13 @@ let showCartProducts = ()=>{
         </div>
 
     `;     
-         total += productCost; 
+
 });
 
-document.querySelector(".total").innerHTML += `<h5 class="total-price-text">${products[0]?.currency} ${total}</h5>`;
+document.querySelector(".total").innerHTML += ` <h5 class="total-price-text">Aca va el precio total de todos los productos romi</h5>`
 
-
-document.querySelectorAll(".contador").forEach((input, index) => {//funcionalidad paraa cambiar cant
-    input.addEventListener("input", () => {
-    const priceText = products[index].currency + ' ' + products[index].cost; //obtener precio del producto
-        const priceValue = parseFloat(priceText.split(' ')[1]); 
-        const quantity = parseInt(input.value); //btener cantidad
-        const subtotal = priceValue * quantity; //calcular subtotal
-    
-        document.querySelectorAll(".subtotal")[index].textContent = subtotal.toFixed(2); //actualiza el subtotal
-        updateTotal(); //actualizar el total
-    });
-});
 }
 
-function updateTotal() {
-let total = 0; //reinicia el total
-const subtotals = document.querySelectorAll(".subtotal");
-const currency = subtotals[0]?.textContent.split(' ')[0];
-
-subtotals.forEach(subtotalElement => {
-    total += parseFloat(subtotalElement.textContent); //sumasubtotales
-});
-
-
-document.querySelector(".total-price-text").textContent = `${currency} ${total.toFixed(2)}`; //vuelve actualizar total defi
-}
 
 
 
