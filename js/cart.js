@@ -69,7 +69,7 @@ subtotals.forEach(subtotalElement => {
     total += parseFloat(subtotalElement.textContent); //sumasubtotales
 });
 
-// Actualizar el total en la interfaz
+
 document.querySelector(".total-price-text").textContent = `${currency} ${total.toFixed(2)}`; //vuelve actualizar total defi
 }
 
