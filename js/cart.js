@@ -44,7 +44,7 @@ let showCartProducts = ()=>{
     
     });
 
-    document.querySelector(".total").innerHTML += ` <h5 class="total-price-text">600 USD</h5>`
+    document.querySelector(".total").innerHTML += ` <h5 class="total-price-text">Aca va el precio total de todos los productos romi</h5>`
 
 }
 
