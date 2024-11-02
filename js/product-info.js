@@ -331,6 +331,7 @@ function agregarCarrito (){
     if (carrito.findIndex((element)=> element.id == product.id) !== -1){
         console.log("El producto ya esta agregado");
     } else {
+        product.quantity= 1
         carrito.push(product)
         localStorage.setItem("carrito", JSON.stringify(carrito));
         console.log("el producto se agrego");
