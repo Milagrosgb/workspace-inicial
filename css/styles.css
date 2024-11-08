@@ -65,6 +65,10 @@ body {
   line-height: normal;
 }
 
+.subtitle-3 {
+  font-size: 18px; 
+}
+
 .label {
   font-family: Mulish;
   font-size: 16px;
