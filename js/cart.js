@@ -26,7 +26,7 @@ let showCartProducts = ()=>{
         document.querySelector("#cart-total").innerHTML = ""
         return 
     }
-    document.querySelector("#finalizar-compra").innerHTML = `<button class="btn-text buy-btn">FINALIZAR COMPRA</button>`
+    document.querySelector("#finalizar-compra").innerHTML = `<button class="btn-text buy-btn primary-button">FINALIZAR COMPRA</button>`
     document.querySelector("#cart-total").innerHTML = `<h5 class="total-text">Total:</h5>`
     products.forEach(product => {
         let productCostInUYU = product.currency === "USD" ? product.cost * 42 : product.cost;

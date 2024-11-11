@@ -255,7 +255,7 @@ nav a {
 #product-list,
 .product-list {
   display: flex;
-  margin: 24px 80px;
+  margin: 24px 0;
   align-items: center;
   gap: 40px;
   align-self: stretch;
@@ -913,6 +913,10 @@ a.custom-card:hover {
     line-height: normal;
   }
 
+  .subtitle-3 {
+    font-size: 16px;
+  }
+
   /* body-large para mobile */
 
   .body-large {
@@ -935,6 +939,7 @@ a.custom-card:hover {
   /* Primary button para mobile */
   .primary-button {
     padding: 14px 40px;
+    font-size: 14px;
   }
 
   .outline-button {
