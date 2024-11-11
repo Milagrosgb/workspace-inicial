@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
+    /* margin: 0 280px; */
 }
 
 .products-added{
@@ -13,12 +14,13 @@
     width: 100%;
     flex-direction: column;
     align-items: flex-end;
-    gap: 40px;
+    gap: 24px;
     margin: 0 80px;
+    padding: 0 80px;
 
 
-    border-radius: 16px;
-    border: 1px solid #F5F5F5;
+    /* border-radius: 16px; 
+    border: 1px solid #F5F5F5; */
     
 }
 .product-list {
@@ -192,10 +194,17 @@ line-height: normal;
 }
 
 .button-container {
-    padding: 0 200px;
+    padding: 0 240px;
+    width: auto;
 }
 
-.mg-80 {
+
+
+.button-container button {
+    min-width: 214px;
+}
+
+.cost-list, .costos-subtitle {
     margin: 0 80px;
 }
 
@@ -210,7 +219,7 @@ hr {
     border: none;
 }
 
-#enviar-button {
+#enviar-direccion-button, #enviar-metodo-button {
     width: 215px;
 }
 
@@ -220,6 +229,46 @@ hr {
   object-fit: contain;
 }
 
+#direccion-container, #pago-container {
+    background-color: #FAFBFF;
+    margin: 0 40px 40px 40px;
+    border: 1px solid #D9D9D9;
+    border-radius: 16px;
+}
+
+.modal-header {
+    height: 40px;
+    padding: 0 16px;
+    border-bottom: none;
+}
+
+.pago-direccion-container {
+    padding: 0 80px;
+}
+
+.custom-modal {
+    max-width: 600px;
+}
+
+.icon-input {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.icon-input input {
+    padding-right: 52px; /* Espacio para el icono */
+  }
+
+#card-icon, #code-icon {
+    position: absolute;
+    right: 14px; /* Alineación del SVG a la derecha del input */
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Evita que el icono bloquee el clic en el input */
+}
+
+
 /*DISEÑO RESPONSIVE */
 
 /* TABLETS */
@@ -227,14 +276,15 @@ hr {
 
     .cart-container {
         display: flex;
-        padding: 0px 40px 40px 40px;
+        /* padding: 0px 40px 40px 40px; */
         align-self: stretch;
     }
 
     .products-added{
-    width: 768px;
+    width: 100%;
     align-items: center;
     padding: 0;
+    margin: 0 40px;
     }
 
     .product-list{
@@ -244,14 +294,41 @@ hr {
     gap: 16px;
     margin: 0;
     align-self: stretch;
+    width: 100%;
     }
 
     .product {
         display: flex;
-        width: 600px;
+        width: 100%;
         align-items: center;
         gap: 24px;
         align-self: stretch;
+    }
+     .button-container {
+        padding: 0;
+        /* gap: 24px; */
+        width: auto;
+     }
+
+     /* .button-container .col {
+        width: auto;
+     } */
+
+     .button-container button {
+        min-width: 214px;
+        max-width: 240px;
+     }
+
+     .pago-direccion-container {
+        padding: 0;
+    }
+
+    .cost-list, .costos-subtitle {
+        margin: 0;
+    }
+    
+    .button {
+        height: 40px;
     }
 
     .buy-btn {
@@ -302,6 +379,53 @@ hr {
 
     .final-price{
         font-size: 15px;
+    }
+
+    .products-added {
+        padding: 0;
+    }
+
+    .pago-direccion-container {
+        padding: 0;
+        width: 100%;
+    }
+
+    .button-container {
+        width: auto;
+        padding: 0 16px;
+        /* gap: 8px; */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button {
+        height: 40px;
+    }
+
+    .button-container button {
+        width: 100%;
+     }
+
+     .costos-subtitle, .cost-list {
+        padding: 0;
+        margin: 0;
+     }
+
+     #finalizar-compra {
+        width: 100%;
+     }
+
+     .buy-btn {
+        font-size: 14px;
+        padding: 16px 40px;
+        width: 100%;
+     }
+
+     #direccion-container, #pago-container {
+        background-color: #FAFBFF;
+        margin: 0 16px 16px 16px;
+        border: 1px solid #D9D9D9;
+        border-radius: 16px;
     }
 }
 
