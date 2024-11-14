@@ -27,7 +27,6 @@
     /* layout */
     display: flex;
     width: 50%;
-    /* padding: 0px 24px; */
     flex-direction: column;
     align-items: center;
     gap: 16px;
@@ -94,9 +93,6 @@
 }
 
 .description-text {
-    /* layout */
-
-
     /* typography */
     color: var(--Dark-gray, #1D2125);
     font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -168,7 +164,6 @@
 .buy-button {
     /* layout */
     display: flex;
-    /* height: 56px; */
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -183,8 +178,6 @@
 .add-to-cart-button {
     /* layout */
     display: flex;
-    /* width: 240px;
-    height: 56px; */
     padding: 13px 18px;
     justify-content: center;
     align-items: center;

@@ -206,7 +206,7 @@ nav a {
 /*    CATEGORIES SECTION -INDEX     */
 
 .categories {
-  margin: 48px 0;
+  margin: 48px;
 }
 
 .h2-container {
@@ -613,7 +613,6 @@ a.custom-card:hover {
 }
 
 #product-search:focus {
-  /* border: none; */
   outline: none;
   box-shadow: 0px 0px 4px 0px #2a49ff;
 }
@@ -647,7 +646,6 @@ a.custom-card:hover {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /* height: 100%; */
   flex-grow: 1;
 }
 
@@ -698,16 +696,6 @@ a.custom-card:hover {
   }
 }
 
-/* @media (max-width: 1200px) {
-  .card-text-hight {
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-    line-height: 120%;
-    max-height: 4.8em;
-    min-height: 4.8em;
-  }
-} */
-
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
@@ -742,7 +730,6 @@ a.custom-card:hover {
   }
 
   .primary-button {
-    /* height: 40px; */
     padding: 14px 40px;
     gap: 16px;
   }
@@ -774,7 +761,6 @@ a.custom-card:hover {
 
   .title-description {
     gap: 8px;
-    /* padding: 16px 24px; */
   }
 
   .card-text-hight {
@@ -1018,7 +1004,6 @@ a.custom-card:hover {
     align-items: center;
     gap: 8px;
     justify-content: center;
-    /* height: 48px; */
   }
 
   .sorting {
