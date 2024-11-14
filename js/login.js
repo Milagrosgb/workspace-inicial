@@ -1,18 +1,26 @@
+//DECLARACION DE VARIABLES Y CONSTANTES
+let inputArray = document.querySelectorAll("input");
+let signBtn = document.getElementById("signBtn");
+let password = document.getElementById("password-input");
+let user = document.getElementById("user-input");
+let eyeOpen = document.getElementById('password-icon-show');
+let eyeClosed = document.getElementById('password-icon-hide');
+
+
+//FUNCION QUE MUESTRA ERROR SI LOS CAMPOS NO ESTAN CORRECTOS
 function showError(input) {
-    const inputBox = input.closest('.input-box');
+    let inputBox = input.closest('.input-box');
     inputBox.classList.add('error'); // agrego la clase eror al contenedor
     document.getElementById("error").style.display = "block";
 }
 
+//FUNCION QUE DEJA DE MOSTRAR EL ERROR EN CASO DE QUE LOS CAMPOS SE CORRIGAN
 function hideError(input) {
-    const inputBox = input.closest('.input-box');
+    let inputBox = input.closest('.input-box');
     inputBox.classList.remove('error'); // remuevo la clase error del contenedor
 }
 
-let inputArray = document.querySelectorAll("input");
-const signBtn = document.getElementById("signBtn");
-
-// Valida que los inputs no estén vacíos y que tengan más de 2 caracteres
+// FUNCION QUE VALIDA QUE LOS CAMPOS SEAN VALIDOS
 function inputValidation() {
     let isValid = true;
 
@@ -28,7 +36,7 @@ function inputValidation() {
     return isValid;
 }
 
-// al apretar ingresar, te lleva a la página principal si es válido
+//AL APRETAR INGRESAR, TE LLEVA A LA PAGINA PRINCIPAL SI ES VALIDO
 signBtn.addEventListener("click", function () {
     if (inputValidation()) {
         // Session storage
@@ -40,12 +48,6 @@ signBtn.addEventListener("click", function () {
         window.location.href = "index.html";
     }
 });
-
-// oobtengo el input contraseña y usuario
-let password = document.getElementById("password-input");
-let user = document.getElementById("user-input");
-const eyeOpen = document.getElementById('password-icon-show');
-const eyeClosed = document.getElementById('password-icon-hide');
 
 // evento que me muestra u oculta contraseña
 document.getElementById("show-hide-button").addEventListener("click", function () {
@@ -60,7 +62,7 @@ document.getElementById("show-hide-button").addEventListener("click", function (
     }
 });
 
-// función que crea un objeto con los datos de log-in usuario y lo guarda en el session storage
+//FUNCION QUE CREA UN OBJETO CON LOS DATOS DEL LOG-IN USUARIO Y LO GUARDA EN EL SESSION STORAGE
 function loginUser(username, token) {
     const userSession = {
         username: username,
@@ -73,16 +75,5 @@ function loginUser(username, token) {
     console.log('Log in correcto y sesión guardada.');
 }
 
-function logout() {
-    console.log('Función de cerrar sesión llamada'); // Agrega esto para verificar
-    localStorage.removeItem('userSession');
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("secondName");
-    localStorage.removeItem("lastName");
-    localStorage.removeItem("secondLastName");
-    localStorage.removeItem("phone");
-    console.log('Sesión cerrada y datos eliminados de localStorage.');
-    window.location.href = 'index.html';
-}
 
 

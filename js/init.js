@@ -7,7 +7,10 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
-document.addEventListener("DOMContentLoaded", cargarMenu)
+document.addEventListener("DOMContentLoaded", ()=> {
+  cargarMenu();
+  
+})
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -43,6 +46,7 @@ let getJSONData = function(url){
 }
 
 
+//FUNCION QUE CARGA EL MENU DESPLEGABLE CON LAS OPCIONES DE IR AL CARRITO Y MI PERFIL
 function cargarMenu(){
   fetch("menu.html")
   .then(response => response.text())
@@ -55,9 +59,7 @@ function cargarMenu(){
   .catch(error => console.error("Error al cargar el menú:", error));
 }
 
-
-// Corroboramos si hay una sesión guardada del usuario, es decir, si está loggeado:
-
+//FUNCION QUE CORROBORA SI HAY UNA SESION GUARDADA DEL USUARIO, ES DECIR, SI ESTA LOGGEADO
 function checkLoginStatus() {
   //Obtenemos los datos guardados de la sesión
   const userSession = JSON.parse(localStorage.getItem('userSession'));
@@ -77,4 +79,69 @@ function checkLoginStatus() {
 
 }
 
-  
+//FUNCION PARA CERRAR SESION
+function logout() {
+  console.log('Función de cerrar sesión llamada'); 
+  localStorage.removeItem('userSession');
+  localStorage.removeItem("firstName");
+  localStorage.removeItem("secondName");
+  localStorage.removeItem("lastName");
+  localStorage.removeItem("secondLastName");
+  localStorage.removeItem("phone");
+  console.log('Sesión cerrada y datos eliminados de localStorage.');
+  window.location.href = 'index.html';
+}
+
+
+//EVENTO DEL BOTON PARA IR HACIA ARRIBA
+// document.addEventListener('scroll', function() {
+//   if(document.documentElement.scrollTop > 100) {
+//    document.querySelector('.go-top-container').classList.add('show-button');
+
+//   } else {
+//    document.querySelector('.go-top-container').classList.remove('show-button');
+//   }
+// });
+
+// document.querySelector('.go-top-container').addEventListener('click', function() {
+//   window.scrollTo({
+//       top: 0,
+//       behavior: 'smooth'
+//   });
+// });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const body = document.body;
+
+  // Verificar si el modo oscuro está activado en localStorage
+  if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('active');
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const darkModeToggle = document.querySelector(".dark-mode");
+  if (darkModeToggle) {
+      const body = document.body;
+
+      // Verificar si el modo oscuro estaba habilitado antes
+      if (localStorage.getItem('darkMode') === 'enabled') {
+          body.classList.add('active');
+      }
+
+      darkModeToggle.addEventListener("click", () => {
+          console.log("Dark mode toggled");
+          body.classList.toggle("active");
+
+          // Guardar el estado en localStorage
+          if (body.classList.contains('active')) {
+              localStorage.setItem('darkMode', 'enabled');
+          } else {
+              localStorage.setItem('darkMode', 'disabled');
+          }
+      });
+    }
+  // } else {
+  //     console.("No se encontró el elemento con la clase 'dark-mode'");
+  // }
+});

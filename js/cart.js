@@ -1,21 +1,9 @@
+//EVENTO AL CARGAR LA PAGINA
 window.addEventListener("DOMContentLoaded", ()=>{
     showCartProducts()
 })
 
-function logout() {
-    console.log('Función de cerrar sesión llamada'); 
-    localStorage.removeItem('userSession');
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("secondName");
-    localStorage.removeItem("lastName");
-    localStorage.removeItem("secondLastName");
-    localStorage.removeItem("phone");
-    console.log('Sesión cerrada y datos eliminados de localStorage.');
-    window.location.href = 'index.html';
-}
-
-
-// Funcion que muestra los productos en el carrito de compras
+//FUNCION QUE MUESTRA LOS PRODUCTOS EN EL CARRITO DE COMPRAS
 let showCartProducts = ()=>{ 
     let totalCost=0
     document.querySelector(".product-list").innerHTML =""
@@ -62,7 +50,7 @@ let showCartProducts = ()=>{
 
 }
 
-// Funcion para aumentar la cantidad de un producto
+//FUNCION PARA AUMENTAR LA CANTIDAD DE UN PRODUCTO
 function increaseQuantity(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || []
     let product = carrito.find(element => element.id === productID)
@@ -76,20 +64,16 @@ function increaseQuantity(productID) {
     }
  }
  
- // Función para disminuir la cantidad
+ //FUNCION PARA DISMINUIR LA CANTIDAD
 function decreaseQuantity(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let product = carrito.find(element => element.id === productID);
-
- 
-    if (product) {
-        
+    if (product) {  
         if (product.quantity > 1) {
             product.quantity -= 1;
         } else {
             carrito = carrito.filter(element => element.id !== productID);
-        }
-       
+        }  
         localStorage.setItem("carrito", JSON.stringify(carrito));
         showCartProducts()
     }
@@ -97,15 +81,13 @@ function decreaseQuantity(productID) {
  
 
 
-//Funcion que elimina producto del carrito
+//FUNCION QUE ELIMINA EL PRODUCTO DE EL CARRITO
 function removeProduct(productID){
     let carrito = JSON.parse(localStorage.getItem("carrito"))
     let productIndex = carrito.findIndex((element)=> element.id == productID)
     carrito.splice(productIndex, 1);
     localStorage.setItem("carrito", JSON.stringify(carrito));
     showCartProducts();
-    
-
 }
 
 

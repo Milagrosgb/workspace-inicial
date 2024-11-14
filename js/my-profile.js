@@ -1,44 +1,10 @@
-
-
-
-
-function logout() {
-    console.log('Función de cerrar sesión llamada'); 
-    localStorage.removeItem('userSession');
-    console.log('Sesión cerrada y datos eliminados de localStorage.');
-    window.location.href = 'index.html';
-}
-
+//DECLARACION DE VARIABLES Y CONSTANTES
 const image = document.getElementById("profile-picture");
 const imagePreview = "img/user-icon-generic.png";
 
-// al cargar la página, chequea si hay alguna imagen cargada en local storage, de no ser así, carga la imagen genérica.
+//EVENTO AL CARGAR LA PAGINA
 document.addEventListener("DOMContentLoaded", function() {
-    const imageSource = localStorage.getItem("profilePicture");
-    image.src = imageSource ? imageSource : imagePreview;
-});
-
-// función que permite que al hacer click en el botón de modificar imagen, se cargue desde la pc local una imagen, que se guardará el local storage en formato base64.
-document.getElementById('change-picture-icon').addEventListener('click', function() {
-    document.getElementById('fileInput').click(); 
-});
-
-document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0]; 
-    console.log(file);
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            let base64img = e.target.result;
-            localStorage.setItem("profilePicture", base64img);
-            image.src = base64img; 
-        }
-        reader.readAsDataURL(file); 
-
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
+    
     // Obtener los datos de la sesión desde localStorage
     const userSession = JSON.parse(localStorage.getItem('userSession')); // Solo necesitas parsear una vez
     const emailField = document.getElementById("email");
@@ -88,15 +54,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
         alert("Los datos se han guardado correctamente.");
     });
+
+    //AL CARGAR LA PAGINA, CHEQUEA SI HAY ALGINA IMAGEN CARGADA EN EL LOCALSTORAGE, DE NO SER ASI, CARGA LA IMAGEN GENERICA
+    const imageSource = localStorage.getItem("profilePicture");
+    image.src = imageSource ? imageSource : imagePreview;
 });
-function logout() {
-    console.log('Función de cerrar sesión llamada'); 
-    localStorage.removeItem('userSession');
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("secondName");
-    localStorage.removeItem("lastName");
-    localStorage.removeItem("secondLastName");
-    localStorage.removeItem("phone");
-    console.log('Sesión cerrada y datos eliminados de localStorage.');
-    window.location.href = 'index.html';
-}
+
+/*FUNCION QUE PERMITE AL HACER CLICK EN EL BOTON DE MODIFICAR IMAGEN, SE CARGUE DESDE LA PC 
+LOCAL UNA IMAGEN, QUE SE GUARDARA EN EL LOCAL STORAGE EN FORMATO BASE64 */
+document.getElementById('change-picture-icon').addEventListener('click', function() {
+    document.getElementById('fileInput').click(); 
+});
+
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0]; 
+    console.log(file);
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            let base64img = e.target.result;
+            localStorage.setItem("profilePicture", base64img);
+            image.src = base64img; 
+        }
+        reader.readAsDataURL(file); 
+
+    }
+});
+
+
