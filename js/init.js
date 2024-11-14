@@ -7,6 +7,8 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
+document.addEventListener("DOMContentLoaded", cargarMenu)
+
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -39,3 +41,40 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+function cargarMenu(){
+  fetch("menu.html")
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById("menu-placeholder").innerHTML = data;
+        if (document.getElementById("user-name")) {
+          checkLoginStatus();
+      }
+  })
+  .catch(error => console.error("Error al cargar el menú:", error));
+}
+
+
+// Corroboramos si hay una sesión guardada del usuario, es decir, si está loggeado:
+
+function checkLoginStatus() {
+  //Obtenemos los datos guardados de la sesión
+  const userSession = JSON.parse(localStorage.getItem('userSession'));
+
+  //Corroboramos si existe una sesión guardada, y si el usuario inició sesión:
+  if (userSession && userSession.loggedIn) {
+      console.log(`Bienvenido/a, ${userSession.username}`);
+
+      // Si no está loggeado, es redirigido a login-html
+  } else {
+      window.location.href= "login.html"
+      console.log('El usuario no tiene una sesión iniciada. Redirigir al log-in');
+  }
+  
+      // Desafíate entrega 2, mostrar usuario el parte derecha del navbar
+      document.getElementById('user-name').textContent = userSession.username;
+
+}
+
+  
