@@ -77,9 +77,8 @@ function getStars(score) {
 
 //FUNCION QUE MUESTRA LA INFORMACION DE UN PRODUCTO
 function showProductDetails(product) {
-    //VERIFICA SI PRODUCT.IMAGES ES UNA URL VÁLIDA
-    console.log("Image URL:", product.images); // VERIFICA LA URL DE LA IMAGEN
-    console.log(product); // VERIFICA LA ESCTRUCTURA DEL PRODUCTO
+    console.log("Image URL:", product.images); // Verifica la url de la imagen
+    console.log(product); // Verifica la esctructura del producto
     //Agrega la imagen grande
     document.querySelector(".product-images-container").innerHTML += `<img class="big-product-image" id="bigImg"  src="${product.images[0]}" alt="${product.name}" />`;
     //Agrega las imagenes en miniatura
@@ -158,14 +157,14 @@ function starCalification(stars){
     }
 }
 
-//FUNCION QUE RESETEA LAS ESTRELLAS
+//FUNCIÓN QUE RESETEA LAS ESTRELLAS, ES DECIR LES QUITA LA SELECCION
 function resetStars() {
     stars.forEach(star => {
         star.classList.remove('checked');
     });
 }
 
-
+//FUNCIÓN QUE AL SELECCIONAR LAS ESTRELLAS LAS DEJA MARCADAS
 function setSelectedStars() {
     stars.forEach(star => {
         if (star.classList.contains('selected')) {
@@ -175,7 +174,7 @@ function setSelectedStars() {
     });
 }
 
-//FUNCION QUE MUESTRA PRODUCTOS RELACIONADOS
+//FUNCIÓN QUE MUESTRA PRODUCTOS RELACIONADOS
 function showRelatedProducts(product) {
     const container = document.getElementById('related-products-container');
     
@@ -232,7 +231,7 @@ function showRelatedProducts(product) {
     }
 }
 
-//FUNCION QUE CARGA LAS CALIFICACIONES GUARDADAS EN EL LOCALSTORAGE
+//FUNCIÓN QUE CARGA LAS CALIFICACIONES GUARDADAS EN EL LOCALSTORAGE
 function savedCalification(){
     //Guarda en un array el contenido de localStorage (comentarios realizados)
     if (localStorage.getItem(`califications${productID}`) !== null){
@@ -240,7 +239,7 @@ function savedCalification(){
     };
 }
 
-//FUNCION QUE GUARDA UN NUEVO COMENTARIO REALIZADO EN LOCALSTORAGE Y ADEMAS LO MUESTRA
+//FUNCIÓN QUE GUARDA UN NUEVO COMENTARIO REALIZADO EN LOCALSTORAGE Y ADEMÁS LO MUESTRA
 let setComment = function (){
     //Crea un objeto para almacenar los datos de un nuevo comentario
     let newComment = {product:"", score:"", description:"", user:"", dateTime: ""  };
@@ -318,7 +317,7 @@ function agregarCarrito (){
     }
 }
     
-//EBENTO BOTON COMPRAR
+//EVENTO BOTON COMPRAR
 let btnComprar = document.getElementById("btnComprar");
 btnComprar.addEventListener("click", ()=>{
     agregarCarrito();

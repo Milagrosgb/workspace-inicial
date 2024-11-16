@@ -46,7 +46,7 @@ let getJSONData = function(url){
 }
 
 
-//FUNCION QUE CARGA EL MENU DESPLEGABLE CON LAS OPCIONES DE IR AL CARRITO Y MI PERFIL
+//FUNCIÓN QUE CARGA EL MENU DESPLEGABLE CON LAS OPCIONES DE IR AL CARRITO Y MI PERFIL
 function cargarMenu(){
   fetch("menu.html")
   .then(response => response.text())
@@ -59,7 +59,7 @@ function cargarMenu(){
   .catch(error => console.error("Error al cargar el menú:", error));
 }
 
-//FUNCION QUE CORROBORA SI HAY UNA SESION GUARDADA DEL USUARIO, ES DECIR, SI ESTA LOGGEADO
+//FUNCIÓN QUE CORROBORA SI HAY UNA SESION GUARDADA DEL USUARIO, ES DECIR, SI ESTA LOGGEADO
 function checkLoginStatus() {
   //Obtenemos los datos guardados de la sesión
   const userSession = JSON.parse(localStorage.getItem('userSession'));
@@ -79,7 +79,7 @@ function checkLoginStatus() {
 
 }
 
-//FUNCION PARA CERRAR SESION
+//FUNCIÓN PARA CERRAR SESION
 function logout() {
   console.log('Función de cerrar sesión llamada'); 
   localStorage.removeItem('userSession');
@@ -94,21 +94,21 @@ function logout() {
 
 
 //EVENTO DEL BOTON PARA IR HACIA ARRIBA
-// document.addEventListener('scroll', function() {
-//   if(document.documentElement.scrollTop > 100) {
-//    document.querySelector('.go-top-container').classList.add('show-button');
+document.addEventListener('scroll', function() {
+  if(document.documentElement.scrollTop > 100) {
+   document.querySelector('.go-top-container').classList.add('show-button');
 
-//   } else {
-//    document.querySelector('.go-top-container').classList.remove('show-button');
-//   }
-// });
+  } else {
+   document.querySelector('.go-top-container').classList.remove('show-button');
+  }
+});
 
-// document.querySelector('.go-top-container').addEventListener('click', function() {
-//   window.scrollTo({
-//       top: 0,
-//       behavior: 'smooth'
-//   });
-// });
+document.querySelector('.go-top-container').addEventListener('click', function() {
+  window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
+});
 
 document.addEventListener("DOMContentLoaded", function() {
   const body = document.body;
@@ -141,7 +141,4 @@ document.addEventListener("DOMContentLoaded", function() {
           }
       });
     }
-  // } else {
-  //     console.("No se encontró el elemento con la clase 'dark-mode'");
-  // }
 });

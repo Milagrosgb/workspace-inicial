@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     showCartProducts()
 })
 
-//FUNCION QUE MUESTRA LOS PRODUCTOS EN EL CARRITO DE COMPRAS
+//FUNCIÓN QUE MUESTRA LOS PRODUCTOS EN EL CARRITO DE COMPRAS
 let showCartProducts = ()=>{ 
     let totalCost=0
     document.querySelector(".product-list").innerHTML =""
@@ -50,7 +50,7 @@ let showCartProducts = ()=>{
 
 }
 
-//FUNCION PARA AUMENTAR LA CANTIDAD DE UN PRODUCTO
+//FUNCIÓN PARA AUMENTAR LA CANTIDAD DE UN PRODUCTO
 function increaseQuantity(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || []
     let product = carrito.find(element => element.id === productID)
@@ -64,7 +64,7 @@ function increaseQuantity(productID) {
     }
  }
  
- //FUNCION PARA DISMINUIR LA CANTIDAD
+ //FUNCIÓN PARA DISMINUIR LA CANTIDAD
 function decreaseQuantity(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let product = carrito.find(element => element.id === productID);
@@ -81,7 +81,7 @@ function decreaseQuantity(productID) {
  
 
 
-//FUNCION QUE ELIMINA EL PRODUCTO DE EL CARRITO
+//FUNCIÓN QUE ELIMINA EL PRODUCTO DE EL CARRITO
 function removeProduct(productID){
     let carrito = JSON.parse(localStorage.getItem("carrito"))
     let productIndex = carrito.findIndex((element)=> element.id == productID)

@@ -66,6 +66,7 @@ document.getElementById('change-picture-icon').addEventListener('click', functio
     document.getElementById('fileInput').click(); 
 });
 
+//FUNCIÓN PARA CAMBIAR LA IMAGEN DE PERFIL
 document.getElementById('fileInput').addEventListener('change', function(event) {
     const file = event.target.files[0]; 
     console.log(file);

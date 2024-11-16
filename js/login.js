@@ -7,20 +7,20 @@ let eyeOpen = document.getElementById('password-icon-show');
 let eyeClosed = document.getElementById('password-icon-hide');
 
 
-//FUNCION QUE MUESTRA ERROR SI LOS CAMPOS NO ESTAN CORRECTOS
+//FUNCIÓN QUE MUESTRA ERROR SI LOS CAMPOS NO ESTAN CORRECTOS
 function showError(input) {
     let inputBox = input.closest('.input-box');
     inputBox.classList.add('error'); // agrego la clase eror al contenedor
     document.getElementById("error").style.display = "block";
 }
 
-//FUNCION QUE DEJA DE MOSTRAR EL ERROR EN CASO DE QUE LOS CAMPOS SE CORRIGAN
+//FUNCIÓN QUE DEJA DE MOSTRAR EL ERROR EN CASO DE QUE LOS CAMPOS SE CORRIGAN
 function hideError(input) {
     let inputBox = input.closest('.input-box');
     inputBox.classList.remove('error'); // remuevo la clase error del contenedor
 }
 
-// FUNCION QUE VALIDA QUE LOS CAMPOS SEAN VALIDOS
+//FUNCIÓN QUE VALIDA QUE LOS CAMPOS SEAN VALIDOS
 function inputValidation() {
     let isValid = true;
 
@@ -62,7 +62,7 @@ document.getElementById("show-hide-button").addEventListener("click", function (
     }
 });
 
-//FUNCION QUE CREA UN OBJETO CON LOS DATOS DEL LOG-IN USUARIO Y LO GUARDA EN EL SESSION STORAGE
+//FUNCIÓN QUE CREA UN OBJETO CON LOS DATOS DEL LOG-IN USUARIO Y LO GUARDA EN EL SESSION STORAGE
 function loginUser(username, token) {
     const userSession = {
         username: username,

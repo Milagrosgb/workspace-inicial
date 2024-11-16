@@ -1,8 +1,8 @@
 //DECLARACION DE VARIABLES Y CONSTANTES
 let pageTitle = document.querySelector('.h2');
 let listEl = document.querySelector('#product-list');
-let currentProductsArray = []; //Actual array de productos 
-let originalArray = []; //Array original de productos
+let currentProductsArray = []; //ACTUAL ARRAY DE PRODUCTOS (CON O SIN FILTROS)
+let originalArray = []; //ARRAY ORIGINAL DE PRODUCTOS
 //FILTROS
 let minCount = undefined;
 let maxCount = undefined;
@@ -129,7 +129,7 @@ function resetProducts (){
   }
 }
 
-//EVENTO DEL BUSCADOR
+//EVENTOS DEL BUSCADOR
 searchInput.addEventListener('input', filterResults);
 searchButton.addEventListener('click', filterResults);
 
