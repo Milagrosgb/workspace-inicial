@@ -1,9 +1,19 @@
-window.addEventListener("DOMContentLoaded", ()=>{
+window.addEventListener("DOMContentLoaded", () => {
     showCartProducts()
+
+    let radios = document.getElementsByName('tipo-envio');
+    let valorSeleccionado = '';
+    for (let radio of radios) {
+        if (radio.checked) {
+            valorSeleccionado = radio.value;
+            break;
+        }
+    }
+    actualizarCostos(valorSeleccionado)
 })
 
 function logout() {
-    console.log('Función de cerrar sesión llamada'); 
+    console.log('Función de cerrar sesión llamada');
     localStorage.removeItem('userSession');
     localStorage.removeItem("firstName");
     localStorage.removeItem("secondName");
@@ -16,22 +26,22 @@ function logout() {
 
 
 // Funcion que muestra los productos en el carrito de compras
-let showCartProducts = ()=>{ 
-    let totalCost=0
-    document.querySelector(".product-list").innerHTML =""
+let showCartProducts = () => {
+    let totalCost = 0
+    document.querySelector(".product-list").innerHTML = ""
     let products = JSON.parse(localStorage.getItem("carrito"))
-    if (products===null || products.length=== 0){
+    if (products === null || products.length === 0) {
         document.querySelector(".product-list").innerHTML = `<h3>Carrito vacio, encontra lo que buscas en el siguiente enlace </h3><a class="primary-button button-font" href="categories.html">DESCUBRIR MÁS</a>`
         document.querySelector("#finalizar-compra").innerHTML = ""
         document.querySelector("#cart-total").innerHTML = ""
-        return 
+        return
     }
     document.querySelector("#finalizar-compra").innerHTML = `<button class="btn-text buy-btn primary-button">FINALIZAR COMPRA</button>`
     document.querySelector("#cart-total").innerHTML = `<h5 class="total-text">Total:</h5>`
     products.forEach(product => {
         let productCostInUYU = product.currency === "USD" ? product.cost * 42 : product.cost;
         totalCost += productCostInUYU * product.quantity;
-        productTotal = (product.cost* product.quantity)
+        productTotal = (product.cost * product.quantity)
         //aca sumo la cantidad de productos de cada uno
         document.querySelector(".product-list").innerHTML += `
         <div class="product pb-4 border-bottom">
@@ -55,10 +65,10 @@ let showCartProducts = ()=>{
             </div>
         </div>
 
-    `;     
+    `;
     });
-    document.querySelector("#cart-total").innerHTML=`TOTAL UYU ${totalCost}`
-   
+    document.querySelector("#cart-total").innerHTML = `TOTAL UYU ${totalCost}`
+
 
 }
 
@@ -66,48 +76,105 @@ let showCartProducts = ()=>{
 function increaseQuantity(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || []
     let product = carrito.find(element => element.id === productID)
- 
- 
+
     if (product) {
         localStorage.removeItem("carrito")
         product.quantity += 1
         localStorage.setItem("carrito", JSON.stringify(carrito));
         showCartProducts();
     }
- }
- 
- // Función para disminuir la cantidad
+
+    let radios = document.getElementsByName('tipo-envio');
+    let valorSeleccionado = '';
+    for (let radio of radios) {
+        if (radio.checked) {
+            valorSeleccionado = radio.value;
+            break;
+        }
+    }
+    actualizarCostos(valorSeleccionado)
+}
+
+// Función para disminuir la cantidad
 function decreaseQuantity(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let product = carrito.find(element => element.id === productID);
 
- 
+
     if (product) {
-        
+
         if (product.quantity > 1) {
             product.quantity -= 1;
         } else {
             carrito = carrito.filter(element => element.id !== productID);
         }
-       
+
         localStorage.setItem("carrito", JSON.stringify(carrito));
         showCartProducts()
     }
- }
- 
-
-
-//Funcion que elimina producto del carrito
-function removeProduct(productID){
-    let carrito = JSON.parse(localStorage.getItem("carrito"))
-    let productIndex = carrito.findIndex((element)=> element.id == productID)
-    carrito.splice(productIndex, 1);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    showCartProducts();
-    
-
+    let radios = document.getElementsByName('tipo-envio');
+    let valorSeleccionado = '';
+    for (let radio of radios) {
+        if (radio.checked) {
+            valorSeleccionado = radio.value;
+            break;
+        }
+    }
+    actualizarCostos(valorSeleccionado)
 }
 
 
 
+//Funcion que elimina producto del carrito
+function removeProduct(productID) {
+    let carrito = JSON.parse(localStorage.getItem("carrito"))
+    let productIndex = carrito.findIndex((element) => element.id == productID)
+    carrito.splice(productIndex, 1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    showCartProducts();
+    let radios = document.getElementsByName('tipo-envio');
+    let valorSeleccionado = '';
+    for (let radio of radios) {
+        if (radio.checked) {
+            valorSeleccionado = radio.value;
+            break;
+        }
+    }
+    actualizarCostos(valorSeleccionado)
 
+}
+
+let tiposEnvios = document.getElementsByName("tipo-envio")
+tiposEnvios.forEach(elemento => {
+    elemento.addEventListener("change", (e) => {
+        actualizarCostos(e.currentTarget.value)
+    })
+})
+
+function actualizarCostos(valorSeleccionado) {
+    let mostrarSubtotal = document.getElementById("costo-subtotal");
+    let envio = document.getElementById("costo-envio");
+    let total = document.getElementById("costo-total");
+    let products = JSON.parse(localStorage.getItem("carrito"));
+    let subtotal = 0;
+    products.forEach(product => {
+        subtotal += product.cost * product.quantity;
+    })
+    mostrarSubtotal.innerText = `$${subtotal}`;
+    let costoEnvio = 0;
+    switch (valorSeleccionado) {
+        case "premium":
+            costoEnvio = subtotal * 0.15;
+            break;
+        case "express":
+            costoEnvio = subtotal * 0.07;
+            break;
+        case "standard":
+            costoEnvio = subtotal * 0.05;
+            break;
+        default:
+            break;
+    }
+    envio.innerText = `$${costoEnvio.toFixed(2)}`;
+    total.innerText = `$${(subtotal + costoEnvio).toFixed(2)}`;
+}

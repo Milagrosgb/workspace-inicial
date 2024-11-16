@@ -343,7 +343,7 @@ function agregarCarrito (){
 let btnComprar = document.getElementById("btnComprar");
 
 btnComprar.addEventListener("click", ()=>{
-    agregarCarrito;
+    agregarCarrito();
     irAlCarrito();
 })
 
