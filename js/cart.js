@@ -20,6 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     });
 
+    
 
 // FUNCIÓN QUE MUESTRA LOS PRODUCTOS DEL CARRTIO DE COMPRAS
 let showCartProducts = ()=>{ 
@@ -170,25 +171,6 @@ document.querySelector("#finalizar-compra-submit").addEventListener("click",(eve
       showCartProducts()
     }
   });
-
-  //id="codigo-tarjeta" id="validez-tarjeta"  id="numero-tarjeta" id="nombre-tarjeta"
-            
-
-
-          
-  
-  
-  
-  
-  
-  
-
-let tiposEnvios = document.getElementsByName("tipo-envio")
-tiposEnvios.forEach(elemento => {
-    elemento.addEventListener("change", (e) => {
-        actualizarCostos(e.currentTarget.value)
-    })
-})
 
 function actualizarCostos(valorSeleccionado) {
     let mostrarSubtotal = document.getElementById("costo-subtotal");
