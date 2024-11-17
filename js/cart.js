@@ -24,9 +24,10 @@ let showCartProducts = ()=>{
         document.querySelector(".product-list").innerHTML = `<h3>Carrito vacio, encontra lo que buscas en el siguiente enlace </h3><a class="primary-button button-font" href="categories.html">DESCUBRIR MÁS</a>`
         document.querySelector("#finalizar-compra").innerHTML = ""
         document.querySelector("#cart-total").innerHTML = ""
+        document.querySelector("#cost-section").style.display = "none"
         return 
     }
-    document.querySelector("#finalizar-compra").innerHTML = `<button class="btn-text buy-btn primary-button">FINALIZAR COMPRA</button>`
+    document.querySelector("#cost-section").style.display = "block"
     document.querySelector("#cart-total").innerHTML = `<h5 class="total-text">Total:</h5>`
     products.forEach(product => {
         let productCostInUYU = product.currency === "USD" ? product.cost * 42 : product.cost;
@@ -108,6 +109,43 @@ function removeProduct(productID){
 
 }
 
+document.querySelector("#finalizar-compra-submit").addEventListener("click",(event)=>{
+    event.preventDefault();
+    const camposDireccion = ['calle', 'numero', 'localidad', 'departamento']; 
+    const camposTarjeta = ['codigo-tarjeta', 'validez-tarjeta', 'numero-tarjeta', 'nombre-tarjeta'];
+    const errores = [];
+    const opcionTarjeta = document.getElementById("credit-card").checked 
+    const campos = opcionTarjeta?[...camposDireccion,...camposTarjeta]:camposDireccion
+    console.log(campos)
+    campos.forEach(id => {
+      const campo = document.getElementById(id);
+      if (campo.value.trim() === '') {
+        errores.push(`El campo ${id} está vacío.`);
+        campo.style.borderColor = 'red'; // Resalta el campo vacío
+      } else {
+        campo.style.borderColor = ''; // Limpia el estilo si ya está lleno
+      }
+    });
+      const contenedorErrores = document.getElementById('errores');
+    if (errores.length > 0) {
+      contenedorErrores.innerHTML = errores.join('<br>'); // Une los errores con un salto de línea
+      alert('Error: revise los campos requeridos.')
+    } else {
+      contenedorErrores.innerHTML = '';
+      alert('Compra realizada con éxito.');
+      localStorage.removeItem("carrito")
+      showCartProducts()
+    }
+  });
+
+  //id="codigo-tarjeta" id="validez-tarjeta"  id="numero-tarjeta" id="nombre-tarjeta"
+            
 
 
-
+          
+  
+  
+  
+  
+  
+  

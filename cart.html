@@ -86,7 +86,7 @@
           </div>
           <div id="cart-total" class="total"></div>
         </div>
-
+        <div id="cost-section">
         <!-- Tipos de envío -->
         <div class="container row px-0 pt-3">
           <div class="col-12 col-md-6 py-4 d-flex justify-content-center align-items-center subtitle-2">
@@ -152,26 +152,30 @@
         <div class="container mb-5 mt-3">
           <div class="col-12 subtitle-2 costos-subtitle mb-2">Costos</div>
           <div class="cost-list row">
-            <div class="col px-0 body-light m-auto">Subtotal</div>
+            <div  class="col px-0 body-light m-auto" id="subtotal">Subtotal</div>
             <div class="col px-0 justify-content-end text-end">
               <b>COMPLETAR</b>
             </div>
           </div>
           <div class="cost-list row">
-            <div class="col px-0 body-light m-auto">Costo de envío</div>
+            <div  class="col px-0 body-light m-auto" id="shipping-cost">Costo de envío</div>
             <div class="col px-0 justify-content-end text-end">
               <b>COMPLETAR</b>
             </div>
           </div>
           <div class="cost-list row">
-            <div class="col px-0 body-light m-auto">Total</div>
+            <div class="col px-0 body-light m-auto" id="total">Total</div>
             <div class="col px-0 justify-content-end text-end">
               <b>COMPLETAR</b>
             </div>
           </div>
         </div>
 
-        <div id="finalizar-compra"></div>
+        <div id="finalizar-compra"> 
+          <button id="finalizar-compra-submit" btn-fc class="btn-text buy-btn primary-button">FINALIZAR COMPRA</button>
+       <div id="errores" class="mt-3 text-danger"></div>
+        </div>
+      </div>
       </div>
     </main>
 
@@ -190,31 +194,31 @@
       <div id="direccion-container" class="pt-4">
         <h1 class="modal-title fs-5 subtitle-2 text-center" id="exampleModalLabel">Dirección de envío</h1>
         <div class="modal-body pb-4 pt-2">
-          <form>
+          <form id="formulario-direccion"> 
             <div class="mb-3">
               <label for="departamento" class="col-form-label subtitle-3">Departamento:</label>
-              <input type="text" class="form-control" id="departamento" placeholder="Departamento">
+              <input type="text" class="form-control" id="departamento" placeholder="Departamento" required>
             </div>
             <div class="mb-3">
               <label for="localidad" class="col-form-label subtitle-3">Localidad:</label>
-              <input type="text" class="form-control" id="localidad" placeholder="Localidad">
+              <input type="text" class="form-control" id="localidad" placeholder="Localidad" required>
             </div>
             
             
             <div class="form-row row">
               <div class="form-group col-md-6">
                 <label for="calle" class="col-form-label subtitle-3">Calle:</label>
-                <input type="text" class="form-control" id="calle" placeholder="Calle">
+                <input type="text" class="form-control" id="calle" placeholder="Calle" required>
               </div>
               <div class="form-group col-md-6">
                 <label for="numero" class="col-form-label subtitle-3">Número:</label>
-                <input type="text" class="form-control" id="numero" placeholder="Número">
+                <input type="text" class="form-control" id="numero" placeholder="Número" required>
               </div>
             </div>
             
             <div class=" container d-flex justify-content-center pt-4">
   
-              <button type="button" class="button" id="enviar-direccion-button">Enviar</button>
+              <button type="button" class="button" id="enviar-direccion-button" data-bs-dismiss="modal">Guardar</button>
             </div>
             
           </form>
@@ -248,7 +252,7 @@
                     id="credit-card"
                     checked
                   />
-                  <label class="form-check-label subtitle-3" for="credit-card">
+                  <label id="opcion-tarjeta" class="form-check-label subtitle-3" for="credit-card">
                     Tarjeta de crédito
                   </label>
                 </div>
@@ -273,12 +277,12 @@
                 <div class="form-row row">
                   <div class="form-group col-md-6">
                     <label for="validez-tarjeta" class="col-form-label subtitle-3">Válido hasta:</label>
-                    <input type="number" class="form-control" id="validez-tarjeta" placeholder="MM/AA">
+                    <input type="number" class="form-control" id="validez-tarjeta" id="fecha-expiracion"  placeholder="MM/AA">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="codigo-tarjeta" class="col-form-label subtitle-3">Código de seguridad:</label>
                     <div class="icon-input">
-                      <input type="password" class="form-control" id="codigo-tarjeta" placeholder="***">
+                      <input type="password" class="form-control" id="codigo-tarjeta" id="codigo-seguridad" placeholder="***">
                       <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none" id="code-icon">
                         <path d="M13.5 18V13.5M13.5 9H13.5113M24.75 13.5C24.75 19.7132 19.7132 24.75 13.5 24.75C7.2868 24.75 2.25 19.7132 2.25 13.5C2.25 7.2868 7.2868 2.25 13.5 2.25C19.7132 2.25 24.75 7.2868 24.75 13.5Z" stroke="#BBBFCC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
@@ -318,7 +322,7 @@
             
             <div class=" container d-flex justify-content-center pt-4">
 
-              <button type="button" class="button" id="enviar-metodo-button">Enviar</button>
+              <button type="button" class="button" id="enviar-metodo-button" data-bs-dismiss="modal">Guardar</button>
             </div>
             
           </form>
