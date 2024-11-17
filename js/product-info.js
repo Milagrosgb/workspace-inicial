@@ -1,25 +1,28 @@
-const productID = localStorage.getItem("productID");
+//DECLARACION DE VARIABLES Y CONSTANTES
+let productID = localStorage.getItem("productID");
 let commentsStorage =[]; //crea una lista vacia donde luego se cargaran los comentarios que realicemos
+const stars = document.querySelectorAll('.stars');
 
-
+//EVENTO AL CARGAR LA PAGINA
 document.addEventListener("DOMContentLoaded", (e) => {
-    savedCalification(); //obtiene los comentarios previamente guardados
-    cargarCarrito();
+    savedCalification(); //OBTIENE LOS COMENTARIOS PREVIAMENTE GUARDADOS
+    cargarCarrito(); //CARGA EL CARRITO
+    starCalification(stars);
     const url = PRODUCT_INFO_URL + productID + EXT_TYPE;
     const commentsURL = PRODUCT_INFO_COMMENTS_URL + productID + ".json";//esta es la url base que apunta a la api donde se almacenan los comentario de los productos
-    
 
+    //OBTIENE EL PRODUCTO A MOSTRAR
     getJSONData(url)
         .then(object => {
             if (object.status === 'ok') {
                 let product = object.data;
                 localStorage.setItem("product", JSON.stringify(product))
-                showProductDetails(product);
-                showRelatedProducts(product);
-                
+                showProductDetails(product); //MUESTRA EL DETALLE DEL PRODUCTO
+                showRelatedProducts(product);//MUESTRA PRODUCTOS RELACIONADOS 
             }
         });
 
+    //OBTINE LOS COMENTARIOS
     getJSONData(commentsURL)//carga comentarios del producto
         .then(Response => {
             if (Response.status === "ok") {
@@ -33,10 +36,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 
 
-
+//FUNCION QUE MUESTRA LOS COMENTARIOS
 function showComments(comments) {
     const commentsContainer = document.getElementById('comments-container');
-    // commentsContainer.innerHTML = ""; // Limpia el contenedor  
 
     comments.forEach(comment => {
         const commentHTML = `  
@@ -60,7 +62,7 @@ function showComments(comments) {
     });
 }
 
-
+//FUNCION QUE SETEA Y MUESTRA LA CALIFICAION EN ESTRELLAS
 function getStars(score) {
     let starsHTML = "";
     for (let i = 1; i <= 5; i++) {
@@ -73,11 +75,10 @@ function getStars(score) {
     return starsHTML;
 }
 
-//Funcion que muestra la informacion de un producto
+//FUNCION QUE MUESTRA LA INFORMACION DE UN PRODUCTO
 function showProductDetails(product) {
-    // Verifica si product.images es una URL válida
-    console.log("Image URL:", product.images); // Verifica la URL de la imagen
-    console.log(product); // Verifica la estructura del producto
+    console.log("Image URL:", product.images); // Verifica la url de la imagen
+    console.log(product); // Verifica la esctructura del producto
     //Agrega la imagen grande
     document.querySelector(".product-images-container").innerHTML += `<img class="big-product-image" id="bigImg"  src="${product.images[0]}" alt="${product.name}" />`;
     //Agrega las imagenes en miniatura
@@ -94,7 +95,7 @@ function showProductDetails(product) {
     document.querySelector(".product-cost").innerHTML = `<h4 class="cost-text">${product.currency}${product.cost}</h4>`;
 }
 
-//Funcion que agrega las imagenes 
+//FUNCION QUE AGREGA LAS IMAGENES
 let addImage = function (array){ 
     let imageToAdd = ""; 
     for (let i = 0; i < array.length; i++) { 
@@ -105,7 +106,7 @@ let addImage = function (array){
     return imageToAdd; 
 }
 
-//Cambia segun que imagen se desea ver
+//CAMBIA SEGUN QUE IMAGEN SE DESEA VER
 function changeImg(index) {
     let bigImgBox = document.getElementById(`bigImg`);
     let smallImgBox = document.getElementById(`img${index}`);
@@ -118,48 +119,52 @@ function changeImg(index) {
     bigImgBox.setAttribute("src", smallImgBox.getAttribute("src"));
 }
 
-const stars = document.querySelectorAll('.stars');
-stars.forEach(star => {
-    star.addEventListener('mouseover', () => {
-        resetStars();
-        star.classList.add('checked');
-        let prevSibling = star.previousElementSibling;
-        while (prevSibling) {
-            prevSibling.classList.add('checked');
-            prevSibling = prevSibling.previousElementSibling;
-        }
-    });
-
-    star.addEventListener('mouseout', () => {
-        resetStars();
-        setSelectedStars();
-    });
-
-    star.addEventListener('click', () => {
-        resetStars();
-        resetSelected();
-        star.classList.add('selected');
-        starCal = star.getAttribute("data-value"); //guarda la cantidad de estrellas que se marco
-        let prevSibling = star.previousElementSibling;
-        while (prevSibling) {
-            prevSibling.classList.add('selected');
-            prevSibling = prevSibling.previousElementSibling;
-        }
-    });
-});
-
-function resetSelected() {
+//FUNCION PARA AGREGAR LA VALORACION DE ESTRELLAS
+function starCalification(stars){
     stars.forEach(star => {
-        star.classList.remove('selected');
+        star.addEventListener('mouseover', () => {
+            resetStars();
+            star.classList.add('checked');
+            let prevSibling = star.previousElementSibling;
+            while (prevSibling) {
+                prevSibling.classList.add('checked');
+                prevSibling = prevSibling.previousElementSibling;
+            }
+        });
+    
+        star.addEventListener('mouseout', () => {
+            resetStars();
+            setSelectedStars();
+        });
+    
+        star.addEventListener('click', () => {
+            resetStars();
+            resetSelected();
+            star.classList.add('selected');
+            starCal = star.getAttribute("data-value"); //guarda la cantidad de estrellas que se marco
+            let prevSibling = star.previousElementSibling;
+            while (prevSibling) {
+                prevSibling.classList.add('selected');
+                prevSibling = prevSibling.previousElementSibling;
+            }
+        });
     });
+    
+    function resetSelected() {
+        stars.forEach(star => {
+            star.classList.remove('selected');
+        });
+    }
 }
 
+//FUNCIÓN QUE RESETEA LAS ESTRELLAS, ES DECIR LES QUITA LA SELECCION
 function resetStars() {
     stars.forEach(star => {
         star.classList.remove('checked');
     });
 }
 
+//FUNCIÓN QUE AL SELECCIONAR LAS ESTRELLAS LAS DEJA MARCADAS
 function setSelectedStars() {
     stars.forEach(star => {
         if (star.classList.contains('selected')) {
@@ -169,10 +174,11 @@ function setSelectedStars() {
     });
 }
 
+//FUNCIÓN QUE MUESTRA PRODUCTOS RELACIONADOS
 function showRelatedProducts(product) {
     const container = document.getElementById('related-products-container');
     
-    // Limpia el contenido actual del contenedor
+    //Limpia el contenido actual del contenedor
     container.innerHTML = '';
 
     // Verifica si product.relatedProducts es un array y tiene elementos
@@ -183,13 +189,11 @@ function showRelatedProducts(product) {
         title.className = 'titlepr';
 
         // dark mode
-
         if (localStorage.getItem('darkMode') === 'enabled') {
             title.classList.add('dark-mode-title');
             const ratingTitle = document.querySelector(".rating-title");
             ratingTitle.classList.add('dark-mode-title');
         }
-
         // end of dark mode
 
         container.appendChild(title); // Añade el título al contenedor
@@ -208,7 +212,7 @@ function showRelatedProducts(product) {
                     <h5 class="card-title">${relatedProduct.name}</h5>
                 </div>
             `;
-            
+        
             // Añadir evento click a la tarjeta
             card.addEventListener('click', function() {
                 localStorage.setItem('productID', relatedProduct.id); // Guardar el ID del producto relacionado
@@ -227,7 +231,7 @@ function showRelatedProducts(product) {
     }
 }
 
-//Desafiate (agregar calificacion) 
+//FUNCIÓN QUE CARGA LAS CALIFICACIONES GUARDADAS EN EL LOCALSTORAGE
 function savedCalification(){
     //Guarda en un array el contenido de localStorage (comentarios realizados)
     if (localStorage.getItem(`califications${productID}`) !== null){
@@ -235,10 +239,7 @@ function savedCalification(){
     };
 }
 
-
-
-
-//Funcion que guarda un nuevo comentario realizado en localStorage y ademas lo muestra
+//FUNCIÓN QUE GUARDA UN NUEVO COMENTARIO REALIZADO EN LOCALSTORAGE Y ADEMÁS LO MUESTRA
 let setComment = function (){
     //Crea un objeto para almacenar los datos de un nuevo comentario
     let newComment = {product:"", score:"", description:"", user:"", dateTime: ""  };
@@ -251,8 +252,7 @@ let setComment = function (){
       newComment.user = userSession.username; //GUARDA EL USUARIO //GUARDA EL USUARIO
       newComment.dateTime =  `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()+1}:${new Date().getSeconds()} ` //GUARDA LA FECHA Y HORA
       commentsStorage.push(newComment);  //AGREGA EL NUEVO COMENTARIO A LA LISTA DE LOS COMOENTARIOS ANTERIORES
-  
-      
+    
       //Limpia los campos luego de enviar el comentario
       document.getElementById("textArea").value = "";
       let stars = document.querySelectorAll(".stars");
@@ -278,38 +278,18 @@ let setComment = function (){
                 </div>  
             </div>   
         `
-  
-  
     };
     //Actualiza el localStorage
     localStorage.setItem(`califications${productID}`, JSON.stringify(commentsStorage))
   }
 
-
-
-//Evento que agrega un comentario
+//EVENTO QUE AGREGA UN COMENTARIO
 document.querySelector(".send-calification").addEventListener("click", ()=>{
     setComment();
     document.getElementById("message").style.display = "block"
-
   })
 
-  function logout() {
-    console.log('Función de cerrar sesión llamada'); 
-    localStorage.removeItem('userSession');
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("secondName");
-    localStorage.removeItem("lastName");
-    localStorage.removeItem("secondLastName");
-    localStorage.removeItem("phone");
-    console.log('Sesión cerrada y datos eliminados de localStorage.');
-    window.location.href = 'index.html';
-}
-
-
-//Desafiate (agregar producto al carrito)
-
-
+//AGREGAR PRODUCTO AL CARRITO
 function cargarCarrito(){
     //Crea el carrito
     if (localStorage.getItem(`carrito`) !== null){
@@ -320,11 +300,10 @@ function cargarCarrito(){
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-
-//Evento boton agregar al carrito
+//EVENTO BOTON AGREGAR AL CARRITO
 document.getElementById("cart-btn").addEventListener("click", agregarCarrito)
 
-//funcion que agrega al carrito
+//FUNCION QUE AGREGA AL CARRITO
 function agregarCarrito (){
     let product = JSON.parse(localStorage.getItem("product"));
     console.log(carrito);
@@ -338,15 +317,14 @@ function agregarCarrito (){
     }
 }
     
-
-//Evento boton comprar
+//EVENTO BOTON COMPRAR
 let btnComprar = document.getElementById("btnComprar");
-
 btnComprar.addEventListener("click", ()=>{
     agregarCarrito();
     irAlCarrito();
 })
 
+//FUNCION PARA REDIRIGIR AL CARRITO
 function irAlCarrito(){
     window.location.href = "./cart.html"
 }

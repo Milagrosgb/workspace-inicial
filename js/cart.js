@@ -1,3 +1,4 @@
+//EVENTO AL CARGAR LA PAGINA
 window.addEventListener("DOMContentLoaded", () => {
     showCartProducts()
 
@@ -9,26 +10,22 @@ window.addEventListener("DOMContentLoaded", () => {
             break;
         }
     }
-    actualizarCostos(valorSeleccionado)
-})
+    actualizarCostos(valorSeleccionado);
 
-function logout() {
-    console.log('Función de cerrar sesión llamada');
-    localStorage.removeItem('userSession');
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("secondName");
-    localStorage.removeItem("lastName");
-    localStorage.removeItem("secondLastName");
-    localStorage.removeItem("phone");
-    console.log('Sesión cerrada y datos eliminados de localStorage.');
-    window.location.href = 'index.html';
-}
+    let tiposEnvios = document.getElementsByName("tipo-envio")
+    tiposEnvios.forEach(elemento => {
+        elemento.addEventListener("change", (e) => {
+            actualizarCostos(e.currentTarget.value)
+        });
+    });
+    });
 
+    
 
-// Funcion que muestra los productos en el carrito de compras
-let showCartProducts = () => {
-    let totalCost = 0
-    document.querySelector(".product-list").innerHTML = ""
+// FUNCIÓN QUE MUESTRA LOS PRODUCTOS DEL CARRTIO DE COMPRAS
+let showCartProducts = ()=>{ 
+    let totalCost=0
+    document.querySelector(".product-list").innerHTML =""
     let products = JSON.parse(localStorage.getItem("carrito"))
     if (products === null || products.length === 0) {
         document.querySelector(".product-list").innerHTML = `<h3>Carrito vacio, encontra lo que buscas en el siguiente enlace </h3><a class="primary-button button-font" href="categories.html">DESCUBRIR MÁS</a>`
@@ -73,7 +70,7 @@ let showCartProducts = () => {
 
 }
 
-// Funcion para aumentar la cantidad de un producto
+//FUNCIÓN PARA AUMENTAR LA CANTIDAD DE UN PRODUCTO
 function increaseQuantity(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || []
     let product = carrito.find(element => element.id === productID)
@@ -96,7 +93,7 @@ function increaseQuantity(productID) {
     actualizarCostos(valorSeleccionado)
 }
 
-// Función para disminuir la cantidad
+// FUNCIÓN PARA DISMINUIR LA CANTIDAD
 function decreaseQuantity(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let product = carrito.find(element => element.id === productID);
@@ -126,7 +123,7 @@ function decreaseQuantity(productID) {
 
 
 
-//Funcion que elimina producto del carrito
+//FUNCIÓN QUE ELIMINA EL PRODUCTO DEL CARRITO
 function removeProduct(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito"))
     let productIndex = carrito.findIndex((element) => element.id == productID)
@@ -174,25 +171,6 @@ document.querySelector("#finalizar-compra-submit").addEventListener("click",(eve
       showCartProducts()
     }
   });
-
-  //id="codigo-tarjeta" id="validez-tarjeta"  id="numero-tarjeta" id="nombre-tarjeta"
-            
-
-
-          
-  
-  
-  
-  
-  
-  
-
-let tiposEnvios = document.getElementsByName("tipo-envio")
-tiposEnvios.forEach(elemento => {
-    elemento.addEventListener("change", (e) => {
-        actualizarCostos(e.currentTarget.value)
-    })
-})
 
 function actualizarCostos(valorSeleccionado) {
     let mostrarSubtotal = document.getElementById("costo-subtotal");
