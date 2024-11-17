@@ -64,8 +64,8 @@
           </div>
           <div id="cart-total" class="total"></div>
         </div>
-
-        <!-- TIPOS DE ENVÍO -->
+        <div id="cost-section">
+        <!-- Tipos de envío -->
         <div class="container row px-0 pt-3">
           <div class="col-12 col-md-6 py-4 d-flex justify-content-center align-items-center subtitle-2">
             Tipos de envío:
@@ -114,26 +114,30 @@
         <div class="container mb-5 mt-3">
           <div class="col-12 subtitle-2 costos-subtitle mb-2">Costos</div>
           <div class="cost-list row">
-            <div class="col px-0 body-light m-auto">Subtotal</div>
+            <div  class="col px-0 body-light m-auto" id="subtotal">Subtotal</div>
             <div class="col px-0 justify-content-end text-end">
               <b id="costo-subtotal">$0.00</b>
             </div>
           </div>
           <div class="cost-list row">
-            <div class="col px-0 body-light m-auto">Costo de envío</div>
+            <div  class="col px-0 body-light m-auto" id="shipping-cost">Costo de envío</div>
             <div class="col px-0 justify-content-end text-end">
               <b id="costo-envio">$0.00</b>
             </div>
           </div>
           <div class="cost-list row">
-            <div class="col px-0 body-light m-auto">Total</div>
+            <div class="col px-0 body-light m-auto" id="total">Total</div>
             <div class="col px-0 justify-content-end text-end">
               <b id="costo-total">$0.00</b>
             </div>
           </div>
         </div>
 
-        <div id="finalizar-compra"></div>
+        <div id="finalizar-compra"> 
+          <button id="finalizar-compra-submit" btn-fc class="btn-text buy-btn primary-button">FINALIZAR COMPRA</button>
+       <div id="errores" class="mt-3 text-danger"></div>
+        </div>
+      </div>
       </div>
     </main>
 
@@ -148,66 +152,73 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <div id="direccion-container" class="pt-4">
-          <h1 class="modal-title fs-5 subtitle-2 text-center" id="exampleModalLabel">Dirección de envío</h1>
-          <div class="modal-body pb-4 pt-2">
-            <form>
-              <div class="mb-3">
-                <label for="departamento" class="col-form-label subtitle-3">Departamento:</label>
-                <input type="text" class="form-control" id="departamento" placeholder="Departamento">
+      <div id="direccion-container" class="pt-4">
+        <h1 class="modal-title fs-5 subtitle-2 text-center" id="exampleModalLabel">Dirección de envío</h1>
+        <div class="modal-body pb-4 pt-2">
+          <form id="formulario-direccion"> 
+            <div class="mb-3">
+              <label for="departamento" class="col-form-label subtitle-3">Departamento:</label>
+              <input type="text" class="form-control" id="departamento" placeholder="Departamento" required>
+            </div>
+            <div class="mb-3">
+              <label for="localidad" class="col-form-label subtitle-3">Localidad:</label>
+              <input type="text" class="form-control" id="localidad" placeholder="Localidad" required>
+            </div>
+            
+            
+            <div class="form-row row">
+              <div class="form-group col-md-6">
+                <label for="calle" class="col-form-label subtitle-3">Calle:</label>
+                <input type="text" class="form-control" id="calle" placeholder="Calle" required>
               </div>
-              <div class="mb-3">
-                <label for="localidad" class="col-form-label subtitle-3">Localidad:</label>
-                <input type="text" class="form-control" id="localidad" placeholder="Localidad">
+              <div class="form-group col-md-6">
+                <label for="numero" class="col-form-label subtitle-3">Número:</label>
+                <input type="text" class="form-control" id="numero" placeholder="Número" required>
               </div>
-
-
-              <div class="form-row row">
-                <div class="form-group col-md-6">
-                  <label for="calle" class="col-form-label subtitle-3">Calle:</label>
-                  <input type="text" class="form-control" id="calle" placeholder="Calle">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="numero" class="col-form-label subtitle-3">Número:</label>
-                  <input type="text" class="form-control" id="numero" placeholder="Número">
-                </div>
-              </div>
-
-              <div class=" container d-flex justify-content-center pt-4">
-              
-                <button type="button" class="button" id="enviar-direccion-button">Enviar</button>
-              </div>
-
-            </form>
-          
-          </div>
+            </div>
+            
+            <div class=" container d-flex justify-content-center pt-4">
+  
+              <button type="button" class="button" id="enviar-direccion-button" data-bs-dismiss="modal">Guardar</button>
+            </div>
+            
+          </form>
+  
         </div>
-
       </div>
+      
     </div>
   </div>
+</div>
 
 
-  <div class="modal fade" id="pagoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog  custom-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div id="pago-container" class="pt-4 pb-2">
-          <h1 class="modal-title fs-5 subtitle-2 text-center" id="exampleModalLabel">Forma de pago</h1>
-          <div class="modal-body">
-            <form>
-              <div class="container pb-3" id="credit-card-container">
-                <div class="col">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="credit-card" checked/>
-                    <label class="form-check-label subtitle-3" for="credit-card">
-                      Tarjeta de crédito
-                    </label>
-                  </div>
+<div class="modal fade" id="pagoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="pago-container" class="pt-4 pb-2">
+        <h1 class="modal-title fs-5 subtitle-2 text-center" id="exampleModalLabel">Forma de pago</h1>
+        <div class="modal-body">
+          <form>
+            <div class="container pb-3" id="credit-card-container">
+
+              <div class="col">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="credit-card"
+                    checked
+                  />
+                  <label id="opcion-tarjeta" class="form-check-label subtitle-3" for="credit-card">
+                    Tarjeta de crédito
+                  </label>
                 </div>
-              
+              </div>
+    
                 <div class="mb-3">
                   <label for="nombre-tarjeta" class="col-form-label subtitle-3">Nombre y apellido impreso en la tarjeta:</label>
                   <input type="text" class="form-control" id="nombre-tarjeta" placeholder="Nombre">
@@ -226,12 +237,12 @@
                 <div class="form-row row">
                   <div class="form-group col-md-6">
                     <label for="validez-tarjeta" class="col-form-label subtitle-3">Válido hasta:</label>
-                    <input type="number" class="form-control" id="validez-tarjeta" placeholder="MM/AA">
+                    <input type="number" class="form-control" id="validez-tarjeta" id="fecha-expiracion"  placeholder="MM/AA">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="codigo-tarjeta" class="col-form-label subtitle-3">Código de seguridad:</label>
                     <div class="icon-input">
-                      <input type="password" class="form-control" id="codigo-tarjeta" placeholder="***">
+                      <input type="password" class="form-control" id="codigo-tarjeta" id="codigo-seguridad" placeholder="***">
                       <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none" id="code-icon">
                         <path d="M13.5 18V13.5M13.5 9H13.5113M24.75 13.5C24.75 19.7132 19.7132 24.75 13.5 24.75C7.2868 24.75 2.25 19.7132 2.25 13.5C2.25 7.2868 7.2868 2.25 13.5 2.25C19.7132 2.25 24.75 7.2868 24.75 13.5Z" stroke="#BBBFCC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
@@ -241,31 +252,41 @@
               </div>
 
 
-              <div class="container pt-3" id="redes-de-cobranza-container">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="redes-de-cobranza"/>
-                  <label class="form-check-label subtitle-3" for="redes-de-cobranza">
-                    Pago en redes de cobranza
-                  </label>
-                </div>
-                <div class="container w-auto row px-0 py-3">
-                  <div class="col-6">
-                    <p class="body-light mb-0 py-auto">En todas las sucursales</p>
-                  </div>
-                  <div class="col-3">
-                    <img class="redes-img" src="img/logo-abitab.png" alt="Logo de Abitab">
-                  </div>
-                  <div class="col-3">
-                    <img class="redes-img" src="img/logo-redpagos.png" alt="Logo de RedPagos">
-                  </div>
-                </div>
-              </div>
+            <div class="container pt-3" id="redes-de-cobranza-container">
 
-              <div class=" container d-flex justify-content-center pt-4">
-                <button type="button" class="button" id="enviar-metodo-button">Enviar</button>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="redes-de-cobranza"
+                />
+                <label class="form-check-label subtitle-3" for="redes-de-cobranza">
+                  Pago en redes de cobranza
+                </label>
               </div>
-            </form>
-          </div>
+              <div class="container w-auto row px-0 py-3">
+                <div class="col-6">
+                  <p class="body-light mb-0 py-auto">En todas las sucursales</p>
+                </div>
+                <div class="col-3">
+                  <img class="redes-img" src="img/logo-abitab.png" alt="Logo de Abitab">
+                </div>
+                <div class="col-3">
+                  <img class="redes-img" src="img/logo-redpagos.png" alt="Logo de RedPagos">
+                </div>
+              </div>
+            </div>
+            
+
+            
+            <div class=" container d-flex justify-content-center pt-4">
+
+              <button type="button" class="button" id="enviar-metodo-button" data-bs-dismiss="modal">Guardar</button>
+            </div>
+            
+          </form>
+
         </div>
       </div>
     </div>
