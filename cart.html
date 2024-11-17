@@ -1,178 +1,230 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <title>eMercado - Todo lo que busques está aquí</title>
-<!-- FUENTE E ICONOS -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet"/>
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/font.css" />
-  <!-- BOOTSTRAP -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" />
-<!-- ESTILOS GENERALES -->
-  <link href="css/styles.css" rel="stylesheet" />
-<!-- ESTILOS INPUTS -->
-  <link rel="stylesheet" href="css/styles-input.css" />
-<!-- ESTILOS ESPECIFICOS -->
-  <link rel="stylesheet" href="css/cart.css" />
-</head>
-<body>
-  <!-- NAV -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-lg">
-      <a class="navbar-brand" href="index.html"><img src="img/logo-eco.png" id="logo-eco" class="logo-eco" width="80"/></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-        </ul>
-        <div class="dark-mode">
-          <div class="circle">
-            <ion-icon class="sun" name="sunny"></ion-icon>
-            <ion-icon class="moon" name="moon"></ion-icon>
-          </div>
-        </div>
-        <div id="menu-placeholder"></div>
-      </div>
-    </div>
-  </nav>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/styles-input.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+  </head>
 
-  <!-- MAIN -->
-  <main>
-    <div class="container cart-container">
-      <!-- CONTENIDO -->
-      <div class="h2-container">
-        <div class="title-decoration">
-          <h2 class="h2">CARRITO</h2>
-        </div>
-      </div>
-      <div class="products-added">
-        <div class="product-list">
-          <!-- LISTA PRODUCTOS EN EL CARRITO -->
-        </div>
-        <div id="cart-total" class="total"></div>
-      </div>
-      <!-- TIPOS DE ENVIO-->
-      <div class="container row px-0 pt-3">
-        <div class="col-12 col-md-6 py-4 d-flex justify-content-center align-items-center subtitle-2">
-          Tipos de envío:
-        </div>
-        <div class="col-12 col-md-6">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="premium" checked/>
-            <label class="form-check-label" for="premium">
-              Premium 2 a 5 días
-            </label>
-            <p class="body-light">(15%)</p>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="express"/>
-            <label class="form-check-label" for="express">
-              Express 5 a 8 días
-            </label>
-            <p class="body-light">(7%)</p>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="standard"/>
-            <label class="form-check-label" for="standard">
-              Standard 12 a 15 días
-            </label>
-            <p class="body-light">(5%)</p>
-          </div>
-        </div>
-      </div>
-      <div class="container pago-direccion-container">
-        <hr/>
-        <div class="row container button-container">
-          <div class="col-12 col-md-6 d-flex justify-content-end p-1">
-            <button class="button" data-bs-toggle="modal" data-bs-target="#direccionModal">Dirección de envío</button>
-          </div>
-          <div class="col-12 col-md-6 d-flex justify-content-start p-1"><button class="button" data-bs-toggle="modal" data-bs-target="#pagoModal">Forma de pago</button></div>
-        </div>
-        <hr />
-      </div>
-      <!-- COSTOS: -->
-      <div class="container mb-5 mt-3">
-        <div class="col-12 subtitle-2 costos-subtitle mb-2">Costos</div>
-        <div class="cost-list row">
-          <div class="col px-0 body-light m-auto">Subtotal</div>
-          <div class="col px-0 justify-content-end text-end">
-            <b>COMPLETAR</b>
-          </div>
-        </div>
-        <div class="cost-list row">
-          <div class="col px-0 body-light m-auto">Costo de envío</div>
-          <div class="col px-0 justify-content-end text-end">
-            <b>COMPLETAR</b>
-          </div>
-        </div>
-        <div class="cost-list row">
-          <div class="col px-0 body-light m-auto">Total</div>
-          <div class="col px-0 justify-content-end text-end">
-            <b>COMPLETAR</b>
-          </div>
-        </div>
-      </div>
-      <div id="finalizar-compra"></div>
-    </div>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-lg">
+        <a class="navbar-brand" href="index.html"
+          ><img
+            src="img/logo-eco.png"
+            id="logo-eco"
+            class="logo-eco"
+            width="80"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
+          </ul>
 
-    <div class="go-top-container">
-      <div class="go-top-button">
-        <i class="fas fa-chevron-up"></i>
-      </div>  
-    </div>
-  </main>
+          <div class="dark-mode">
+            <div class="circle">
+              <ion-icon class="sun" name="sunny"></ion-icon>
+              <ion-icon class="moon" name="moon"></ion-icon>
+            </div>
+          </div>
 
-  <!-- MODALES -->
-  <div class="modal fade" id="direccionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog  custom-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div id="menu-placeholder"></div>
+
+          <script>
+            fetch("menu.html")
+              .then((response) => response.text())
+              .then((data) => {
+                document.getElementById("menu-placeholder").innerHTML = data;
+                checkLoginStatus();
+              })
+              .catch((error) => console.error("errormenu:", error));
+          </script>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container cart-container">
+        <!-- contenido aqui -->
+        <div class="h2-container">
+          <div class="title-decoration">
+            <h2 class="h2">CARRITO</h2>
+          </div>
+        </div>
+        <div class="products-added">
+          <div class="product-list">
+            <!-- LISTA PRODUCTOS EN EL CARRITO -->
+          </div>
+          <div id="cart-total" class="total"></div>
         </div>
 
-        <div id="direccion-container" class="pt-4">
-          <h1 class="modal-title fs-5 subtitle-2 text-center" id="exampleModalLabel">Dirección de envío</h1>
-          <div class="modal-body pb-4 pt-2">
-            <form>
-              <div class="mb-3">
-                <label for="departamento" class="col-form-label subtitle-3">Departamento:</label>
-                <input type="text" class="form-control" id="departamento" placeholder="Departamento">
+        <!-- Tipos de envío -->
+        <div class="container row px-0 pt-3">
+          <div class="col-12 col-md-6 py-4 d-flex justify-content-center align-items-center subtitle-2">
+            Tipos de envío:
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="tipo-envio"
+                value="premium"
+                checked
+              />
+              <label class="form-check-label" for="premium">
+                Premium 2 a 5 días
+              </label>
+              <p class="body-light">(15%)</p>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="tipo-envio"
+                value="express"
+              />
+              <label class="form-check-label" for="express">
+                Express 5 a 8 días
+              </label>
+              <p class="body-light">(7%)</p>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="tipo-envio"
+                value="standard"
+              />
+              <label class="form-check-label" for="standard">
+                Standard 12 a 15 días
+              </label>
+              <p class="body-light">(5%)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container pago-direccion-container">
+
+          <hr />
+  
+          <div class="row container button-container">
+            <div class="col-12 col-md-6 d-flex justify-content-end p-1">
+              <button class="button" data-bs-toggle="modal" data-bs-target="#direccionModal">Dirección de envío</button>
+            </div>
+            <div class="col-12 col-md-6 d-flex justify-content-start p-1"><button class="button" data-bs-toggle="modal" data-bs-target="#pagoModal">Forma de pago</button></div>
+          </div>
+  
+          <hr />
+
+        </div>
+        <!-- Costos: -->
+
+        <div class="container mb-5 mt-3">
+          <div class="col-12 subtitle-2 costos-subtitle mb-2">Costos</div>
+          <div class="cost-list row">
+            <div class="col px-0 body-light m-auto">Subtotal</div>
+            <div class="col px-0 justify-content-end text-end">
+              <b id="costo-subtotal">$0.00</b>
+            </div>
+          </div>
+          <div class="cost-list row">
+            <div class="col px-0 body-light m-auto">Costo de envío</div>
+            <div class="col px-0 justify-content-end text-end">
+              <b id="costo-envio">$0.00</b>
+            </div>
+          </div>
+          <div class="cost-list row">
+            <div class="col px-0 body-light m-auto">Total</div>
+            <div class="col px-0 justify-content-end text-end">
+              <b id="costo-total">$0.00</b>
+            </div>
+          </div>
+        </div>
+
+        <div id="finalizar-compra"></div>
+      </div>
+    </main>
+
+    <!-- Modales -->
+
+    
+
+<div class="modal fade" id="direccionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h1 class="modal-title fs-5 subtitle-2" id="exampleModalLabel">Dirección de envío</h1> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div id="direccion-container" class="pt-4">
+        <h1 class="modal-title fs-5 subtitle-2 text-center" id="exampleModalLabel">Dirección de envío</h1>
+        <div class="modal-body pb-4 pt-2">
+          <form>
+            <div class="mb-3">
+              <label for="departamento" class="col-form-label subtitle-3">Departamento:</label>
+              <input type="text" class="form-control" id="departamento" placeholder="Departamento">
+            </div>
+            <div class="mb-3">
+              <label for="localidad" class="col-form-label subtitle-3">Localidad:</label>
+              <input type="text" class="form-control" id="localidad" placeholder="Localidad">
+            </div>
+            
+            
+            <div class="form-row row">
+              <div class="form-group col-md-6">
+                <label for="calle" class="col-form-label subtitle-3">Calle:</label>
+                <input type="text" class="form-control" id="calle" placeholder="Calle">
               </div>
-              <div class="mb-3">
-                <label for="localidad" class="col-form-label subtitle-3">Localidad:</label>
-                <input type="text" class="form-control" id="localidad" placeholder="Localidad">
+              <div class="form-group col-md-6">
+                <label for="numero" class="col-form-label subtitle-3">Número:</label>
+                <input type="text" class="form-control" id="numero" placeholder="Número">
               </div>
-
-              <div class="form-row row">
-                <div class="form-group col-md-6">
-                  <label for="calle" class="col-form-label subtitle-3">Calle:</label>
-                  <input type="text" class="form-control" id="calle" placeholder="Calle">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="numero" class="col-form-label subtitle-3">Número:</label>
-                  <input type="text" class="form-control" id="numero" placeholder="Número">
-                </div>
-              </div>
-
-              <div class=" container d-flex justify-content-center pt-4">   
-                <button type="button" class="button" id="enviar-direccion-button">Enviar</button>
-              </div>
-
-            </form>
-          </div>
+            </div>
+            
+            <div class=" container d-flex justify-content-center pt-4">
+  
+              <button type="button" class="button" id="enviar-direccion-button">Enviar</button>
+            </div>
+            
+          </form>
+  
         </div>
       </div>
+      
     </div>
   </div>
+</div>
 
 
   <div class="modal fade" id="pagoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
