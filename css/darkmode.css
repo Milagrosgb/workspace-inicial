@@ -110,6 +110,28 @@ body.active #product-search {
     border: 1px solid #555;
 }
 
+/* Estilos específicos para cart*/
+body.active.cart-container,
+body.active #cart-total{
+    background-color: #333;
+}
+body.active #direccion-container, 
+body.active #pago-container,
+body.active .modal-body {
+    background-color: #1e1e1e !important;
+ 
+  }
+body.active .modal-header {
+    background-color: #252525 !important;
+    border-bottom: 1px solid #444 !important;
+  }
+body.active .modal-content {
+    background-color: #1e1e1e !important; /* Fuerza el cambio */
+    border: 1px solid #333 !important;
+  }
+body.active .subtitle-1 {
+    color: #fafbff;
+}
 
 
 
