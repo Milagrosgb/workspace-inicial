@@ -110,6 +110,17 @@ body.active #product-search {
     border: 1px solid #555;
 }
 
+/* Estilos específicos para cart*/
+
+.cart-container,
+.total {
+    background-color: #1e1e1e;
+}
+.product,
+.h2,
+.subtitle-1 {
+    color: #fafbff;
+}
 
 
 
