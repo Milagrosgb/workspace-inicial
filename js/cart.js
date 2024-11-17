@@ -10,23 +10,18 @@ window.addEventListener("DOMContentLoaded", () => {
             break;
         }
     }
-    actualizarCostos(valorSeleccionado)
-})
+    actualizarCostos(valorSeleccionado);
 
-function logout() {
-    console.log('Función de cerrar sesión llamada'); 
-    localStorage.removeItem('userSession');
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("secondName");
-    localStorage.removeItem("lastName");
-    localStorage.removeItem("secondLastName");
-    localStorage.removeItem("phone");
-    console.log('Sesión cerrada y datos eliminados de localStorage.');
-    window.location.href = 'index.html';
-}
+    let tiposEnvios = document.getElementsByName("tipo-envio")
+    tiposEnvios.forEach(elemento => {
+        elemento.addEventListener("change", (e) => {
+            actualizarCostos(e.currentTarget.value)
+        });
+    });
+    });
 
 
-// Funcion que muestra los productos en el carrito de compras
+// FUNCIÓN QUE MUESTRA LOS PRODUCTOS DEL CARRTIO DE COMPRAS
 let showCartProducts = ()=>{ 
     let totalCost=0
     document.querySelector(".product-list").innerHTML =""
@@ -96,7 +91,7 @@ function increaseQuantity(productID) {
     actualizarCostos(valorSeleccionado)
 }
 
-// Función para disminuir la cantidad
+// FUNCIÓN PARA DISMINUIR LA CANTIDAD
 function decreaseQuantity(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let product = carrito.find(element => element.id === productID);
@@ -126,7 +121,7 @@ function decreaseQuantity(productID) {
 
 
 
-//Funcion que elimina producto del carrito
+//FUNCIÓN QUE ELIMINA EL PRODUCTO DEL CARRITO
 function removeProduct(productID) {
     let carrito = JSON.parse(localStorage.getItem("carrito"))
     let productIndex = carrito.findIndex((element) => element.id == productID)
@@ -145,12 +140,6 @@ function removeProduct(productID) {
 
 }
 
-let tiposEnvios = document.getElementsByName("tipo-envio")
-tiposEnvios.forEach(elemento => {
-    elemento.addEventListener("change", (e) => {
-        actualizarCostos(e.currentTarget.value)
-    })
-})
 
 function actualizarCostos(valorSeleccionado) {
     let mostrarSubtotal = document.getElementById("costo-subtotal");
